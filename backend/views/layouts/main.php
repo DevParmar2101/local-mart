@@ -22,59 +22,74 @@ AppAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body class="d-flex flex-column h-100">
+    <body class="bg-theme bg-theme7">
     <?php $this->beginBody() ?>
+    <!--wrapper-->
+    <div class="wrapper">
 
-    <header>
-        <?php
-        NavBar::begin([
-            'brandLabel' => Yii::$app->name,
-            'brandUrl' => Yii::$app->homeUrl,
-            'options' => [
-                'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
-            ],
-        ]);
-        $menuItems = [
-            ['label' => 'Home', 'url' => ['/site/index']],
-        ];
-        if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-        }
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
-            'items' => $menuItems,
-        ]);
-        if (Yii::$app->user->isGuest) {
-            echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
-        } else {
-            echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout text-decoration-none']
-                )
-                . Html::endForm();
-        }
-        NavBar::end();
-        ?>
-    </header>
+        <!--sidebar wrapper -->
+        <?= $this->render('sidebar')?>
+        <!--end sidebar wrapper -->
 
-    <main role="main" class="flex-shrink-0">
-        <div class="container">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-            <?= Alert::widget() ?>
-            <?= $content ?>
+        <!--start header -->
+        <?= $this->render('header')?>
+        <!--end header -->
+
+
+        <!--start page wrapper -->
+        <div class="page-wrapper">
+            <div class="page-content">
+        <?= $content?>
+            </div>
         </div>
-    </main>
+        <!--end page wrapper -->
 
-    <footer class="footer mt-auto py-3 text-muted">
-        <div class="container">
-            <p class="float-start">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-            <p class="float-end"><?= Yii::powered() ?></p>
+        <!--start overlay-->
+        <div class="overlay toggle-icon"></div>
+        <!--end overlay-->
+
+        <!--Start Back To Top Button-->
+        <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+        <!--End Back To Top Button-->
+        <footer class="page-footer">
+            <p class="mb-0">Copyright © 2021. All right reserved.</p>
+        </footer>
+    </div>
+    <!--end wrapper-->
+    <!--start switcher-->
+    <div class="switcher-wrapper">
+        <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
         </div>
-    </footer>
-
+        <div class="switcher-body">
+            <div class="d-flex align-items-center">
+                <h5 class="mb-0 text-uppercase">Theme Customizer</h5>
+                <button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
+            </div>
+            <hr/>
+            <p class="mb-0">Gaussian Texture</p>
+            <hr>
+            <ul class="switcher">
+                <li id="theme1"></li>
+                <li id="theme2"></li>
+                <li id="theme3"></li>
+                <li id="theme4"></li>
+                <li id="theme5"></li>
+                <li id="theme6"></li>
+            </ul>
+            <hr>
+            <p class="mb-0">Gradient Background</p>
+            <hr>
+            <ul class="switcher">
+                <li id="theme7"></li>
+                <li id="theme8"></li>
+                <li id="theme9"></li>
+                <li id="theme10"></li>
+                <li id="theme11"></li>
+                <li id="theme12"></li>
+            </ul>
+        </div>
+    </div>
+    <!--end switcher-->
     <?php $this->endBody() ?>
     <?php
     $js =<<<JS
