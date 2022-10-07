@@ -1,6 +1,6 @@
 $(function() {
 	"use strict";
-	new PerfectScrollbar(".header-message-list"), new PerfectScrollbar(".header-notifications-list"), $(".mobile-search-icon").on("click", function() {
+	new $(".mobile-search-icon").on("click", function() {
 		$(".search-bar").addClass("full-search-bar")
 	}), $(".search-close").on("click", function() {
 		$(".search-bar").removeClass("full-search-bar")
@@ -76,9 +76,6 @@ $(function() {
     $('#theme10').click(theme10);
     $('#theme11').click(theme11);
     $('#theme12').click(theme12);
-    $('#theme13').click(theme13);
-    $('#theme14').click(theme14);
-    $('#theme15').click(theme15);
 
     function theme1() {
       $('body').attr('class', 'bg-theme bg-theme1');

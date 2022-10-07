@@ -70,7 +70,7 @@ $(function() {
 			}
 		}
 	};
-	new ApexCharts(document.querySelector("#chart1"), e).render();
+	/*new ApexCharts(document.querySelector("#chart1"), e).render();
 	e = {
 		series: [{
 			name: "Customers",
@@ -1601,5 +1601,5 @@ $(function() {
 			}
 		}
 	};
-	new ApexCharts(document.querySelector("#chart21"), e).render()
+	new ApexCharts(document.querySelector("#chart21"), e).render()*/
 });
