@@ -9,6 +9,7 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -54,7 +55,7 @@ AppAsset::register($this);
                     <div class="row justify-content-between align-items-center">
                         <div class="col-lg-3 col">
                             <div class="header-logo">
-                                <a href="index.html">
+                                <a href="<?= Url::toRoute('/')?>">
                                     <?= Html::img(Yii::getAlias('@web/images/logo/logo.png'))?>
                                     <!--                            <img src="assets/images/logo/logo.png" alt="Site Logo" />-->
                                 </a>
@@ -95,7 +96,7 @@ AppAsset::register($this);
                     <div class="row justify-content-between align-items-center">
                         <div class="col-lg-3 col">
                             <div class="header-logo">
-                                <a href="index.html">
+                                <a href="<?= Url::toRoute('/')?>">
                                     <?= Html::img(Yii::getAlias('@web/images/logo/logo.png'))?>
                                     <!--                            <img src="assets/images/logo/logo.png" alt="Site Logo" />-->
                                 </a>
@@ -138,7 +139,7 @@ AppAsset::register($this);
                             <ul>
                                 <li class="dropdown"><a href="#">Home <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu">
-                                        <li><a href="index.html">Home 1</a></li>
+                                        <li><a href="<?= Url::toRoute('/')?>">Home 1</a></li>
                                         <li><a href="index-2.html">Home 2</a></li>
                                     </ul>
                                 </li>
@@ -286,7 +287,7 @@ AppAsset::register($this);
                             <div class="col-md-6 col-lg-3 mb-md-30px mb-lm-30px">
                                 <div class="single-wedge">
                                     <div class="footer-logo">
-                                        <a href="index.html">
+                                        <a href="<?= Url::toRoute('/')?>">
                                             <?= Html::img(Yii::getAlias('@web/images/logo/footer-logo.png'))?>
                                             <!--                                    <img src="assets/images/logo/footer-logo.png" alt="">-->
                                         </a>
