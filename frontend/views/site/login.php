@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <div class="login-toggle-btn">
                                                 <input type="checkbox" name="rememberMe" />
                                                 <a class="flote-none" href="javascript:void(0)">Remember me</a>
-                                                <a href="<?= Url::toRoute('site/request-password-reset-')?>">Forgot Password?</a>
+                                                <a href="<?= Url::toRoute('site/request-password-reset')?>">Forgot Password?</a>
                                             </div>
                                          <?= Html::submitButton('Login', ['class' => 'btn btn-sm btn-secondary', 'name' => 'login-button']) ?>
                                         </div>
