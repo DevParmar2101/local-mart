@@ -161,6 +161,9 @@ AppAsset::register($this);
                         </div>
                         <div class="col-lg-2 col">
                             <div class="header-actions">
+                                <?php if (Yii::$app->user->isGuest){?>
+                                <?= Html::a('Login',['site/login'],['class' =>'header-action-btn'])?>
+                                <?php }?>
                                 <!-- Single Wedge Start -->
                                 <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
                                     <i class="pe-7s-like"></i>
