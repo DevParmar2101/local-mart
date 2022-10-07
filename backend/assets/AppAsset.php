@@ -21,9 +21,6 @@ class AppAsset extends AssetBundle
         'css/bootstrap.min.css',
         'css/app.css',
         'css/icons.css',
-        'css/dark-theme.css',
-        'css/semi-dark.css',
-        'css/header-colors.css',
     ];
     public $js = [
         'js/pace.min.js',
@@ -31,8 +28,6 @@ class AppAsset extends AssetBundle
         'js/jquery.min.js',
         'plugins/simplebar/js/simplebar.min.js',
         'plugins/metismenu/js/metisMenu.min.js',
-        'plugins/perfect-scrollbar/js/perfect-scrollbar.js',
-        'plugins/apexcharts-bundle/js/apexcharts.min.js',
         'plugins/datatable/js/jquery.dataTables.min.js',
         'plugins/datatable/js/dataTables.bootstrap5.min.js',
         'js/index.js',
