@@ -715,7 +715,7 @@ header .main-menu {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #266bf9;
+  /*background-color: #266bf9;*/
 }
 header .main-menu ul {
   display: -webkit-box;
