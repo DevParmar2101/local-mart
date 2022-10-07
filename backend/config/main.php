@@ -16,6 +16,7 @@ return [
         'request' => [
             'class' => \common\components\Request::class,
             'web'=> '/backend/web',
+            'adminUrl' => '/admin',
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [

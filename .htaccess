@@ -3,14 +3,14 @@ RewriteEngine On
 
 # deal with admin first
 RewriteCond %{REQUEST_URI} ^/(admin)
-RewriteRule ^admin/assets/(.*)$ admin/web/assets/$1 [L]
-RewriteRule ^admin/css/(.*)$ admin/web/css/$1 [L]
-RewriteRule ^admin/js/(.*)$ admin/web/js/$1 [L]
-RewriteRule ^admin/images/(.*)$ admin/web/images/$1 [L]
+RewriteRule ^admin/assets/(.*)$ backend/web/assets/$1 [L]
+RewriteRule ^admin/css/(.*)$ backend/web/css/$1 [L]
+RewriteRule ^admin/js/(.*)$ backend/web/js/$1 [L]
+RewriteRule ^admin/images/(.*)$ backend/web/images/$1 [L]
 
-RewriteCond %{REQUEST_URI} !^/admin/web/(assets|css)/
+RewriteCond %{REQUEST_URI} !^/backend/web/(assets|css)/
 RewriteCond %{REQUEST_URI} ^/(admin)
-RewriteRule ^.*$ admin/web/index.php [L]
+RewriteRule ^.*$ backend/web/index.php [L]
 
 RewriteCond %{REQUEST_URI} ^/(api)
 RewriteRule ^.*$ api/web/index.php [L]
@@ -21,7 +21,7 @@ RewriteRule ^css/(.*)$ frontend/web/css/$1 [L]
 RewriteRule ^js/(.*)$ frontend/web/js/$1 [L]
 RewriteRule ^images/(.*)$ frontend/web/images/$1 [L]
 
-RewriteCond %{REQUEST_URI} !^/(frontend|backend|admin|api)/web/(assets|css)/
+RewriteCond %{REQUEST_URI} !^/(frontend|admin|api)/web/(assets|css)/
 RewriteCond %{REQUEST_URI} !index.php
 RewriteCond %{REQUEST_FILENAME} !-f [OR]
 RewriteCond %{REQUEST_FILENAME} !-d
