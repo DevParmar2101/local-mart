@@ -7,3 +7,7 @@ div.btn.btn-primary.btn-file{
 span.select2-selection.select2-selection--single{
     background-color: transparent;
 }
+.select2-container--krajee-bs5 .select2-selection--single .select2-selection__rendered
+{
+    color: #fff !important;
+}

@@ -65,13 +65,16 @@ use yii\bootstrap5\ActiveForm;
         <div class="row">
             <div class="col-md-6 col-12">
                 <?= $form->field($model, 'show_button')->widget(Select2::class,[
-                        'data' => '',
-                        'options' => ['placeholder' => 'Show']
+                        'data' => $model->getButton(),
+                        'options' => ['placeholder' => 'Show'],
+                        'pluginOptions' => [
+                                'allowClear' => true,
+                        ],
                 ]) ?>
             </div>
             <div class="col-md-6 col-12">
                 <?= $form->field($model, 'use_for')->widget(Select2::class,[
-                        'data' => '',
+                        'data' => $model->getUseFor(),
                         'options' => ['placeholder' => 'Select Use For'],
                         'pluginOptions' => [
                                 'allowClear' => true,
@@ -83,7 +86,7 @@ use yii\bootstrap5\ActiveForm;
         <div class="row">
             <div class="col-md-6 col-12">
                 <?= $form->field($model, 'status')->widget(Select2::class,[
-                    'data' => '',
+                    'data' => $model->getStatus(),
                     'options' => ['placeholder' => 'Select Status'],
                     'pluginOptions' => [
                         'allowClear' => true,

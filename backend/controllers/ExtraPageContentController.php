@@ -70,7 +70,7 @@ class ExtraPageContentController extends Controller
     public function actionCreate()
     {
         $model = new ExtraPageContent();
-        $path = __DIR__ . '/../../backend/web/uploads/extra-page-content';
+        $path = __DIR__ . '/../../backend/web/uploads/extra-page-content/';
         if(!is_dir($path)){
             FileHelper::createDirectory($path, $mode = 0777, $recursive = true);
         }
@@ -105,7 +105,7 @@ class ExtraPageContentController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $path = __DIR__ . '/../../backend/web/uploads/extra-page-content';
+        $path = __DIR__ . '/../../backend/web/uploads/extra-page-content/';
         if(!is_dir($path)){
             FileHelper::createDirectory($path, $mode = 0777, $recursive = true);
         }
