@@ -4,3 +4,6 @@ input.file-caption-name.form-control.kv-fileinput-caption{
 div.btn.btn-primary.btn-file{
     border-radius: 0px;
 }
+span.select2-selection.select2-selection--single{
+    background-color: transparent;
+}
