@@ -18,7 +18,7 @@ use Yii;
  * @property int|null $use_for
  * @property int|null $status
  */
-class ExtraPageContent extends \yii\db\ActiveRecord
+class ExtraPageContent extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
