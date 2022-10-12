@@ -11,13 +11,17 @@ class BaseActiveRecord extends ActiveRecord
     const STATUS_INACTIVE = 'Inactive';
     const STATUS_ACTIVE = 'Active';
 
+    /**
+     * @param $status
+     * @return string|string[]
+     */
     public function getStatus($status = null)
     {
         $array = [
             self::INACTIVE => self::STATUS_INACTIVE,
             self::ACTIVE => self::STATUS_ACTIVE,
         ];
-        if (is_null($status)) {
+        if (!is_null($status)) {
             return $array[$status];
         }
         return $array;

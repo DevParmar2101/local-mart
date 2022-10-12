@@ -20,6 +20,17 @@ use Yii;
  */
 class ExtraPageContent extends BaseActiveRecord
 {
+    const HOMEPAGE_BANNER = 1;
+    const OTHER = 10;
+
+    const NO = 0;
+    const YES = 1;
+
+    const HOMEPAGE_BANNER_CONTENT = 'Home-page Banner';
+    const OTHER_PAGE_CONTENT = 'Other page content';
+
+    const NO_TEXT = 'No';
+    const YES_TEXT = 'Yes';
     /**
      * {@inheritdoc}
      */
@@ -58,5 +69,33 @@ class ExtraPageContent extends BaseActiveRecord
             'use_for' => 'Use For',
             'status' => 'Status',
         ];
+    }
+
+    /**
+     * @param $use_for
+     * @return string|string[]
+     */
+    public function getUseFor($use_for = null)
+    {
+        $array = [
+            self::HOMEPAGE_BANNER => self::HOMEPAGE_BANNER_CONTENT,
+            self::OTHER => self::OTHER_PAGE_CONTENT,
+        ];
+        if (!is_null($use_for)) {
+            return $array[$use_for];
+        }
+        return $array;
+    }
+
+    public function getButton($button = null)
+    {
+        $array = [
+            self::NO => self::NO_TEXT,
+            self::YES => self::YES_TEXT,
+        ];
+        if (!is_null($button)) {
+            return $array[$button];
+        }
+        return $array;
     }
 }
