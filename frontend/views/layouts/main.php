@@ -163,11 +163,12 @@ AppAsset::register($this);
                             <div class="header-actions">
                                 <?php if (Yii::$app->user->isGuest){?>
                                 <?= Html::a('Login',['site/login'],['class' =>'header-action-btn'])?>
-                                <?php }?>
+                                <?php }else{?>
                                 <!-- Single Wedge Start -->
                                 <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
                                     <i class="pe-7s-like"></i>
                                 </a>
+                                    <?= Html::a('<i class="pe-7s-user"></i>'. Yii::$app->user->identity->username,['site/logout'],['data' => ['method' => 'post'],'class' => 'header-action-btn offcanvas-toggle'])?>
                                 <!-- Single Wedge End -->
                                 <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
                                     <i class="pe-7s-shopbag"></i>
@@ -177,6 +178,7 @@ AppAsset::register($this);
                                 <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                                     <i class="pe-7s-menu"></i>
                                 </a>
+                                <?php }?>
                             </div>
                         </div>
                     </div>
