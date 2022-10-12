@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'css/bootstrap.min.css',
         'css/app.css',
         'css/icons.css',
+        'css/custom.css',
     ];
     public $js = [
         'js/pace.min.js',

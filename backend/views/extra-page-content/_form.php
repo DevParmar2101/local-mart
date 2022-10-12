@@ -1,6 +1,7 @@
 <?php
 
 use kartik\file\FileInput;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
 
@@ -62,14 +63,23 @@ use yii\bootstrap5\ActiveForm;
         </div>
 
         <div class="row">
-            <div class="col-md-4 col-12">
+            <div class="col-md-6 col-12">
                 <?= $form->field($model, 'show_button')->textInput() ?>
             </div>
-            <div class="col-md-4 col-12">
+            <div class="col-md-6 col-12">
                 <?= $form->field($model, 'use_for')->textInput() ?>
             </div>
-            <div class="col-md-4 col-12">
-                <?= $form->field($model, 'status')->textInput() ?>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <?= $form->field($model, 'status')->widget(Select2::class,[
+                    'data' => '',
+                    'options' => ['placeholder' => 'Select Status'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ]) ?>
             </div>
         </div>
 
