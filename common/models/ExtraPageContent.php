@@ -26,7 +26,7 @@ class ExtraPageContent extends BaseActiveRecord
     const NO = 0;
     const YES = 1;
 
-    const HOMEPAGE_BANNER_CONTENT = 'Home-page Banner';
+    const HOMEPAGE_BANNER_CONTENT = 'Homepage Banner';
     const OTHER_PAGE_CONTENT = 'Other page content';
 
     const NO_TEXT = 'No';
