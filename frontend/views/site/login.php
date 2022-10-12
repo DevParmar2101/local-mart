@@ -2,9 +2,11 @@
 
 /** @var yii\web\View $this */
 /** @var yii\bootstrap5\ActiveForm $form */
-/** @var \common\models\LoginForm $model */
-/** @var \frontend\models\SignupForm $register */
+/** @var LoginForm $model */
+/** @var SignupForm $register */
 
+use common\models\LoginForm;
+use frontend\models\SignupForm;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Url;

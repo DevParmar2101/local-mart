@@ -34,6 +34,7 @@ class ExtraPageContent extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['title','sub_title','use_for','status'],'required'],
             [['description'], 'string'],
             [['show_button', 'use_for', 'status'], 'integer'],
             [['title', 'sub_title', 'image', 'button_title', 'button_url'], 'string', 'max' => 255],
