@@ -1,0 +1,6 @@
+input.file-caption-name.form-control.kv-fileinput-caption{
+    line-height: 2rem;
+}
+div.btn.btn-primary.btn-file{
+    border-radius: 0px;
+}
