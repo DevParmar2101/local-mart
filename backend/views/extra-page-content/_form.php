@@ -64,10 +64,19 @@ use yii\bootstrap5\ActiveForm;
 
         <div class="row">
             <div class="col-md-6 col-12">
-                <?= $form->field($model, 'show_button')->textInput() ?>
+                <?= $form->field($model, 'show_button')->widget(Select2::class,[
+                        'data' => '',
+                        'options' => ['placeholder' => 'Show']
+                ]) ?>
             </div>
             <div class="col-md-6 col-12">
-                <?= $form->field($model, 'use_for')->textInput() ?>
+                <?= $form->field($model, 'use_for')->widget(Select2::class,[
+                        'data' => '',
+                        'options' => ['placeholder' => 'Select Use For'],
+                        'pluginOptions' => [
+                                'allowClear' => true,
+                        ]
+                ]) ?>
             </div>
         </div>
 
@@ -77,14 +86,14 @@ use yii\bootstrap5\ActiveForm;
                     'data' => '',
                     'options' => ['placeholder' => 'Select Status'],
                     'pluginOptions' => [
-                        'allowClear' => true
+                        'allowClear' => true,
                     ],
                 ]) ?>
             </div>
         </div>
 
         <div class="form-group">
-            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Save', ['class' => 'btn btn-light px-5']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
