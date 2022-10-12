@@ -33,13 +33,16 @@ use yii\bootstrap5\ActiveForm;
         <div class="row">
             <div class="col-md-12 col-12">
                 <?= $form->field($model, 'image')->widget(FileInput::class,[
-                    'options'=>[
-                        'multiple'=>false,
+                    'options' => [
+                        'accept' => 'image/*',
+                        'multiple' => false,
                     ],
                     'pluginOptions' => [
+                        'initialPreview' => Html::img(Yii::getAlias('@web/uploads/extra-page-content/'.$model->image),['class' => 'img-thumbnail']),
+                        'initialPreviewData' => true,
                         'showPreview' => true,
                         'showCaption' => true,
-                        'showRemove' => true,
+                        'showRemove' => false,
                         'showCancel' => false,
                         'showUpload' => false
                     ]
