@@ -26,16 +26,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
 
-                'id',
                 'title',
                 'sub_title',
-                'description:ntext',
-                'image',
-                //'button_title',
-                //'button_url:url',
-                //'show_button',
-                //'use_for',
-                //'status',
+                [
+                        'attribute' => 'use_for',
+                        'value' => function ($model) {
+                            return $model->getUseFor($model->use_for);
+                        }
+                ],
+                [
+                        'attribute' => 'status',
+                        'value' => function ($model) {
+                            return $model->getStatus($model->status);
+                        }
+                ],
                 [
                     'class' => ActionColumn::className(),
                     'urlCreator' => function ($action, ExtraPageContent $model, $key, $index, $column) {

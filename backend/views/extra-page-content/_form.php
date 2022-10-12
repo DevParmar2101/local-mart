@@ -38,7 +38,7 @@ use yii\bootstrap5\ActiveForm;
                         'multiple' => false,
                     ],
                     'pluginOptions' => [
-                        'initialPreview' => Html::img(Yii::getAlias('@web/uploads/extra-page-content/'.$model->image),['class' => 'img-thumbnail']),
+                        'initialPreview' => Html::img( '/../../backend/web/uploads/extra-page-content/'.$model->image,['class' => 'img-thumbnail']),
                         'initialPreviewData' => true,
                         'showPreview' => true,
                         'showCaption' => true,
