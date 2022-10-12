@@ -25,7 +25,7 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/pace.min.js',
         'js/bootstrap.bundle.min.js',
-        'js/jquery.min.js',
+//        'js/jquery.min.js',
         'plugins/simplebar/js/simplebar.min.js',
         'plugins/metismenu/js/metisMenu.min.js',
         'plugins/datatable/js/jquery.dataTables.min.js',
