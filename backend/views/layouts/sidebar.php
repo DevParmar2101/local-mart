@@ -18,12 +18,11 @@ use yii\helpers\Html;
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-category'></i>
                 </div>
-                <div class="menu-title">Dashboard</div>
+                <div class="menu-title">CMS</div>
             </a>
             <ul>
-                <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Home Page Content</a>
-                </li>
-                <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Extra Page Content</a>
+                <li>
+                    <?= Html::a('<i class="bx bx-right-arrow-alt"></i>Extra Page Content',['extra-page-content/'])?>
                 </li>
             </ul>
         </li>
