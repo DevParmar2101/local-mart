@@ -4,9 +4,11 @@ namespace backend\controllers;
 
 use common\models\ExtraPageContent;
 use common\models\ExtraPageContentSearch;
+use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ExtraPageContentController implements the CRUD actions for ExtraPageContent model.
@@ -68,10 +70,21 @@ class ExtraPageContentController extends Controller
     public function actionCreate()
     {
         $model = new ExtraPageContent();
-
+        $path = __DIR__ . '/../../backend/web/uploads/extra-page-content';
+        if(!is_dir($path)){
+            FileHelper::createDirectory($path, $mode = 0777, $recursive = true);
+        }
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $image = UploadedFile::getInstance($model,'image');
+                if ($image) {
+                    $model->image = \Yii::$app->security->generateRandomString(12).'.'.$image->extension;
+                }
+                if ($model->save()) {
+                    $image->saveAs(\Yii::getAlias($path.$model->image));
+                    \Yii::$app->session->setFlash('success','Content created successfully !');
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -92,9 +105,29 @@ class ExtraPageContentController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $path = __DIR__ . '/../../backend/web/uploads/extra-page-content';
+        if(!is_dir($path)){
+            FileHelper::createDirectory($path, $mode = 0777, $recursive = true);
+        }
+        $old_image = null;
+        if ($model->image) {
+            $old_image = $model->image;
+        }
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $image = UploadedFile::getInstance($model,'image');
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($image) {
+                $model->image = \Yii::$app->security->generateRandomString(12).'.'.$image->extension;
+            }else{
+                $model->image = $old_image;
+            }
+            if ($model->save()) {
+                if ($image) {
+                    $image->saveAs(\Yii::getAlias($path.$model->image));
+                }
+                \Yii::$app->session->getFlash('success','Content updated successfully !');
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [
