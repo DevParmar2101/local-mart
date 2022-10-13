@@ -1,4 +1,7 @@
 <?php
+
+use yii\rbac\DbManager;
+
 return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -6,6 +9,9 @@ return [
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+        'authManager' => [
+            'class' => DbManager::class,
+        ],
         'cache' => [
             'class' => \yii\caching\FileCache::class,
         ],
