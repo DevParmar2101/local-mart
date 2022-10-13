@@ -6,7 +6,7 @@ use yii\bootstrap5\ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var common\models\PageContent $model */
-/** @var \yii\bootstrap5\ActiveForm $form */
+/** @var ActiveForm $form */
 ?>
 
 <div class="card border-top border-0 border-4 border-white">
