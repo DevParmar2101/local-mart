@@ -1,5 +1,6 @@
 <?php
 
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
 
@@ -18,19 +19,22 @@ use yii\bootstrap5\ActiveForm;
         </div>
         <hr>
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'category_name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'user_id')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <?= $form->field($model, 'category_name')->textInput() ?>
+        </div>
+        <div class="col-md-6 col-12">
+            <?= $form->field($model, 'status')->widget(Select2::class,[
+                    'data'=> $model->getStatus(),
+                    'options' => ['placeholder' => 'Select Status'],
+                    'pluginOptions' => [
+                            'allowClear' => true,
+                    ]
+            ]) ?>
+        </div>
+    </div>
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-light px-5']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
