@@ -1,7 +1,9 @@
 <?php
 
 /** @var yii\web\View $this */
+/** @var $banner_content array */
 
+use common\models\ExtraPageContent;
 use yii\helpers\Html;
 
 $this->title = 'My Yii Application';
@@ -254,22 +256,25 @@ $this->title = 'My Yii Application';
         <!-- Hero slider Active -->
         <div class="swiper-wrapper">
             <!-- Single slider item -->
-            <div class="hero-slide-item slider-height swiper-slide bg-color1" data-bg-image="<?= Yii::getAlias('@web/images/hero/bg/hero-bg-1.webp')?>">
+            <?php foreach ($banner_content as $content){
+                /** @var $content ExtraPageContent */
+            ?>
+            <div class="hero-slide-item slider-height swiper-slide bg-color1" data-bg-image="<?= '/../../backend/web/uploads/extra_page_content/'.$content->image?>">
                 <div class="container h-100">
                     <div class="row h-100">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 align-self-center sm-center-view">
                             <div class="hero-slide-content slider-animated-1">
-                                <span class="category">Welcome To Hmart</span>
-                                <h2 class="title-1">Your Home <br>
-                                    Smart Devices & <br>
-                                    Best Solution </h2>
-                                <a href="shop-left-sidebar.html" class="btn btn-primary text-capitalize">Shop All Devices</a>
+                                <span class="category"><?= $content->title?></span>
+                                <h2 class="title-1"><?= $content->sub_title?></h2>
+                                <?php if ($content->show_button == ExtraPageContent::YES){?>
+                                <a href="<?= $content->button_url?>" class="btn btn-primary text-capitalize"><?= $content->button_title?></a>
+                                <?php }?>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
                             <div class="show-case">
                                 <div class="hero-slide-image">
-                                    <?= Html::img(Yii::getAlias('@web/images/hero/inner-img/hero-1-1.png'),['alt'=>'Hero One'])?>
+                                    <?= $content->getImage('child_image','Hero Image')?>
 <!--                                    <img src="assets/images/hero/inner-img/hero-1-1.png" alt="" />-->
                                 </div>
                             </div>
@@ -277,30 +282,8 @@ $this->title = 'My Yii Application';
                     </div>
                 </div>
             </div>
+            <?php }?>
             <!-- Single slider item -->
-            <div class="hero-slide-item slider-height swiper-slide bg-color1" data-bg-image="<?= Yii::getAlias('@web/images/hero/bg/hero-bg-1.webp')?>">
-                <div class="container h-100">
-                    <div class="row h-100">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 align-self-center sm-center-view">
-                            <div class="hero-slide-content slider-animated-1">
-                                <span class="category">Welcome To Hmart</span>
-                                <h2 class="title-1">Your Home <br>
-                                    Smart Devices & <br>
-                                    Best Solution </h2>
-                                <a href="shop-left-sidebar.html" class="btn btn-primary text-capitalize">Shop All Devices</a>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
-                            <div class="show-case">
-                                <div class="hero-slide-image">
-                                    <?= Html::img(Yii::getAlias('@web/images/hero/inner-img/hero-1-2.png'),['alt'=>'Hero Two'])?>
-<!--                                    <img src="assets/images/hero/inner-img/hero-1-2.png" alt="" />-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination swiper-pagination-white"></div>
