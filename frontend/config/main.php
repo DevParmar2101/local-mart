@@ -47,6 +47,11 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                [
+                    'pattern' => 'page/<slug>',
+                    'route' => 'page/index',
+                    'defaults' => ['slug' => ''],
+                ],
             ],
         ],
 
