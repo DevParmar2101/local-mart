@@ -12,6 +12,7 @@ use Yii;
  * @property string|null $sub_title
  * @property string|null $description
  * @property string|null $image
+ * @property string|null $child_image
  * @property string|null $button_title
  * @property string|null $button_url
  * @property int|null $show_button
@@ -48,7 +49,7 @@ class ExtraPageContent extends BaseActiveRecord
             [['title','sub_title','use_for','status'],'required'],
             [['description'], 'string'],
             [['show_button', 'use_for', 'status'], 'integer'],
-            [['title', 'sub_title', 'image', 'button_title', 'button_url'], 'string', 'max' => 255],
+            [['title', 'sub_title', 'image', 'child_image', 'button_title', 'button_url'], 'string', 'max' => 255],
         ];
     }
 
@@ -62,12 +63,13 @@ class ExtraPageContent extends BaseActiveRecord
             'title' => 'Title',
             'sub_title' => 'Sub Title',
             'description' => 'Description',
-            'image' => 'Image',
+            'image' => 'Image One',
             'button_title' => 'Button Title',
             'button_url' => 'Button Url',
             'show_button' => 'Show Button',
             'use_for' => 'Use For',
             'status' => 'Status',
+            'child_image' => 'Image Two'
         ];
     }
 
