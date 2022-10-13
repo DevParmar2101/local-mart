@@ -28,11 +28,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 'title',
                 'sub_title',
-                'content:ntext',
-                'use_for',
-                //'order_by',
-                //'status',
-                //'user_id',
+                [
+                    'attribute' => 'content',
+                    'format' => 'raw'
+                ],
+                'order_by',
+                [
+                    'attribute' => 'use_for',
+                    'value' => function ($model) {
+                        return $model->getUseFor($model->use_for);
+                    }
+                ],
+                [
+                    'attribute' => 'status',
+                    'value' => function ($model) {
+                        return $model->getStatus($model->status);
+                    }
+                ],
+                [
+                    'attribute' => 'user_id',
+                    'value' => Yii::$app->user->identity->username,
+                ],
                 [
                     'class' => ActionColumn::className(),
                     'urlCreator' => function ($action, PageContent $model, $key, $index, $column) {

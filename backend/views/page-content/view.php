@@ -11,33 +11,52 @@ $this->params['breadcrumbs'][] = ['label' => 'Page Contents', 'url' => ['index']
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="page-content-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">
+            <h5 class="mb-0"><?= Html::encode($this->title)?></h5>
+        </div>
+        <hr/>
+        <p>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-outline-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+            'class' => 'btn btn-outline-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
+        <?= Html::a('Back',['/extra-page-content'], ['class' => 'btn btn-outline-warning'])?>
+
+        </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'title',
             'sub_title',
-            'content:ntext',
-            'use_for',
+            [
+                    'attribute' => 'content',
+                    'format' => 'raw'
+            ],
             'order_by',
-            'status',
-            'user_id',
+            [
+                    'attribute' => 'use_for',
+                    'value' => function ($model) {
+                        return $model->getUseFor($model->use_for);
+                    }
+            ],
+            [
+                    'attribute' => 'status',
+                    'value' => function ($model) {
+                        return $model->getStatus($model->status);
+                    }
+            ],
+            [
+                    'attribute' => 'user_id',
+                    'value' => Yii::$app->user->identity->username,
+            ],
         ],
     ]) ?>
-
+    </div>
 </div>
