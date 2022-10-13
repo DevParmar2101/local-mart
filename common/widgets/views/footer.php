@@ -21,8 +21,8 @@ use yii\helpers\Url;
                                     <?= Html::img(Yii::getAlias('@web/images/logo/footer-logo.png'),['class' => 'frontend-logo-image'])?>
                                 </a>
                             </div>
-                            <p class="about-text">Lorem ipsum dolor sit amet consl adipisi elit, sed do eiusmod templ incididunt ut labore
-                            </p>
+                            <h4 class="footer-herading">Follow Us</h4>
+
                             <ul class="link-follow">
                                 <li>
                                     <a class="m-0" title="Twitter" target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-facebook"
