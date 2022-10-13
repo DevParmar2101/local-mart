@@ -42,7 +42,13 @@ use yii\bootstrap5\ActiveForm;
                 <?= $form->field($model, 'order_by')->textInput() ?>
             </div>
             <div class="col-md-6 col-12">
-                <?= $form->field($model, 'use_for')->textInput() ?>
+                <?= $form->field($model, 'use_for')->widget(\kartik\select2\Select2::class,[
+                        'data' => $model->getUseFor(),
+                        'options' => ['placeholder' => 'Select Use For'],
+                        'pluginOptions' => [
+                                'allowClear' => true
+                        ],
+                ]) ?>
             </div>
         </div>
 
