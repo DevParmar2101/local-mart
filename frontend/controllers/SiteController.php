@@ -267,4 +267,9 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    public function actionSeller()
+    {
+        return $this->render('seller');
+    }
 }
