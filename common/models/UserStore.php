@@ -27,7 +27,7 @@ use Yii;
  * @property StoreCategory $storeCategory
  * @property User $user
  */
-class UserStore extends \yii\db\ActiveRecord
+class UserStore extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
