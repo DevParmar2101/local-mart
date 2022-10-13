@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Back',['/extra-page-content'], ['class' => 'btn btn-outline-warning'])?>
+        <?= Html::a('Back',['/page-content'], ['class' => 'btn btn-outline-warning'])?>
 
         </p>
 
