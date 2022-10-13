@@ -85,7 +85,7 @@ class UserStore extends BaseActiveRecord
      */
     public function getStoreCategory()
     {
-        return $this->hasOne(StoreCategory::class, ['id' => 'store_category']);
+        return $this->hasOne(StoreSubCategory::class, ['id' => 'store_category']);
     }
 
     /**
