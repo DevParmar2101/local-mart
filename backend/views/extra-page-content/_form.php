@@ -36,7 +36,7 @@ use yii\bootstrap5\ActiveForm;
         </div>
 
         <div class="row">
-            <div class="col-md-12 col-12">
+            <div class="col-md-6 col-12">
                 <?= $form->field($model, 'image')->widget(FileInput::class,[
                     'options' => [
                         'accept' => 'image/*',
@@ -44,6 +44,23 @@ use yii\bootstrap5\ActiveForm;
                     ],
                     'pluginOptions' => [
                         'initialPreview' => Html::img( '/../../backend/web/uploads/extra-page-content/'.$model->image,['class' => 'img-thumbnail']),
+                        'initialPreviewData' => true,
+                        'showPreview' => true,
+                        'showCaption' => true,
+                        'showRemove' => false,
+                        'showCancel' => false,
+                        'showUpload' => false
+                    ]
+                ]) ?>
+            </div>
+            <div class="col-md-6 col-12">
+                <?= $form->field($model, 'child_image')->widget(FileInput::class,[
+                    'options' => [
+                        'accept' => 'image/*',
+                        'multiple' => false,
+                    ],
+                    'pluginOptions' => [
+                        'initialPreview' => Html::img( '/../../backend/web/uploads/extra-page-content/'.$model->child_image,['class' => 'img-thumbnail']),
                         'initialPreviewData' => true,
                         'showPreview' => true,
                         'showCaption' => true,

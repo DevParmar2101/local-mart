@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\ExtraPageContent;
 use common\models\ExtraPageContentSearch;
+use yii\base\Exception;
 use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -66,22 +67,38 @@ class ExtraPageContentController extends Controller
      * Creates a new ExtraPageContent model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
+     * @throws Exception
      */
     public function actionCreate()
     {
         $model = new ExtraPageContent();
-        $path = __DIR__ . '/../../backend/web/uploads/extra-page-content/';
+        $path = ExtraPageContent::getPath();
         if(!is_dir($path)){
             FileHelper::createDirectory($path, $mode = 0777, $recursive = true);
         }
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
+
                 $image = UploadedFile::getInstance($model,'image');
+                $child_image = UploadedFile::getInstance($model,'child_image');
+
                 if ($image) {
-                    $model->image = \Yii::$app->security->generateRandomString(12).'.'.$image->extension;
+                    $model->image = $model->getImageName($image);
                 }
+
+                if ($child_image) {
+                    $model->child_image = $model->getImageName($child_image);
+                }
+
                 if ($model->save()) {
-                    $image->saveAs(\Yii::getAlias($path.$model->image));
+
+                    if ($image){
+                        $image->saveAs(ExtraPageContent::getPath($model->image));
+                    }
+
+                    if ($child_image){
+                        $child_image->saveAs(ExtraPageContent::getPath($model->child_image));
+                    }
                     \Yii::$app->session->setFlash('success','Content created successfully !');
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
@@ -105,25 +122,43 @@ class ExtraPageContentController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $path = __DIR__ . '/../../backend/web/uploads/extra-page-content/';
+        $path = ExtraPageContent::getPath();
         if(!is_dir($path)){
             FileHelper::createDirectory($path, $mode = 0777, $recursive = true);
         }
         $old_image = null;
+        $old_child_image = null;
+
         if ($model->image) {
             $old_image = $model->image;
         }
+
+        if ($model->child_image) {
+            $old_child_image = $model->child_image;
+        }
+
         if ($this->request->isPost && $model->load($this->request->post())) {
             $image = UploadedFile::getInstance($model,'image');
-
+            $child_image = UploadedFile::getInstance($model,'child_image');
             if ($image) {
-                $model->image = \Yii::$app->security->generateRandomString(12).'.'.$image->extension;
+                $model->image = $model->getImageName($image);
             }else{
                 $model->image = $old_image;
             }
+
+            if ($child_image) {
+                $model->child_image = $model->getImageName($child_image);
+            }else{
+                $model->child_image = $old_child_image;
+            }
+
             if ($model->save()) {
                 if ($image) {
-                    $image->saveAs(\Yii::getAlias($path.$model->image));
+                    $image->saveAs(ExtraPageContent::getPath($model->image));
+                }
+
+                if ($child_image) {
+                    $child_image->saveAs(ExtraPageContent::getPath($model->child_image));
                 }
                 \Yii::$app->session->getFlash('success','Content updated successfully !');
                 return $this->redirect(['view', 'id' => $model->id]);
