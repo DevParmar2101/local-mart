@@ -30,11 +30,11 @@ AppAsset::register($this);
                         <div class="col-lg-2 col">
                             <div class="header-logo">
                                 <a href="<?= Url::toRoute('/')?>">
-                                    <?= Html::img(Yii::getAlias('@web/images/logo/logo.png'))?>
+                                    <?= Html::img(Yii::getAlias('@web/images/logo/logo.png'),['class' => 'frontend-logo-image'])?>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-8 d-none d-lg-block">
+                        <div class="col-lg-8 d-sm-none d-lg-block">
                             <div class="main-menu position-relative">
                                 <ul>
                                     <li class="dropdown"><a href="#">Home <i class="fa fa-angle-down"></i></a>
@@ -192,7 +192,7 @@ AppAsset::register($this);
                         <div class="col-lg-2 col">
                             <div class="header-logo">
                                 <a href="<?= Url::toRoute('/')?>">
-                                    <?= Html::img(Yii::getAlias('@web/images/logo/logo.png'))?>
+                                    <?= Html::img(Yii::getAlias('@web/images/logo/logo.png'),['class' => 'frontend-logo-image'])?>
                                 </a>
                             </div>
                         </div>
@@ -342,7 +342,7 @@ AppAsset::register($this);
                 </div>
             </div>
             <!-- Header action area end -->
-            <div class="mobile-search-box d-lg-none">
+            <div class="mobile-search-box d-none">
                 <div class="container">
                     <!-- mobile search start -->
                     <div class="search-element max-width-100">
@@ -478,7 +478,7 @@ AppAsset::register($this);
         <!-- Footer Area Start -->
         <div class="footer-area">
             <div class="footer-container">
-                <div class="footer-top">
+                <div class="footer-top">f
                     <div class="container">
                         <div class="row">
                             <!-- Start single blog -->
@@ -486,7 +486,7 @@ AppAsset::register($this);
                                 <div class="single-wedge">
                                     <div class="footer-logo">
                                         <a href="<?= Url::toRoute('/')?>">
-                                            <?= Html::img(Yii::getAlias('@web/images/logo/footer-logo.png'))?>
+                                            <?= Html::img(Yii::getAlias('@web/images/logo/footer-logo.png'),['class' => 'frontend-logo-image'])?>
                                         </a>
                                     </div>
                                     <p class="about-text">Lorem ipsum dolor sit amet consl adipisi elit, sed do eiusmod templ incididunt ut labore
