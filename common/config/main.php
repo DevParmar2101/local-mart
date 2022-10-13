@@ -9,5 +9,11 @@ return [
         'cache' => [
             'class' => \yii\caching\FileCache::class,
         ],
+        'urlManagerAdmin' => [
+            'class' => \yii\web\UrlManager::class,
+            'baseUrl' => '/admin/',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false
+        ],
     ],
 ];
