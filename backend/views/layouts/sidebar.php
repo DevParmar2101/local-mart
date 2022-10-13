@@ -22,13 +22,20 @@ use yii\helpers\Html;
             </a>
             <ul>
                 <li>
-                    <?= Html::a('<i class="bx bx-right-arrow-alt"></i>Extra Page Content',['extra-page-content/'])?>
+                    <?= Html::a('<i class="bx bx-right-arrow-alt"></i>Extra Page Content',['/extra-page-content'])?>
                 </li>
 
                 <li>
-                    <?= Html::a('<i class="bx bx-right-arrow-alt"></i>Page Content',['page-content/'])?>
+                    <?= Html::a('<i class="bx bx-right-arrow-alt"></i>Page Content',['/page-content'])?>
                 </li>
             </ul>
+        </li>
+        <li>
+            <a href="<?= \yii\helpers\Url::toRoute('/store-category')?>">
+                <div class="parent-icon"><i class='bx bx-store-alt'></i>
+                </div>
+                <div class="menu-title">Store Category</div>
+            </a>
         </li>
     <!--end navigation-->
 </div>
