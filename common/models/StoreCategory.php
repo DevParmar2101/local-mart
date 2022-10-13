@@ -16,7 +16,7 @@ use Yii;
  *
  * @property UserStore[] $userStores
  */
-class StoreCategory extends \yii\db\ActiveRecord
+class StoreCategory extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -33,6 +33,7 @@ class StoreCategory extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'status'], 'integer'],
+            [['category_name', 'user_id', 'status'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['category_name'], 'string', 'max' => 255],
         ];
