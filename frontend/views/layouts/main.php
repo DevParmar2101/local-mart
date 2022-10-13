@@ -478,7 +478,7 @@ AppAsset::register($this);
         <!-- Footer Area Start -->
         <div class="footer-area">
             <div class="footer-container">
-                <div class="footer-top">f
+                <div class="footer-top">
                     <div class="container">
                         <div class="row">
                             <!-- Start single blog -->
