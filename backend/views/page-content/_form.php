@@ -8,9 +8,16 @@ use yii\widgets\ActiveForm;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="page-content-form">
-
-    <?php $form = ActiveForm::begin(); ?>
+<div class="card border-top border-0 border-4 border-white">
+    <div class="card-body p-5">
+        <div class="card-title d-flex align-items-center">
+            <div>
+                <i class='bx bx-edit-alt me-1 font-22 text-white'></i>
+            </div>
+            <h5 class="mb-0 text-white"><?= Html::encode($this->title)?></h5>
+        </div>
+        <hr>
+    <?php $form = ActiveForm::begin(['id' => 'page-content-form']); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -31,5 +38,5 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
-
+    </div>
 </div>
