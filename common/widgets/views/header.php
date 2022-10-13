@@ -27,6 +27,7 @@ use yii\helpers\Url;
                             <li><a href="<?= Url::toRoute('page/'.$page->slug)?>"><?= $page->title?></a></li>
                             <?php }?>
                             <li><a href="<?= Url::toRoute('site/contact')?>">Contact</a></li>
+                            <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
                         </ul>
                     </div>
                 </div>
@@ -76,6 +77,7 @@ use yii\helpers\Url;
                                 <li><a href="<?= Url::toRoute('page/'.$page->slug)?>"><?= $page->title?></a></li>
                             <?php }?>
                             <li><a href="<?= Url::toRoute('site/contact')?>">Contact</a></li>
+                            <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
                         </ul>
                     </div>
                 </div>
@@ -112,6 +114,7 @@ use yii\helpers\Url;
                             <li><a href="<?= Url::toRoute('page/'.$page->slug)?>"><?= $page->title?></a></li>
                         <?php }?>
                         <li><a href="<?= Url::toRoute('site/contact')?>">Contact</a></li>
+                        <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
                     </ul>
                 </div>
             </div>

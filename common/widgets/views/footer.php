@@ -53,13 +53,16 @@ use yii\helpers\Url;
                                     <ul class="align-items-center">
                                         <?php foreach ($pages as $page){
                                             /** @var $page PageContent*/
-                                        ?>
-                                        <li class="li">
-                                            <a class="single-link" href="<?= Url::toRoute('page/'.$page->slug)?>"><?= $page->title?></a>
-                                        </li>
+                                            ?>
+                                            <li class="li">
+                                                <a class="single-link" href="<?= Url::toRoute('page/'.$page->slug)?>"><?= $page->title?></a>
+                                            </li>
                                         <?php }?>
                                         <li class="li">
                                             <a class="single-link" href="<?= Url::toRoute('site/contact')?>">Contact</a>
+                                        </li>
+                                        <li class="li">
+                                            <a class="single-link" href="<?= Url::toRoute('site/seller')?>">Become a Seller</a>
                                         </li>
                                     </ul>
                                 </div>
