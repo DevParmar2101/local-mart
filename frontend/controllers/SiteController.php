@@ -78,9 +78,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $banner_content = ExtraPageContent::find()
-                            ->where(['use_for' => ExtraPageContent::HOMEPAGE_BANNER])
-                            ->andWhere(['status' => BaseActiveRecord::ACTIVE])
-                            ->all();
+            ->where(['use_for' => ExtraPageContent::HOMEPAGE_BANNER])
+            ->andWhere(['status' => BaseActiveRecord::ACTIVE])
+            ->all();
         return $this->render('index',[
             'banner_content' => $banner_content
         ]);

@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use common\models\Role;
 use Yii;
 use yii\base\Model;
 use common\models\User;
@@ -56,8 +57,13 @@ class SignupForm extends Model
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
 
-        return $user->save() && $this->sendEmail($user);
-    }
+        if ($user->save()) {
+            $auth = Yii::$app->authManager;
+            $role = $auth->getRole(Role::TYPE_ROLE_KEY['user']);
+            $auth->assign($role, $user->primaryKey);
+            return Yii::$app->user->login($user);
+            //return $this->sendEmail($user);
+        }    }
 
     /**
      * Sends confirmation email to user
