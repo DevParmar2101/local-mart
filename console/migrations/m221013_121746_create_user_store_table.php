@@ -30,6 +30,8 @@ class m221013_121746_create_user_store_table extends Migration
             'created_at' => $this->dateTime(),
             'updated_at' => $this->dateTime(),
         ]);
+        $this->addForeignKey('fk-UserId-user_store_user_id','user_store','user_id','user','id');
+        $this->addForeignKey('fk-StoreCategory-user_store_store_category','user_store','store_category','store_category','id');
     }
 
     /**
