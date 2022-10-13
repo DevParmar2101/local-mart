@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "store_sub_category".
@@ -63,5 +64,10 @@ class StoreSubCategory extends BaseActiveRecord
     public function getUserStores()
     {
         return $this->hasMany(UserStore::class, ['store_category' => 'id']);
+    }
+
+    public function getCategoryName()
+    {
+        return ArrayHelper::map(StoreCategory::find()->where(['status'=>BaseActiveRecord::ACTIVE])->all(),'id','category_name');
     }
 }

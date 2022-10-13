@@ -21,7 +21,13 @@ use yii\bootstrap5\ActiveForm;
 
         <div class="row">
             <div class="col-md-6 col-12">
-                <?= $form->field($model, 'category_name')->textInput() ?>
+                <?= $form->field($model, 'category_name')->widget(\kartik\select2\Select2::class,[
+                        'data' => $model->getCategoryName(),
+                    'options' => ['placeholder' => 'Select Status'],
+                    'pluginOptions' => [
+                        'allowClear' => true,
+]
+                ]) ?>
             </div>
             <div class="col-md-6 col-12">
                 <?= $form->field($model, 'sub_category')->textInput() ?>
@@ -31,7 +37,11 @@ use yii\bootstrap5\ActiveForm;
         <div class="row">
             <div class="col-md-6 col-12">
                 <?= $form->field($model, 'status')->widget(\kartik\select2\Select2::class,[
-                        'data' => $model->getStatus()
+                        'data' => $model->getStatus(),
+                        'options' => ['placeholder' => 'Select Status'],
+                        'pluginOptions' => [
+                                'allowClear' => true,
+                        ]
                 ]) ?>
             </div>
         </div>
