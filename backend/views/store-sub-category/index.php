@@ -13,16 +13,13 @@ use yii\grid\GridView;
 $this->title = 'Store Sub Categories';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="store-sub-category-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Store Sub Category', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+<div class="card">
+    <div class="card-body">
+        <div class="d-lg-flex align-items-center mb-4 gap-3">
+            <div class="ms-auto">
+                <?= Html::a('<i class="bx bxs-plus-square"></i>Create Store Sub Category', ['create'], ['class' => 'btn btn-light radius-30 mt-2 mt-lg-0']) ?>
+            </div>
+        </div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -44,6 +41,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
-
+    </div>
 </div>

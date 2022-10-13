@@ -9,12 +9,11 @@ $this->title = 'Create Store Sub Category';
 $this->params['breadcrumbs'][] = ['label' => 'Store Sub Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="store-sub-category-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto">
+        <hr/>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+    </div>
 </div>

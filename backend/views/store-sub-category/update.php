@@ -10,12 +10,11 @@ $this->params['breadcrumbs'][] = ['label' => 'Store Sub Categories', 'url' => ['
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="store-sub-category-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto">
+        <hr/>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+    </div>
 </div>
