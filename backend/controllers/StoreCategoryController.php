@@ -70,7 +70,9 @@ class StoreCategoryController extends Controller
         $model = new StoreCategory();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $model->user_id = \Yii::$app->user->identity->id;
+                $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
