@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\StoreCategory $model */
 
-$this->title = $model->id;
+$this->title = $model->category_name;
 $this->params['breadcrumbs'][] = ['label' => 'Store Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -18,9 +18,9 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <hr/>
         <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-outline-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+            'class' => 'btn btn-outline-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
@@ -32,12 +32,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'category_name',
-            'user_id',
-            'status',
-            'created_at',
-            'updated_at',
+            [
+                    'attribute' => 'user_id',
+                    'value' => Yii::$app->user->identity->username,
+            ],
+            [
+                    'attribute' => 'status',
+                    'value' => function ($model) {
+                        return $model->getStatus($model->status);
+                    }
+            ],
         ],
     ]) ?>
     </div>

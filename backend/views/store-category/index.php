@@ -26,11 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
 
-                'id',
                 'category_name',
-                'user_id',
-                'status',
-                'created_at',
+                [
+                    'attribute' => 'status',
+                    'value' => function ($model) {
+                        return $model->getStatus($model->status);
+                    }
+                ],
                 [
                     'class' => ActionColumn::className(),
                     'urlCreator' => function ($action, StoreCategory $model, $key, $index, $column) {
