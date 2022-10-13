@@ -11,11 +11,13 @@ $this->params['breadcrumbs'][] = ['label' => 'Store Categories', 'url' => ['inde
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="store-category-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">
+            <h5 class="mb-0"><?= Html::encode($this->title)?></h5>
+        </div>
+        <hr/>
+        <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -24,7 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
+        <?= Html::a('Back',['/store-category'], ['class' => 'btn btn-outline-warning'])?>
+        </p>
 
     <?= DetailView::widget([
         'model' => $model,
@@ -37,5 +40,5 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
         ],
     ]) ?>
-
+    </div>
 </div>
