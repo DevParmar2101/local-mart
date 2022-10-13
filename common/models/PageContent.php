@@ -62,7 +62,7 @@ class PageContent extends BaseActiveRecord
             'use_for' => 'Use For',
             'order_by' => 'Order By',
             'status' => 'Status',
-            'user_id' => 'User ID',
+            'user_id' => 'UserName',
         ];
     }
 
