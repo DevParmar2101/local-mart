@@ -11,3 +11,6 @@ span.select2-selection.select2-selection--single{
 {
     color: #fff !important;
 }
+div.ck.ck-editor__main{
+    color: black !important;
+}

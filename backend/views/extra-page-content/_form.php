@@ -2,6 +2,7 @@
 
 use kartik\file\FileInput;
 use kartik\select2\Select2;
+use sangroya\ckeditor5\CKEditor;
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
 
@@ -22,11 +23,15 @@ use yii\bootstrap5\ActiveForm;
         <?php $form = ActiveForm::begin(['id' => 'extra-page-content-form']); ?>
 
         <div class="row">
-            <div class="col-md-6 col-12">
+            <div class="col-md-12 col-12">
                 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
             </div>
-            <div class="col-md-6 col-12">
-                <?= $form->field($model, 'sub_title')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <?= $form->field($model, 'sub_title')->widget(CKEditor::className(),[
+                    'options' => ['rows' => 6],
+                ]) ?>
             </div>
         </div>
 

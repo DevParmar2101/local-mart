@@ -27,7 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['class' => 'yii\grid\SerialColumn'],
 
                 'title',
-                'sub_title',
+                [
+                        'attribute' => 'sub_title',
+                        'format' => 'raw',
+                ],
                 [
                         'attribute' => 'use_for',
                         'value' => function ($model) {
