@@ -22,8 +22,8 @@ class BaseActiveRecord extends ActiveRecord
     public function getStatus($status = null)
     {
         $array = [
-            self::INACTIVE => self::STATUS_INACTIVE,
             self::ACTIVE => self::STATUS_ACTIVE,
+            self::INACTIVE => self::STATUS_INACTIVE,
         ];
         if (!is_null($status)) {
             return $array[$status];
