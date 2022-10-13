@@ -13,8 +13,8 @@ $this->params['breadcrumbs'][] = 'Update';
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto">
         <hr/>
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+        <?= $this->render('_form', [
+            'model' => $model,
+        ]) ?>
     </div>
 </div>
