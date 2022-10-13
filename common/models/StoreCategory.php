@@ -47,7 +47,7 @@ class StoreCategory extends BaseActiveRecord
         return [
             'id' => 'ID',
             'category_name' => 'Category Name',
-            'user_id' => 'User ID',
+            'user_id' => 'UserName',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
