@@ -20,6 +20,7 @@ class AppAsset extends AssetBundle
         'css/venobox.css',
         'css/jquery-ui.min.css',
         'css/style.css',
+        'css/custom.css',
         'https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
     ];
