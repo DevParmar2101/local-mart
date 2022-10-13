@@ -18,7 +18,7 @@ class ExtraPageContentSearch extends ExtraPageContent
     {
         return [
             [['id', 'show_button', 'use_for', 'status'], 'integer'],
-            [['title', 'sub_title', 'description', 'image', 'button_title', 'button_url'], 'safe'],
+            [['title', 'sub_title', 'description', 'image', 'child_image', 'button_title', 'button_url'], 'safe'],
         ];
     }
 
@@ -68,6 +68,7 @@ class ExtraPageContentSearch extends ExtraPageContent
             ->andFilterWhere(['like', 'sub_title', $this->sub_title])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'image', $this->image])
+            ->andFilterWhere(['like', 'child_image', $this->child_image])
             ->andFilterWhere(['like', 'button_title', $this->button_title])
             ->andFilterWhere(['like', 'button_url', $this->button_url]);
 
