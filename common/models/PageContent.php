@@ -18,7 +18,7 @@ use Yii;
  *
  * @property User $user
  */
-class PageContent extends \yii\db\ActiveRecord
+class PageContent extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
