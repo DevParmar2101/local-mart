@@ -30,12 +30,22 @@ use yii\helpers\Html;
                 </li>
             </ul>
         </li>
+
         <li>
-            <a href="<?= \yii\helpers\Url::toRoute('/store-category')?>">
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-store-alt'></i>
                 </div>
                 <div class="menu-title">Store Category</div>
             </a>
+            <ul>
+                <li>
+                    <?= Html::a('<i class="bx bx-right-arrow-alt"></i>Category',['/store-category'])?>
+                </li>
+
+                <li>
+                    <?= Html::a('<i class="bx bx-right-arrow-alt"></i>Sub Category',['/store-sub-category'])?>
+                </li>
+            </ul>
         </li>
     <!--end navigation-->
 </div>
