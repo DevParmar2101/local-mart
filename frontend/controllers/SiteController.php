@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use common\models\BaseActiveRecord;
+use common\models\ExtraPageContent;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -75,7 +77,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $banner_content = ExtraPageContent::find()
+                            ->where(['use_for' => ExtraPageContent::HOMEPAGE_BANNER])
+                            ->andWhere(['status' => BaseActiveRecord::ACTIVE])
+                            ->all();
+        return $this->render('index',[
+            'banner_content' => $banner_content
+        ]);
     }
 
     /**
