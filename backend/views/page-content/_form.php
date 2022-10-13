@@ -1,11 +1,12 @@
 <?php
 
+use sangroya\ckeditor5\CKEditor;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var common\models\PageContent $model */
-/** @var yii\widgets\ActiveForm $form */
+/** @var \yii\bootstrap5\ActiveForm $form */
 ?>
 
 <div class="card border-top border-0 border-4 border-white">
@@ -19,22 +20,46 @@ use yii\widgets\ActiveForm;
         <hr>
     <?php $form = ActiveForm::begin(['id' => 'page-content-form']); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+            </div>
+            <div class="col-md-6 col-12">
+                <?= $form->field($model, 'sub_title')->textInput(['maxlength' => true]) ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'sub_title')->textInput(['maxlength' => true]) ?>
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <?= $form->field($model, 'content')->widget(CKEditor::class,[
+                        'options' => ['rows' => 6],
+                ]) ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <?= $form->field($model, 'order_by')->textInput() ?>
+            </div>
+            <div class="col-md-6 col-12">
+                <?= $form->field($model, 'use_for')->textInput() ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'use_for')->textInput() ?>
-
-    <?= $form->field($model, 'order_by')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'user_id')->textInput() ?>
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <?= $form->field($model, 'status')->widget(\kartik\select2\Select2::class,[
+                        'data' => $model->getStatus(),
+                        'options' => ['placeholder' => 'Select Status'],
+                        'pluginOptions' => [
+                                'allowClear' => true
+                        ]
+                ]) ?>
+            </div>
+        </div>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-light px-5']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
