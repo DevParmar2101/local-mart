@@ -24,6 +24,10 @@ use yii\helpers\Html;
                 <li>
                     <?= Html::a('<i class="bx bx-right-arrow-alt"></i>Extra Page Content',['extra-page-content/'])?>
                 </li>
+
+                <li>
+                    <?= Html::a('<i class="bx bx-right-arrow-alt"></i>Page Content',['page-content/'])?>
+                </li>
             </ul>
         </li>
     <!--end navigation-->
