@@ -18,7 +18,7 @@ use yii\bootstrap5\ActiveForm;
             <h5 class="mb-0 text-white"><?= Html::encode($this->title)?></h5>
         </div>
         <hr>
-    <?php $form = ActiveForm::begin(['id' => 'store-category-form']); ?>
+    <?php $form = ActiveForm::begin(['id' => 'store-category-form']);?>
     <div class="row">
         <div class="col-md-6 col-12">
             <?= $form->field($model, 'category_name')->textInput() ?>
