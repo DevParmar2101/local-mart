@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 /** @var common\models\ExtraPageContentSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Extra Page Contents';
+$this->title = 'Extra Page Content';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="card">
