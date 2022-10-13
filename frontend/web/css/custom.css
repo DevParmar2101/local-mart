@@ -1,3 +1,15 @@
 .frontend-logo-image{
     width: 10rem;
 }
+.after-border::after {
+    content: "";
+    display: block;
+    height: auto;
+    width: 56px;
+    margin: 10px auto auto;
+    background: transparent;
+    border-top: 2px solid #2468f5;
+}
+.page-sub-title {
+    font-weight: lighter;
+}
