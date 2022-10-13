@@ -20,6 +20,13 @@ use Yii;
  */
 class PageContent extends BaseActiveRecord
 {
+    const HEADER_TYPE = 1;
+    const FOOTER_TYPE = 2;
+    const BOTH_TYPE = 3;
+
+    const HEADER = 'Header';
+    const FOOTER = 'Footer';
+    const BOTH = 'Both';
     /**
      * {@inheritdoc}
      */
@@ -34,6 +41,7 @@ class PageContent extends BaseActiveRecord
     public function rules()
     {
         return [
+            [['title', 'sub_title', 'use_for', 'status'], 'required'],
             [['content'], 'string'],
             [['use_for', 'order_by', 'status', 'user_id'], 'integer'],
             [['title', 'sub_title'], 'string', 'max' => 255],
@@ -66,5 +74,22 @@ class PageContent extends BaseActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    /**
+     * @param $use_for
+     * @return string|string[]
+     */
+    public function getUseFor($use_for = null)
+    {
+        $array = [
+            self::HEADER_TYPE => self::HEADER,
+            self::FOOTER_TYPE => self::FOOTER,
+            self::BOTH_TYPE => self::BOTH
+        ];
+        if (!is_null($use_for)){
+            return $array[$use_for];
+        }
+        return $array;
     }
 }
