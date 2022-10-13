@@ -18,7 +18,7 @@ class PageContentSearch extends PageContent
     {
         return [
             [['id', 'use_for', 'order_by', 'status', 'user_id'], 'integer'],
-            [['title', 'sub_title', 'content'], 'safe'],
+            [['title', 'sub_title', 'content', 'slug'], 'safe'],
         ];
     }
 
@@ -67,6 +67,7 @@ class PageContentSearch extends PageContent
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'sub_title', $this->sub_title])
+            ->andFilterWhere(['like', 'slug',$this->slug])
             ->andFilterWhere(['like', 'content', $this->content]);
 
         return $dataProvider;

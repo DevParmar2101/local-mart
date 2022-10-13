@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\PageContent;
 use common\models\PageContentSearch;
+use yii\helpers\Inflector;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -70,7 +71,10 @@ class PageContentController extends Controller
         $model = new PageContent();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $model->user_id = \Yii::$app->user->identity->id;
+                $model->slug = Inflector::slug($model->title);
+                $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {

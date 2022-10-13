@@ -15,6 +15,7 @@ use Yii;
  * @property int|null $order_by
  * @property int|null $status
  * @property int|null $user_id
+ * @property string $slug
  *
  * @property User $user
  */
@@ -41,7 +42,7 @@ class PageContent extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['title', 'sub_title', 'use_for', 'status'], 'required'],
+            [['title', 'sub_title', 'use_for', 'status', 'slug'], 'required'],
             [['content'], 'string'],
             [['use_for', 'order_by', 'status', 'user_id'], 'integer'],
             [['title', 'sub_title'], 'string', 'max' => 255],
@@ -63,6 +64,7 @@ class PageContent extends BaseActiveRecord
             'order_by' => 'Order By',
             'status' => 'Status',
             'user_id' => 'UserName',
+            'slug' => 'Slug',
         ];
     }
 
