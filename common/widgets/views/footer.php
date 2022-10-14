@@ -18,7 +18,7 @@ use yii\helpers\Url;
                         <div class="single-wedge">
                             <div class="footer-logo">
                                 <a href="<?= Url::toRoute('/')?>">
-                                    <?= Html::img(Yii::getAlias('@web/images/logo/footer-logo.png'),['class' => 'frontend-logo-image'])?>
+                                    <?= Yii::$app->global->logo_dark?>
                                 </a>
                             </div>
                             <h4 class="footer-herading">Follow Us</h4>

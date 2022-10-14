@@ -14,7 +14,7 @@ use yii\helpers\Url;
                 <div class="col-lg-2 col">
                     <div class="header-logo">
                         <a href="<?= Url::toRoute('/')?>">
-                            <?= Html::img(Yii::getAlias('@web/images/logo/logo.png'),['class' => 'frontend-logo-image'])?>
+                           <?= Yii::$app->global->logo_light?>
                         </a>
                     </div>
                 </div>
@@ -64,7 +64,7 @@ use yii\helpers\Url;
                 <div class="col-lg-2 col">
                     <div class="header-logo">
                         <a href="<?= Url::toRoute('/')?>">
-                            <?= Html::img(Yii::getAlias('@web/images/logo/logo.png'),['class' => 'frontend-logo-image'])?>
+                            <?= Yii::$app->global->logo_light?>
                         </a>
                     </div>
                 </div>
