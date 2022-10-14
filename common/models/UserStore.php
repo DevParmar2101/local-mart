@@ -45,8 +45,8 @@ class UserStore extends BaseActiveRecord
     {
         return [
             [['first_name', 'last_name', 'contact_number', 'store_name', 'state', 'city', 'address', 'zip_code', 'category'], 'required'],
-            [['is_number_verified', 'user_id', 'state', 'city', 'zip_code', 'status', 'store_category', 'purchase_type'], 'integer'],
-            [['address', 'category'], 'string'],
+            [['is_number_verified', 'user_id', 'state', 'city', 'zip_code', 'status', 'store_category', 'purchase_type','category'], 'integer'],
+            [['address'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['first_name', 'last_name', 'store_name'], 'string', 'max' => 255],
             [['contact_number'], 'string', 'max' => 15],
