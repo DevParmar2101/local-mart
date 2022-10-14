@@ -1,173 +1,43 @@
+<?php
 
+use common\models\UserStore;
+use yii\bootstrap5\ActiveForm;
+
+/** @var $model UserStore */
+/** @var $form ActiveForm*/
+
+?>
 <!-- checkout area start -->
 <div class="checkout-area pt-100px pb-100px">
     <div class="container">
         <div class="row">
             <div class="col-lg-7">
                 <div class="billing-info-wrap">
-                    <h3>Billing Details</h3>
+                    <h3 class="seller-form-title text-center after-border">Personal Details</h3>
+                    <?php $form = ActiveForm::begin(['id' => 'seller-form'])?>
+
                     <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="billing-info mb-4">
-                                <label>First Name</label>
-                                <input type="text" />
-                            </div>
+                        <div class="col-md-6 col-12">
+                            <?= $form->field($model,'first_name')->textInput(); ?>
                         </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="billing-info mb-4">
-                                <label>Last Name</label>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="billing-info mb-4">
-                                <label>Company Name</label>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="billing-select mb-4">
-                                <label>Country</label>
-                                <select>
-                                    <option>Select a country</option>
-                                    <option>Azerbaijan</option>
-                                    <option>Bahamas</option>
-                                    <option>Bahrain</option>
-                                    <option>Bangladesh</option>
-                                    <option>Barbados</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="billing-info mb-4">
-                                <label>Street Address</label>
-                                <input class="billing-address" placeholder="House number and street name" type="text" />
-                                <input placeholder="Apartment, suite, unit etc." type="text" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="billing-info mb-4">
-                                <label>Town / City</label>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="billing-info mb-4">
-                                <label>State / County</label>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="billing-info mb-4">
-                                <label>Postcode / ZIP</label>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="billing-info mb-4">
-                                <label>Phone</label>
-                                <input type="text" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="billing-info mb-4">
-                                <label>Email Address</label>
-                                <input type="text" />
-                            </div>
+                        <div class="col-md-6 col-12">
+                            <?= $form->field($model,'last_name')->textInput(); ?>
                         </div>
                     </div>
-                    <div class="checkout-account mb-30px">
-                        <input class="checkout-toggle2 w-auto h-auto" type="checkbox" />
-                        <label>Create an account?</label>
-                    </div>
-                    <div class="checkout-account-toggle open-toggle2 mb-30">
-                        <input placeholder="Email address" type="email" />
-                        <input placeholder="Password" type="password" />
-                        <button class="btn-hover checkout-btn" type="submit">register</button>
-                    </div>
-                    <div class="additional-info-wrap">
-                        <h4>Additional information</h4>
-                        <div class="additional-info">
-                            <label>Order notes</label>
-                            <textarea placeholder="Notes about your order, e.g. special notes for delivery. " name="message"></textarea>
+
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <?= $form->field($model,'contact_number')->textInput()?>
                         </div>
                     </div>
-                    <div class="checkout-account mt-25">
-                        <input class="checkout-toggle w-auto h-auto" type="checkbox" />
-                        <label>Ship to a different address?</label>
-                    </div>
-                    <div class="different-address open-toggle mt-30px">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="billing-info mb-4">
-                                    <label>First Name</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="billing-info mb-4">
-                                    <label>Last Name</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="billing-info mb-4">
-                                    <label>Company Name</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="billing-select mb-4">
-                                    <label>Country</label>
-                                    <select>
-                                        <option>Select a country</option>
-                                        <option>Azerbaijan</option>
-                                        <option>Bahamas</option>
-                                        <option>Bahrain</option>
-                                        <option>Bangladesh</option>
-                                        <option>Barbados</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="billing-info mb-4">
-                                    <label>Street Address</label>
-                                    <input class="billing-address" placeholder="House number and street name" type="text" />
-                                    <input placeholder="Apartment, suite, unit etc." type="text" />
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="billing-info mb-4">
-                                    <label>Town / City</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="billing-info mb-4">
-                                    <label>State / County</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="billing-info mb-4">
-                                    <label>Postcode / ZIP</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="billing-info mb-4">
-                                    <label>Phone</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="billing-info mb-4">
-                                    <label>Email Address</label>
-                                    <input type="text" />
-                                </div>
-                            </div>
+
+                    <h3 class="seller-form-title text-center after-border">Store Name</h3>
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <?= $form->field($model,'store_name')->textInput()?>
                         </div>
                     </div>
+                    <?php ActiveForm::end()?>
                 </div>
             </div>
             <div class="col-lg-5">
