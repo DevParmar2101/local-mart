@@ -1,5 +1,6 @@
 <?php
 
+use common\components\GlobalProperty;
 use yii\rbac\DbManager;
 
 return [
@@ -11,6 +12,9 @@ return [
     'components' => [
         'authManager' => [
             'class' => DbManager::class,
+        ],
+        'global' => [
+            'class' => GlobalProperty::class,
         ],
         'cache' => [
             'class' => \yii\caching\FileCache::class,
