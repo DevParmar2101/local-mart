@@ -34,8 +34,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'category_name',
             [
-                    'attribute' => 'user_id',
-                    'value' => Yii::$app->user->identity->username,
+                'attribute' => 'user_id',
+                'value' => function ($model) {
+                    $user = \common\models\User::findOne(['id' => $model->user_id]);
+                    return $user->username;
+                },
             ],
             [
                     'attribute' => 'status',
