@@ -23,7 +23,7 @@ use Yii;
  * @property string|null $logo_transparent
  * @property string|null $favicon
  */
-class Settings extends \yii\db\ActiveRecord
+class Settings extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
