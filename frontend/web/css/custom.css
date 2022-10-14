@@ -13,3 +13,11 @@
 .page-sub-title {
     font-weight: lighter;
 }
+.seller-image{
+    width: 100%;
+    height:50%;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 8px;
+}
