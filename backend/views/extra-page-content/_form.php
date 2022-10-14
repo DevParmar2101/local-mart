@@ -43,7 +43,7 @@ use yii\bootstrap5\ActiveForm;
                         'multiple' => false,
                     ],
                     'pluginOptions' => [
-                        'initialPreview' => Html::img( '/../../backend/web/uploads/extra-page-content/'.$model->image,['class' => 'img-thumbnail']),
+                        'initialPreview' => $model->image ? $model->getImage('image','Image not found','img-thumbnail') : false,
                         'initialPreviewData' => true,
                         'showPreview' => true,
                         'showCaption' => true,
@@ -60,7 +60,7 @@ use yii\bootstrap5\ActiveForm;
                         'multiple' => false,
                     ],
                     'pluginOptions' => [
-                        'initialPreview' => Html::img( '/../../backend/web/uploads/extra-page-content/'.$model->child_image,['class' => 'img-thumbnail']),
+                        'initialPreview' => $model->child_image ? $model->getImage('child_image','Child Image bot Found','img-thumbnail') : false,
                         'initialPreviewData' => true,
                         'showPreview' => true,
                         'showCaption' => true,
