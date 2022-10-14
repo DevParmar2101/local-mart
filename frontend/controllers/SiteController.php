@@ -273,8 +273,22 @@ class SiteController extends Controller
     public function actionSeller()
     {
         $model = new UserStore();
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                $model->user_id = Yii::$app->user->identity->id;
+                $model->is_number_verified = $model::NOT_VERIFIED;
+                $model->status = $model::PENDING;
+                $model->save();
+                return $this->redirect(['verify-number']);
+            }
+        }
         return $this->render('seller',[
             'model' => $model
         ]);
+    }
+
+    public function actionVerifyNumber()
+    {
+        return $this->render('verify_number');
     }
 }
