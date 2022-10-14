@@ -49,7 +49,7 @@ class StoreSubCategory extends BaseActiveRecord
             'id' => 'ID',
             'category_name' => 'Category Name',
             'sub_category' => 'Sub Category',
-            'user_id' => 'User ID',
+            'user_id' => 'UserName',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -66,8 +66,13 @@ class StoreSubCategory extends BaseActiveRecord
         return $this->hasMany(UserStore::class, ['store_category' => 'id']);
     }
 
-    public function getCategoryName()
+    public function getCategoryName($id = null)
     {
-        return ArrayHelper::map(StoreCategory::find()->where(['status'=>BaseActiveRecord::ACTIVE])->all(),'id','category_name');
+        if ($id){
+            $model = StoreCategory::findOne(['id'=>$id]);
+            return $model->category_name;
+        }else{
+            return ArrayHelper::map(StoreCategory::find()->where(['status'=>BaseActiveRecord::ACTIVE])->all(),'id','category_name');
+        }
     }
 }
