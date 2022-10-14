@@ -34,6 +34,7 @@ class StoreSubCategory extends BaseActiveRecord
     public function rules()
     {
         return [
+            [['category_name', 'user_id', 'status'], 'required'],
             [['category_name', 'user_id', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['sub_category'], 'string', 'max' => 255],
