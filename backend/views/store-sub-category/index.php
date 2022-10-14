@@ -25,14 +25,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'category_name',
+            [
+                'attribute' => 'category_name',
+                'value' => function ($model) {
+                    return $model->getCategoryName($model->category_name);
+                }
+            ],
             'sub_category',
-            'user_id',
-            'status',
-            //'created_at',
-            //'updated_at',
+            [
+                'attribute' => 'user_id',
+                'value' => function ($model) {
+                    $user = \common\models\User::findOne(['id' => $model->user_id]);
+                    return $user->username;
+                },
+            ],
+            [
+                'attribute' => 'status',
+                'value' => function ($model) {
+                    return $model->getStatus($model->status);
+                }
+            ],
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, StoreSubCategory $model, $key, $index, $column) {

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\StoreSubCategory $model */
 
-$this->title = $model->id;
+$this->title = $model->sub_category;
 $this->params['breadcrumbs'][] = ['label' => 'Store Sub Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -26,19 +26,32 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Back',['/store-category'], ['class' => 'btn btn-outline-warning'])?>
+        <?= Html::a('Back',['/store-sub-category'], ['class' => 'btn btn-outline-warning'])?>
         </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'category_name',
+            [
+                    'attribute' => 'category_name',
+                    'value' => function ($model) {
+                        return $model->getCategoryName($model->category_name);
+                    }
+            ],
             'sub_category',
-            'user_id',
-            'status',
-            'created_at',
-            'updated_at',
+            [
+                    'attribute' => 'user_id',
+                    'value' => function ($model) {
+                        $user = \common\models\User::findOne(['id' => $model->user_id]);
+                        return $user->username;
+                    },
+            ],
+            [
+                    'attribute' => 'status',
+                    'value' => function ($model) {
+                        return $model->getStatus($model->status);
+                    }
+            ],
         ],
     ]) ?>
     </div>
