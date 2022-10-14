@@ -47,7 +47,7 @@ use yii\bootstrap5\ActiveForm;
         </div>
 
         <div class="form-group">
-            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Save', ['class' => 'btn btn-light px-5']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
