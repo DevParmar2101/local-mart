@@ -29,6 +29,32 @@ use Yii;
  */
 class UserStore extends BaseActiveRecord
 {
+    const ONLINE = 1;
+    const OFFLINE = 2;
+    const BOTH = 3;
+
+    const NOT_VERIFIED = 0;
+    const VERIFIED = 1;
+
+    const INACTIVE = 0;
+    const ACTIVE = 1;
+    const PENDING = 2;
+    const DRAFT = 3;
+    const REJECT = 4;
+
+    const ONLINE_TEXT = 'Only Online';
+    const OFFLINE_TEXT = 'Only Offline';
+    const BOTH_TEXT = 'Both';
+
+    const NOT_VERIFIED_TEXT = 'Not Verified';
+    const VERIFIED_TEXT = 'Verified';
+
+    const STATUS_INACTIVE = 'Inactive';
+    const STATUS_ACTIVE = 'Active';
+    const STATUS_PENDING = 'Under Review';
+    const STATUS_DRAFT = 'Draft';
+    const STATUS_REJECT = 'Reject';
+
     public $category;
     /**
      * {@inheritdoc}
@@ -74,7 +100,7 @@ class UserStore extends BaseActiveRecord
             'zip_code' => 'Zip Code',
             'status' => 'Status',
             'store_category' => 'Store Category',
-            'purchase_type' => 'Purchase Type',
+            'purchase_type' => 'Selling Type',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
@@ -98,5 +124,57 @@ class UserStore extends BaseActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    /**
+     * @param $type
+     * @return string|string[]
+     */
+    public function getSellingType($type=null)
+    {
+        $array = [
+            self::ONLINE => self::ONLINE_TEXT,
+            self::OFFLINE => self::OFFLINE_TEXT,
+            self::BOTH => self::BOTH_TEXT
+        ];
+        if (!is_null($type)) {
+            return $array[$type];
+        }
+        return $array;
+    }
+
+    /**
+     * @param $status
+     * @return string|string[]
+     */
+    public function getSellerStatus($status = null)
+    {
+        $array = [
+            self::ACTIVE => self::STATUS_ACTIVE,
+            self::INACTIVE => self::STATUS_INACTIVE,
+            self::PENDING => self::STATUS_PENDING,
+            self::DRAFT => self::STATUS_DRAFT,
+            self::REJECT => self::STATUS_REJECT
+        ];
+        if (!is_null($status)) {
+            return $array[$status];
+        }
+        return $array;
+    }
+
+    /**
+     * @param $verified
+     * @return string|string[]
+     */
+    public function getNumberVerified($verified)
+    {
+        $array = [
+            self::NOT_VERIFIED => self::NOT_VERIFIED_TEXT,
+            self::VERIFIED => self::VERIFIED_TEXT
+        ];
+        if (!is_null($verified)) {
+            return $array[$verified];
+        }
+        return $array;
     }
 }
