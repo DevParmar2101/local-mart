@@ -7,7 +7,7 @@ use yii\helpers\Html;
             <?= Html::img(Yii::getAlias('@web/images/logo-icon.png'),['class' =>'logo-icon','alt' => 'logo icon'])?>
         </div>
         <div>
-            <h4 class="logo-text">Dashtrans</h4>
+            <h4 class="logo-text">Dashboard</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
@@ -46,6 +46,13 @@ use yii\helpers\Html;
                     <?= Html::a('<i class="bx bx-right-arrow-alt"></i>Sub Category',['/store-sub-category'])?>
                 </li>
             </ul>
+        </li>
+        <li>
+            <a href="<?= \yii\helpers\Url::toRoute('/settings')?>">
+                <div class="parent-icon"><i class="bx bx-wrench"></i>
+                </div>
+                <div class="menu-title">System Settings</div>
+            </a>
         </li>
     <!--end navigation-->
 </div>
