@@ -1,6 +1,7 @@
 <?php
 
 use common\models\UserStore;
+use kartik\select2\Select2;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 
@@ -20,16 +21,16 @@ use yii\helpers\Html;
 
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                                    <?= $form->field($model,'first_name')->textInput(); ?>
+                                    <?= $form->field($model,'first_name')->textInput(['placeholder' => 'First Name'])->label(false); ?>
                                 </div>
                                 <div class="col-md-6 col-12">
-                                    <?= $form->field($model,'last_name')->textInput(); ?>
+                                    <?= $form->field($model,'last_name')->textInput(['placeholder' => 'Last Name'])->label(false); ?>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                                    <?= $form->field($model,'contact_number')->textInput()?>
+                                    <?= $form->field($model,'contact_number')->textInput(['placeholder' => 'Contact Number'])->label(false)?>
                                 </div>
                             </div>
                             <hr>
@@ -37,7 +38,7 @@ use yii\helpers\Html;
 
                             <div class="row">
                                 <div class="col-md-12 col-12">
-                                    <?= $form->field($model,'store_name')->textInput()?>
+                                    <?= $form->field($model,'store_name')->textInput(['placeholder' => 'Store Name'])->label(false)?>
                                 </div>
                             </div>
                             <hr>
@@ -45,35 +46,35 @@ use yii\helpers\Html;
 
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                                    <?= $form->field($model,'state')->textInput()?>
+                                    <?= $form->field($model,'state')->textInput(['placeholder' => 'State'])->label(false)?>
                                 </div>
                                 <div class="col-md-6 col-12">
-                                    <?= $form->field($model,'city')->textInput()?>
+                                    <?= $form->field($model,'city')->textInput(['placeholder' =>'City'])->label(false)?>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12 col-12">
-                                    <?= $form->field($model,'address')->textarea(['rows' => 6])?>
+                                    <?= $form->field($model,'address')->textarea(['rows' => 6,'placeholder' => 'Address'])->label(false)?>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                                    <?= $form->field($model,'zip_code')->textInput()?>
+                                    <?= $form->field($model,'zip_code')->textInput(['placeholder'=> 'Zip Code'])->label(false)?>
                                 </div>
                             </div>
                             <hr>
                             <h3 class="seller-form-title text-center after-border">Select Category</h3>
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                                    <?= $form->field($model,'category')->widget(\kartik\select2\Select2::class,[
+                                    <?= $form->field($model,'category')->widget(Select2::class,[
+                                            'data'=> (new common\models\StoreSubCategory)->getCategoryName(),
                                         'options' => ['placeholder' => 'Select Category'],
                                         'pluginOptions' => [
-                                            'allowClear' => 'true',
-                                            'multiple' => true
+                                            'allowClear' => true,
                                         ]
-                                    ])?>
+                                    ])->label(false)?>
                                 </div>
                             </div>
 
