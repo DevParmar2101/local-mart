@@ -3,7 +3,7 @@
 <div class="checkout-area pt-100px pb-100px">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-7">
                 <div class="billing-info-wrap">
                     <h3>Billing Details</h3>
                     <div class="row">
@@ -169,6 +169,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-5">
+                <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/hero/bg/seller3.jpg'),['class'=>'seller-image'])?>
+
+                <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/hero/bg/seller2.jpg'),['class'=>'seller-image'])?>
             </div>
         </div>
     </div>
