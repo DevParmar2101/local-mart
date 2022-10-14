@@ -30,7 +30,7 @@ AppAsset::register($this);
                         <div class="col-lg-2 col">
                             <div class="header-logo">
                                 <a href="<?= Url::toRoute('/')?>">
-                                    <?= Html::img(Yii::getAlias('@web/images/logo/logo.png'))?>
+                                    <?= Html::img(Yii::getAlias('@web/images/logo/logo.png'),['class' => 'frontend-logo-image'])?>
                                 </a>
                             </div>
                         </div>
