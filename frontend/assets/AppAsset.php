@@ -31,7 +31,6 @@ class AppAsset extends AssetBundle
         'js/plugins/swiper-bundle.min.js',
         'js/plugins/scrollUp.js',
         'js/plugins/venobox.min.js',
-        'js/plugins/jquery-ui.min.js',
         'js/plugins/mailchimp-ajax.js',
         'js/main.js'
     ];
