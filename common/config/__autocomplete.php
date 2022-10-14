@@ -22,6 +22,8 @@ class Yii {
  * @property yii\rbac\DbManager $authManager 
  * @property \yii\web\User|__WebUser $user
  * @property \yii\web\UrlManager                $urlManagerAdmin
+ *
+ * @property \common\components\GlobalProperty  $global
  * 
  */
 class __Application {
