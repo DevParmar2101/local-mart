@@ -5,6 +5,7 @@ use kartik\select2\Select2;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 
+$this->title = 'Seller';
 /** @var $model UserStore */
 /** @var $form ActiveForm*/
 
@@ -68,9 +69,18 @@ use yii\helpers\Html;
                             <h3 class="seller-form-title text-center after-border">Select Category</h3>
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                                    <?= $form->field($model,'category')->widget(Select2::class,[
+                                    <?= $form->field($model,'store_category')->widget(Select2::class,[
                                             'data'=> (new common\models\StoreSubCategory)->getCategoryName(),
                                         'options' => ['placeholder' => 'Select Category'],
+                                        'pluginOptions' => [
+                                            'allowClear' => true,
+                                        ]
+                                    ])->label(false)?>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <?= $form->field($model,'purchase_type')->widget(Select2::class,[
+                                        'data'=> $model->getSellingType(),
+                                        'options' => ['placeholder' => 'Select Selling Type'],
                                         'pluginOptions' => [
                                             'allowClear' => true,
                                         ]
