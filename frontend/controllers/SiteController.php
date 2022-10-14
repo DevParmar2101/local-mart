@@ -159,6 +159,7 @@ class SiteController extends Controller
      * Signs user up.
      *
      * @return mixed
+     * @throws \Exception
      */
     public function actionSignup()
     {
