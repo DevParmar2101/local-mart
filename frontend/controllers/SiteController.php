@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\BaseActiveRecord;
 use common\models\ExtraPageContent;
+use common\models\UserStore;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -271,6 +272,9 @@ class SiteController extends Controller
 
     public function actionSeller()
     {
-        return $this->render('seller');
+        $model = new UserStore();
+        return $this->render('seller',[
+            'model' => $model
+        ]);
     }
 }
