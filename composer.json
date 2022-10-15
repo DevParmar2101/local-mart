@@ -21,7 +21,8 @@
         "kartik-v/yii2-widget-select2": "dev-master",
         "kartik-v/yii2-widget-fileinput": "dev-master",
         "asmoday74/yii2-ckeditor5": "*",
-        "sangroya/yii2-ckeditor5": "*"
+        "sangroya/yii2-ckeditor5": "*",
+        "twilio/sdk": "^6.42"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
