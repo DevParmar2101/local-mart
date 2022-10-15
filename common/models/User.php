@@ -31,6 +31,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
+    const VERIFY_NUMBER = 'verify-number';
 
     public $otp_field;
 
@@ -63,7 +64,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['contact_number', 'otp_field'], 'string'],
             [['otp'], 'string','min'=>4,'max'=>10],
             [['otp_expire'], 'integer'],
-            [['contact_number','otp','otp_expire'], 'default','value' =>0],
+            ['contact_number','required','on' => self::VERIFY_NUMBER]
         ];
     }
 
