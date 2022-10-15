@@ -29,7 +29,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * @return Response
+     * @return string|Response
      */
     public function actionChangePassword()
     {
@@ -48,6 +48,22 @@ class ProfileController extends Controller
         return $this->render('change-password',[
             'model' => $model,
         ]);
+    }
+
+    /**
+     * @return string
+     */
+    public function actionWishlist(): string
+    {
+        return $this->render('wishlist');
+    }
+
+    /**
+     * @return string
+     */
+    public function actionOrder(): string
+    {
+        return $this->render('order');
     }
 
 }
