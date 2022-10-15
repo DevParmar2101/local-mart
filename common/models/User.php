@@ -32,6 +32,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
+    public $otp_field;
 
     /**
      * {@inheritdoc}
@@ -59,8 +60,10 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
-            [['contact_number', 'otp'], 'string'],
+            [['contact_number', 'otp_field'], 'string'],
+            [['otp'], 'string','min'=>4,'max'=>10],
             [['otp_expire'], 'integer'],
+            [['contact_number','otp','otp_expire'], 'default','value' =>0],
         ];
     }
 
