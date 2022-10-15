@@ -57,10 +57,11 @@ class SignupForm extends Model
         $user->generateEmailVerificationToken();
 
         if ($user->save()) {
+            Yii::$app->session->set('user_id',$user->id);
             $auth = Yii::$app->authManager;
             $role = $auth->getRole(Role::TYPE_ROLE_KEY['user']);
             $auth->assign($role, $user->primaryKey);
-            return $this->sendEmail($user);
+            return $user;
         }
     }
 
