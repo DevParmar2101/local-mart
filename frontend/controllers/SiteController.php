@@ -22,6 +22,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\web\Response;
 
 /**
  * Site controller
@@ -236,7 +237,7 @@ class SiteController extends Controller
      *
      * @param string $token
      * @throws BadRequestHttpException
-     * @return yii\web\Response
+     * @return Response
      */
     public function actionVerifyEmail($token)
     {
@@ -275,16 +276,28 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * @return string|Response
+     */
     public function actionSeller()
     {
-        $model = new UserStore();
+        $model = UserStore::findOne(['user_id' => Yii::$app->user->identity->id]);
+        if (!$model) {
+            $model = new UserStore();
+        }
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->user_id = Yii::$app->user->identity->id;
                 $model->is_number_verified = $model::NOT_VERIFIED;
                 $model->status = $model::PENDING;
-                $model->save();
-                return $this->redirect(['verify-number']);
+                if ($model->save()) {
+                    Yii::$app->session->setFlash('success','Please check your email for activation of account!');
+                    return $this->redirect(['index']);
+                }else{
+                    echo '<pre>';
+                    print_r($model);
+                    die();
+                }
             }
         }
         return $this->render('seller',[
@@ -303,13 +316,13 @@ class SiteController extends Controller
         if (Yii::$app->request->isAjax) {
             Yii::$app->response->format = 'json';
             $model->load(Yii::$app->request->post());
-            if ($model->otp) {
+            if ($otp) {
                 $response = [
                     'success' => true,
                     'msg' => 'Number Verified!'
                 ];
             }else{
-                $error = implode(", ", \yii\helpers\ArrayHelper::getColumn($model->errors, 0, false)); // Model's Errors string
+                $error = implode(", ", ArrayHelper::getColumn($model->errors, 0, false)); // Model's Errors string
                 $response = [
                     'success' => false,
                     'msg' => 'dev parmar'
