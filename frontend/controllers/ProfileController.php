@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\User;
+use Yii;
 use yii\web\Controller;
 use yii\web\Response;
 
@@ -28,11 +29,25 @@ class ProfileController extends Controller
     }
 
     /**
-     * @return string
+     * @return Response
      */
-    public function actionChangePassword(): string
+    public function actionChangePassword()
     {
-        return $this->render('change-password');
+        $model = User::findOne(['id' => \Yii::$app->user->identity->id]);
+        $model->scenario = $model::SCENARIO_CHANGE_PASSWORD;
+        if (!$model){
+            return  $this->redirect('login');
+        }
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->setPassword($model->new_password);
+            if ($model->save(false)) {
+                return $this->refresh();
+            }
+            return $this->refresh();
+        }
+        return $this->render('change-password',[
+            'model' => $model,
+        ]);
     }
 
 }
