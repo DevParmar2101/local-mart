@@ -13,7 +13,9 @@ class m221015_044409_add_phone_number_in_user_table extends Migration
      */
     public function safeUp()
     {
-
+        $this->addColumn(User::tableName(),'contact_number',$this->string(15));
+        $this->addColumn(User::tableName(),'otp',$this->string(10));
+        $this->addColumn(User::tableName(),'otp_expire',$this->integer(11));
     }
 
     /**
