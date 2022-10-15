@@ -80,11 +80,11 @@ class User extends ActiveRecord implements IdentityInterface
             ['old_password', 'validatePasswordCurrent', 'on' => self::SCENARIO_CHANGE_PASSWORD],
             ['new_password', 'samePassword', 'on' => self::SCENARIO_CHANGE_PASSWORD],
             [['old_password', 'new_password', 'confirm_password'],'required', 'on' => self::SCENARIO_CHANGE_PASSWORD],
-            ['confirm_password', 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('orderang_model',"Passwords don't match"), 'on' => self::SCENARIO_CHANGE_PASSWORD],
+            ['confirm_password', 'compare', 'compareAttribute' => 'new_password', 'message' => "Passwords don't match", 'on' => self::SCENARIO_CHANGE_PASSWORD],
 
             ['new_password', 'samePassword', 'on' => self::SCENARIO_CHANGE_PASSWORD_BY_ADMIN],
             [[ 'new_password', 'confirm_password'],'required', 'on' => self::SCENARIO_CHANGE_PASSWORD_BY_ADMIN],
-            ['confirm_password', 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('orderang_model',"Passwords don't match"), 'on' => self::SCENARIO_CHANGE_PASSWORD_BY_ADMIN],
+            ['confirm_password', 'compare', 'compareAttribute' => 'new_password', 'message' => "Passwords don't match", 'on' => self::SCENARIO_CHANGE_PASSWORD_BY_ADMIN],
         ];
     }
 
@@ -123,7 +123,15 @@ class User extends ActiveRecord implements IdentityInterface
         $password_exists = Yii::$app->security->validatePassword($this->new_password, $this->password_hash);
 
         if ($password_exists) {
-            $this->addError('new_password',Yii::t('orderang_model','New password is same as old password'));
+            $this->addError('new_password','New password is same as old password');
+        }
+    }
+
+    public function validatePasswordCurrent(){
+        $old_password = Yii::$app->security->validatePassword($this->old_password, Yii::$app->user->identity->password_hash);
+
+        if(!$old_password){
+            $this->addError('old_password','Entered password does not match the current password.');
         }
     }
 
