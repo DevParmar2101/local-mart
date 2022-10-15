@@ -33,9 +33,15 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
+
+    const SCENARIO_CHANGE_PASSWORD = 'change-password';
+    const SCENARIO_CHANGE_PASSWORD_BY_ADMIN = 'change-password-by-admin';
     const VERIFY_NUMBER = 'verify-number';
 
     public $otp_field;
+    public $old_password;
+    public $new_password;
+    public $confirm_password;
 
     /**
      * {@inheritdoc}
@@ -63,11 +69,22 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+
             [['contact_number', 'otp_field'], 'string'],
             [['otp'], 'string','min'=>4,'max'=>10],
             [['otp_expire'], 'integer'],
+
             [['first_name', 'last_name'], 'string'],
-            ['contact_number','required','on' => self::VERIFY_NUMBER]
+            ['contact_number','required','on' => self::VERIFY_NUMBER],
+
+            ['old_password', 'validatePasswordCurrent', 'on' => self::SCENARIO_CHANGE_PASSWORD],
+            ['new_password', 'samePassword', 'on' => self::SCENARIO_CHANGE_PASSWORD],
+            [['old_password', 'new_password', 'confirm_password'],'required', 'on' => self::SCENARIO_CHANGE_PASSWORD],
+            ['confirm_password', 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('orderang_model',"Passwords don't match"), 'on' => self::SCENARIO_CHANGE_PASSWORD],
+
+            ['new_password', 'samePassword', 'on' => self::SCENARIO_CHANGE_PASSWORD_BY_ADMIN],
+            [[ 'new_password', 'confirm_password'],'required', 'on' => self::SCENARIO_CHANGE_PASSWORD_BY_ADMIN],
+            ['confirm_password', 'compare', 'compareAttribute' => 'new_password', 'message' => Yii::t('orderang_model',"Passwords don't match"), 'on' => self::SCENARIO_CHANGE_PASSWORD_BY_ADMIN],
         ];
     }
 
@@ -96,6 +113,18 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * @return void
+     */
+    public function samePassword()
+    {
+        $password_exists = Yii::$app->security->validatePassword($this->new_password, $this->password_hash);
+
+        if ($password_exists) {
+            $this->addError('new_password',Yii::t('orderang_model','New password is same as old password'));
+        }
     }
 
     /**
