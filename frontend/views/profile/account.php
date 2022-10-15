@@ -20,11 +20,29 @@ use yii\bootstrap5\ActiveForm;
                             <div class="login_form_container">
                                 <div class="account_login_form">
                                     <?php $form = ActiveForm::begin(['id' => 'profile-account-form']);?>
-                                        <div class="row">
-                                            <div class="col-md-6 col-12">
 
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <?= $form->field($model,'first_name')->textInput()?>
                                         </div>
+                                        <div class="col-md-6 col-12">
+                                            <?= $form->field($model,'last_name')->textInput()?>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <?= $form->field($model,'email')->textInput(['readonly' => true])?>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <?= $form->field($model,'contact_number')->textInput()?>
+                                        </div>
+                                    </div>
+
+                                    <div class="place-order mt-25">
+                                        <?= \yii\helpers\Html::submitButton('Save',['class' => 'btn btn-primary blog-btn'])?>
+                                    </div>
+
                                     <?php ActiveForm::end();?>
                                 </div>
                             </div>
