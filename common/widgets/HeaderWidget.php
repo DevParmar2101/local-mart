@@ -4,6 +4,7 @@ namespace common\widgets;
 
 use common\models\BaseActiveRecord;
 use common\models\PageContent;
+use common\models\UserStore;
 use yii\base\Widget;
 
 class HeaderWidget extends Widget
@@ -15,9 +16,11 @@ class HeaderWidget extends Widget
             ->andWhere(['use_for' => PageContent::HEADER_TYPE])
             ->orWhere(['use_for' => PageContent::BOTH_TYPE])
             ->all();
+        $is_user_have_store = UserStore::findOne(['user_id' => \Yii::$app->user->identity->id]);
 
         return $this->render('header',[
-            'pages' => $pages
+            'pages' => $pages,
+            'is_user_have_store' => $is_user_have_store
         ]);
     }
 }
