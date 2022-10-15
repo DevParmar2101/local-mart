@@ -1,5 +1,6 @@
 <?php
 
+use common\models\User;
 use yii\db\Migration;
 
 /**
@@ -12,7 +13,8 @@ class m221015_181739_add_fn_and_ln_in_user_table extends Migration
      */
     public function safeUp()
     {
-
+        $this->addColumn(User::tableName(),'first_name',$this->string(50));
+        $this->addColumn(User::tableName(),'last_name',$this->string(50));
     }
 
     /**
