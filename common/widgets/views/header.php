@@ -6,8 +6,9 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /** @var $pages PageContent*/
-/** @var $is_user_have_store UserStore*/
-?>
+if (!Yii::$app->user->isGuest){
+    $is_user_have_store = UserStore::findOne(['user_id' => \Yii::$app->user->identity->id]);
+}?>
 <header>
     <!-- Header action area start -->
     <div class="header-bottom  d-none d-lg-block">
