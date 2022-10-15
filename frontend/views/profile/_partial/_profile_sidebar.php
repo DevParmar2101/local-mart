@@ -9,13 +9,13 @@ use yii\helpers\Url;
     <div class="dashboard_tab_button" data-aos="fade-up" data-aos-delay="0">
         <ul role="tablist" class="nav flex-column dashboard-list">
             <li>
-                <a href="<?= Url::toRoute('profile/account')?>" data-bs-toggle="tab" class="nav-link active">Account Details</a>
+                <a href="<?= Url::toRoute('profile/account')?>" class="nav-link active">Account Details</a>
             </li>
             <li>
-                <a href="<?= Url::toRoute('profile/change-password')?>" data-bs-toggle="tab" class="nav-link">Change Password</a>
+                <a href="<?= Url::toRoute('profile/change-password')?>" class="nav-link">Change Password</a>
             </li>
-            <li> <a href="<?= Url::toRoute('profile/wishlist')?>" data-bs-toggle="tab" class="nav-link"> Wishlist</a></li>
-            <li> <a href="<?= Url::toRoute('profile/order')?>" data-bs-toggle="tab" class="nav-link">My Order</a></li>
+            <li> <a href="<?= Url::toRoute('profile/wishlist')?>" class="nav-link"> Wishlist</a></li>
+            <li> <a href="<?= Url::toRoute('profile/order')?>" class="nav-link">My Order</a></li>
             <li>
                 <?= Html::a('Logout',['site/logout'],['data' => ['method' => 'post'],'class' => 'nav-link'])?>
             </li>
