@@ -30,13 +30,6 @@ $this->title = 'Verify Number';
                                 <div class="login-register-form">
                                     <?php $form = ActiveForm::begin([
                                         'id' => 'verify-number-form',
-                                        'layout' => 'horizontal',
-                                        'fieldConfig' => [
-                                            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
-                                            'labelOptions' => [
-                                                'class' => 'col-lg-2 control-label'
-                                            ]
-                                        ]
                                     ])?>
 
                                     <div class="section-1">
@@ -51,7 +44,7 @@ $this->title = 'Verify Number';
                                         <?= $form->field($model,'otp_field')->textInput(); ?>
 
                                         <div class="button-box">
-                                            <?= Html::button('Submit',['class' => 'btn btn-primary', 'id' => 'verify-number'])?>
+                                            <?= Html::button('Submit',['class' => 'btn btn-primary', 'id' => 'verify-number-button'])?>
                                         </div>
                                     </div>
                                     <?php ActiveForm::end()?>
@@ -67,14 +60,85 @@ $this->title = 'Verify Number';
 
 <?php
 $otpUrl = Url::toRoute(['site/send-otp']);
-$otpValidate = Url::toRoute(['site/otp-validate']);
-$signupSuccessful = Url::toRoute(['site/signup-successful']);
+$otpValidate = Url::toRoute(['site/verify-number']);
+$signupSuccessful = Url::toRoute(['site/index']);
 $csrf = Yii::$app->request->csrfToken;
 
 $script =<<<JS
     $('button#request-otp-btn').click(function(){
        sendOtp(); 
     });
+    function sendOtp() {
+        $('#verify-number-form').yiiActiveForm('validateAttribute', 'user-contact_number');
+        setTimeout(function () {
+            var contactNumber = $('#user-contact_number');
+            var phone = contactNumber.val();
+            var isPhoneValid = ($('div.field-contact_number.has-error').length==0);
+            if (phone!=='' && isPhoneValid) {
+                $.ajax({
+                url:'$otpUrl',
+                data: {phone: phone, _csrf:'$csrf'},
+                method: 'POST',
+                beforeSend: function () {
+                    $('#request-otp-btn').prop('disabled',true);
+                },
+                error:function ( xhr, err ) {
+                    alert('An errror ocurred, please try again');
+                },
+                complete:function () {
+                    $('#request-otp-btn').prop('disabled', false);
+                },
+                success: function (data) {
+                    if (data.success==false) {
+                        $('.section-1').hide();
+                        $('.section-2').show();
+                        alert(data.msg);
+                       
+                    }else {
+                        alert(data.msg);
+                        return false; 
+                    }
+                }
+                });
+            }
+        }, 200);
+    }
+    $('#verify-number-button').click(function (){
+        login();
+    });
+    function login(){
+        var form = $('#verify-number-form')
+        form.yiiActiveForm('validateAttribute', 'user-otp_field');
+        setTimeout(function (){
+            var otp = $('#user-otp_field').val();
+            var isOtpValid = ($('div.field-user-otp_field.has-error').length==0);
+            if (otp!=='' && isOtpValid) {
+                $.ajax({
+                    url: '$otpValidate',
+                    data:form.serialize(),
+                    dataType: 'json',
+                    method: 'POST',
+                    beforeSend: function () {
+                        $('#verify-number-button').prop('disabled',true);
+                    },
+                    error: function ( xhr, err ) {
+                        alert('An error occured, Please try again');
+                    },
+                    complete: function () {
+                        $('#verify-number-button').prop('disabled', false);
+                    },
+                    success: function (data){
+                        if (data.success == true) {
+                            alert(data.msg);
+                            window.location = "$signupSuccessful";
+                        }else{
+                            alert(data.msg);
+                        }
+                    }
+                });
+            }
+        }, 200);
+    }
 JS;
 
 $position = View::POS_READY;
