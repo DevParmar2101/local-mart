@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\BaseActiveRecord;
 use common\models\ExtraPageContent;
+use common\models\User;
 use common\models\UserStore;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -287,9 +288,17 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionVerifyNumber()
+    /**
+     * @return string
+     */
+    public function actionVerifyNumber(): string
     {
         $this->layout = 'blank';
-        return $this->render('verify_number');
+        $user_id = Yii::$app->session->get('user_id');
+        $model = User::findOne($user_id);
+
+        return $this->render('verify_number',[
+            'model' => $model,
+        ]);
     }
 }
