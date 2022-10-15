@@ -55,7 +55,6 @@ class UserStore extends BaseActiveRecord
     const STATUS_DRAFT = 'Draft';
     const STATUS_REJECT = 'Reject';
 
-    public $category;
     /**
      * {@inheritdoc}
      */
@@ -70,8 +69,8 @@ class UserStore extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['first_name', 'last_name', 'contact_number', 'store_name', 'state', 'city', 'address', 'zip_code', 'category'], 'required'],
-            [['is_number_verified', 'user_id', 'state', 'city', 'zip_code', 'status', 'store_category', 'purchase_type','category'], 'integer'],
+            [['first_name', 'last_name', 'contact_number', 'store_name', 'state', 'city', 'address', 'zip_code'], 'required'],
+            [['is_number_verified', 'user_id', 'state', 'city', 'zip_code', 'status', 'store_category', 'purchase_type'], 'integer'],
             [['address'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['first_name', 'last_name', 'store_name'], 'string', 'max' => 255],
