@@ -8,8 +8,11 @@ use common\models\User;
 use common\models\UserStore;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
+use Twilio\Exceptions\ConfigurationException;
+use Twilio\Rest\Client;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\helpers\ArrayHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -51,6 +54,7 @@ class SiteController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
+                    'send-otp' => ['post']
                 ],
             ],
         ];
@@ -288,17 +292,90 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * @return string
-     */
-    public function actionVerifyNumber(): string
+
+    public function actionVerifyNumber()
     {
         $this->layout = 'blank';
         $user_id = Yii::$app->session->get('user_id');
         $model = User::findOne($user_id);
-
+        $model->scenario = $model::VERIFY_NUMBER;
+        $otp = $model->otp;
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = 'json';
+            $model->load(Yii::$app->request->post());
+            if ($model->otp) {
+                $response = [
+                    'success' => true,
+                    'msg' => 'Number Verified!'
+                ];
+            }else{
+                $error = implode(", ", \yii\helpers\ArrayHelper::getColumn($model->errors, 0, false)); // Model's Errors string
+                $response = [
+                    'success' => false,
+                    'msg' => 'dev parmar'
+                ];
+            }
+            return $response;
+        }
         return $this->render('verify_number',[
             'model' => $model,
         ]);
     }
+
+    /**
+     * @return array
+     */
+    public function actionSendOtp(): array
+    {
+        $user_id = Yii::$app->session->get('user_id');
+        $phone = Yii::$app->request->post('phone');
+        Yii::$app->response->format = 'json';
+        $response = [];
+        if ($phone) {
+            $user = User::findOne($user_id);
+            $otp = rand(100000,999999);
+            $user->contact_number = $phone;
+            $user->created_at = time();
+            $user->otp = "$otp";
+            $user->otp_expire = time() + 600;
+            if (! $user->save()) {
+                $errorString = implode(",",ArrayHelper::getColumn($user->errors, 0, false));
+                $response = [
+                    'success' => false,
+                    'msg' => $errorString
+                ];
+            } else {
+                $msg = 'One Time Password(OTP) is ' . $otp;
+
+                $sid = Yii::$app->global->twilio_account_sid;
+                $token = Yii::$app->global->twilio_auth_token;
+                $twilioNumber = Yii::$app->global->twilio_phone_number;
+                try {
+
+                    $client = new Client($sid, $token);
+                    $client->messages->create('+91'.$phone, [
+                        'from' => $twilioNumber,
+                        'body' => $msg,
+                    ]);
+
+                    $response = [
+                        'success' => false,
+                        'msg' => 'OTP Sent and valid for 10 minutes.'
+                    ];
+                }catch (\Exception $e){
+                    $response = [
+                        'success' => false,
+                        'msg' => $e->getMessage()
+                    ];
+                }
+            }
+        }else{
+            $response = [
+                'success' => false,
+                'msg' => 'Phone number is empty.'
+            ];
+        }
+        return $response;
+    }
+
 }
