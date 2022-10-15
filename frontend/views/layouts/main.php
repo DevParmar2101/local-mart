@@ -27,6 +27,7 @@ AppAsset::register($this);
         <!-- Header Area Start -->
         <?= HeaderWidget::widget();?>
         <!-- Header Area End -->
+        <?= \common\widgets\Alert::widget()?>
         <?= $content ?>
         <!-- Footer Area Start -->
         <?= FooterWidget::widget()?>
