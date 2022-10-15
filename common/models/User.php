@@ -25,6 +25,8 @@ use yii\web\IdentityInterface;
  * @property string $contact_number
  * @property string $otp
  * @property integer $otp_expire
+ * @property string $first_name
+ * @property string $last_name
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -64,6 +66,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['contact_number', 'otp_field'], 'string'],
             [['otp'], 'string','min'=>4,'max'=>10],
             [['otp_expire'], 'integer'],
+            [['first_name', 'last_name'], 'string'],
             ['contact_number','required','on' => self::VERIFY_NUMBER]
         ];
     }
