@@ -168,7 +168,7 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-            return $this->goHome();
+            return $this->redirect(['verify-number']);
         }
 
         return $this->render('signup', [
@@ -289,6 +289,7 @@ class SiteController extends Controller
 
     public function actionVerifyNumber()
     {
+        $this->layout = 'blank';
         return $this->render('verify_number');
     }
 }
