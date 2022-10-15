@@ -1,10 +1,12 @@
 <?php
 
 use common\models\PageContent;
+use common\models\UserStore;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
 /** @var $pages PageContent*/
+/** @var $is_user_have_store UserStore*/
 ?>
 <header>
     <!-- Header action area start -->
@@ -27,7 +29,11 @@ use yii\helpers\Url;
                             <li><a href="<?= Url::toRoute('page/'.$page->slug)?>"><?= $page->title?></a></li>
                             <?php }?>
                             <li><a href="<?= Url::toRoute('site/contact')?>">Contact</a></li>
-                            <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
+                            <?php if ($is_user_have_store){?>
+                            <li><a href="<?= Url::toRoute('/')?>">Seller Dashboard</a></li>
+                            <?php }else{?>
+                                <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
+                            <?php }?>
                         </ul>
                     </div>
                 </div>
@@ -37,10 +43,22 @@ use yii\helpers\Url;
                             <?= Html::a('Login',['site/login'],['class' =>'header-action-btn'])?>
                         <?php }else{?>
                             <!-- Single Wedge Start -->
+                            <div class="btn-group">
+                                <a class="header-action-btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="pe-7s-user"></i> <?= Yii::$app->user->identity->username?>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <?= Html::a('My account',['profile/account'],['class' =>'dropdown-item'])?>
+                                    </li>
+                                    <li>
+                                        <?= Html::a('Logout',['site/logout'],['data' => ['method' => 'post'],'class' => 'dropdown-item'])?>
+                                    </li>
+                                </ul>
+                            </div>
                             <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
                                 <i class="pe-7s-like"></i>
                             </a>
-                            <?= Html::a('<i class="pe-7s-user"></i>'. Yii::$app->user->identity->username,['site/logout'],['data' => ['method' => 'post'],'class' => 'header-action-btn offcanvas-toggle'])?>
                             <!-- Single Wedge End -->
                             <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
                                 <i class="pe-7s-shopbag"></i>
@@ -77,7 +95,11 @@ use yii\helpers\Url;
                                 <li><a href="<?= Url::toRoute('page/'.$page->slug)?>"><?= $page->title?></a></li>
                             <?php }?>
                             <li><a href="<?= Url::toRoute('site/contact')?>">Contact</a></li>
-                            <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
+                            <?php if ($is_user_have_store){?>
+                                <li><a href="<?= Url::toRoute('/')?>">Seller Dashboard</a></li>
+                            <?php }else{?>
+                                <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
+                            <?php }?>
                         </ul>
                     </div>
                 </div>
@@ -114,7 +136,11 @@ use yii\helpers\Url;
                             <li><a href="<?= Url::toRoute('page/'.$page->slug)?>"><?= $page->title?></a></li>
                         <?php }?>
                         <li><a href="<?= Url::toRoute('site/contact')?>">Contact</a></li>
-                        <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
+                        <?php if ($is_user_have_store){?>
+                            <li><a href="<?= Url::toRoute('/')?>">Seller Dashboard</a></li>
+                        <?php }else{?>
+                            <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
+                        <?php }?>
                     </ul>
                 </div>
             </div>
