@@ -13,7 +13,7 @@ class BaseHelper extends BaseArrayHelper
      * @param $module
      * @return bool
      */
-    public function validateAction($controller, $action=null, $module=null): bool
+    public static function validateAction($controller, $action=null, $module=null): bool
     {
         if (\Yii::$app->controller->id === $controller && \Yii::$app->controller->action->id === $action && \Yii::$app->controller->module->id === $module){
             return true;
