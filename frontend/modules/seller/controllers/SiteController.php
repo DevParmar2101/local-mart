@@ -3,6 +3,7 @@
 namespace frontend\modules\seller\controllers;
 
 use common\models\UserStore;
+use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -77,12 +78,22 @@ class SiteController extends Controller
 
     /**
      * @param $id
-     * @return string
+     * @return string|\yii\web\Response
      */
-    public function actionEdit($id): string
+    public function actionEdit($id)
     {
+        $this->layout = $this->seller_dashboard_layout;
+
         $model = UserStore::find()->where(['id' => $id])->one();
 
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                if ($model->save()) {
+                    Yii::$app->session->setFlash('success','Store Updated Successfully !');
+                    return $this->refresh();
+                }
+            }
+        }
         return $this->render('edit',[
             'model' => $model
         ]);
@@ -94,6 +105,8 @@ class SiteController extends Controller
      */
     public function actionDocument($id): string
     {
+        $this->layout = $this->seller_dashboard_layout;
+
         $model = UserStore::find()->where(['id' => $id])->one();
 
         return $this->render('document',[
