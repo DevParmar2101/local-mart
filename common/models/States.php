@@ -9,10 +9,11 @@ use Yii;
  *
  * @property int $id
  * @property string|null $name
+ * @property int $status
  *
  * @property Cities[] $cities
  */
-class States extends \yii\db\ActiveRecord
+class States extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -29,6 +30,8 @@ class States extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'string', 'max' => 50],
+            [['status'], 'integer'],
+            ['status' => 'safe'],
         ];
     }
 
@@ -40,6 +43,7 @@ class States extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'status' => 'Status',
         ];
     }
 
