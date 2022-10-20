@@ -294,10 +294,6 @@ class SiteController extends Controller
                 if ($model->save()) {
                     Yii::$app->session->setFlash('success','Please check your email for activation of account!');
                     return $this->redirect(['index']);
-                }else{
-                    echo '<pre>';
-                    print_r($model);
-                    die();
                 }
             }
         }
