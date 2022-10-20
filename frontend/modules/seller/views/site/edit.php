@@ -7,6 +7,7 @@ use yii\helpers\Url;
 use yii\web\JsExpression;
 use yii\web\View;
 
+$this->title = 'Edit Form';
 /** @var $model UserStore */
 /** @var $form ActiveForm*/
 
