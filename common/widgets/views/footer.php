@@ -61,7 +61,14 @@ use yii\helpers\Url;
                                             <a class="single-link" href="<?= Url::toRoute('site/contact')?>">Contact</a>
                                         </li>
                                         <li class="li">
-                                            <a class="single-link" href="<?= Url::toRoute('site/seller')?>">Become a Seller</a>
+                                            <a class="single-link" href="
+                                            <?=
+                                            Yii::$app->user->isGuest
+                                                ?Url::toRoute('site/signup')
+                                                :Url::toRoute('site/seller')
+                                            ?>
+                                            ">Become a Seller
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
