@@ -75,7 +75,11 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionEdit($id)
+    /**
+     * @param $id
+     * @return string
+     */
+    public function actionEdit($id): string
     {
         $model = UserStore::find()->where(['id' => $id])->one();
 
@@ -84,7 +88,11 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionDocument($id)
+    /**
+     * @param $id
+     * @return string
+     */
+    public function actionDocument($id): string
     {
         $model = UserStore::find()->where(['id' => $id])->one();
 
