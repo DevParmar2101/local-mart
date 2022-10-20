@@ -43,9 +43,6 @@ AppAsset::register($this);
                 </div>
             </div>
         </div>
-        <!-- Footer Area Start -->
-        <?= FooterWidget::widget()?>
-        <!-- Footer Area End -->
     </div>
     <?php $this->endBody() ?>
     </body>
