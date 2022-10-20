@@ -2,6 +2,7 @@
 
 namespace frontend\modules\seller\controllers;
 
+use common\models\UserStore;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -53,6 +54,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->layout = $this->seller_dashboard_layout;
-        return $this->render('index');
+        $user_id = \Yii::$app->user->identity->id;
+        $model = UserStore::find()->where(['user_id' => $user_id])->all();
+
+        return $this->render('index',[
+            'model' => $model
+        ]);
     }
 }
