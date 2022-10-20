@@ -13,7 +13,7 @@ use Yii;
  *
  * @property States $state
  */
-class Cities extends \yii\db\ActiveRecord
+class Cities extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
