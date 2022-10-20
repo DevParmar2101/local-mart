@@ -49,6 +49,7 @@ $this->title = 'Seller';
                             <h3 class="seller-form-title text-center after-border">Address</h3>
 
                             <div class="row">
+
                                 <div class="col-md-6 col-12">
                                     <?php
                                     $format = <<< SCRIPT
@@ -69,7 +70,7 @@ SCRIPT;
                                                 'placeholder' => 'Select Selling Type',
                                             'onchange' => '
                                                     $.post("'.$url.'?id="+$(this).val(), function( data ) {
-                    $("select#vehicle-city").html( data );
+                    $("select#userstore-city").html( data );
                                     });'
                                         ],
                                         'pluginOptions' => [
@@ -77,13 +78,17 @@ SCRIPT;
                                             'templateSelection' => new JsExpression('format'),
                                             'escapeMarkup' => $escape,
                                             'allowClear' => true,
-                                        ]
+                                        ],
                                     ])->label(false)?>
                                 </div>
+
                                 <div class="col-md-6 col-12">
                                     <?= $form->field($model,'city')->widget(Select2::class,[
                                             'options' => [
                                                     'placeholder' => 'Select Cities',
+                                            ],
+                                            'pluginOptions' => [
+                                                 'allowClear' => true,
                                             ],
                                     ])->label(false)?>
                                 </div>
