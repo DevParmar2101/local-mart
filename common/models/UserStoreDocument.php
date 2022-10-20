@@ -16,7 +16,7 @@ use Yii;
  *
  * @property User $documentVerifiedBy
  */
-class UserStoreDocument extends \yii\db\ActiveRecord
+class UserStoreDocument extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
