@@ -25,15 +25,15 @@ $this->title = 'Edit Form';
                 </h4>
 
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-12">
                         <?= $form->field($model,'first_name')->textInput()?>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-12">
                         <?= $form->field($model,'last_name')->textInput()?>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-12">
                         <?= $form->field($model,'contact_number')->textInput()?>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ $this->title = 'Edit Form';
                 </h4>
 
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-12">
                         <?php
                         $format = <<< SCRIPT
 function format(state) {
@@ -84,7 +84,7 @@ SCRIPT;
                             ],
                         ])?>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-12">
                         <?= $form->field($model,'city')->widget(Select2::class,[
                             'options' => [
                                 'placeholder' => 'Select Cities',
@@ -113,7 +113,7 @@ SCRIPT;
                 </h4>
 
                 <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-12">
                         <?= $form->field($model,'store_category')->widget(Select2::class,[
                                 'data' => (new common\models\StoreSubCategory)->getCategoryName(),
                                 'options' => [
@@ -124,7 +124,7 @@ SCRIPT;
                                 ]
                         ])?>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-12">
                         <?= $form->field($model,'purchase_type')->widget(Select2::class,[
                                 'data' => $model->getSellingType(),
                                 'options' => [
