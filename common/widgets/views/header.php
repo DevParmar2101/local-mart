@@ -17,7 +17,7 @@ if (!Yii::$app->user->isGuest){
                 <div class="col-lg-2 col">
                     <div class="header-logo">
                         <a href="<?= Url::toRoute('/')?>">
-                           <?= Yii::$app->global->logo_light?>
+                            <?= Yii::$app->global->logo_light?>
                         </a>
                     </div>
                 </div>
@@ -26,14 +26,23 @@ if (!Yii::$app->user->isGuest){
                         <ul>
                             <?php foreach ($pages as $page) {
                                 /** @var $page PageContent*/
-                            ?>
-                            <li><a href="<?= Url::toRoute('page/'.$page->slug)?>"><?= $page->title?></a></li>
+                                ?>
+                                <li><a href="<?= Url::toRoute('page/'.$page->slug)?>"><?= $page->title?></a></li>
                             <?php }?>
                             <li><a href="<?= Url::toRoute('site/contact')?>">Contact</a></li>
                             <?php if ($is_user_have_store){?>
-                            <li><a href="<?= Url::toRoute('/')?>">Seller Dashboard</a></li>
+                                <li><a href="<?= Url::toRoute('/')?>">Seller Dashboard</a></li>
                             <?php }else{?>
-                                <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
+                                <li>
+                                    <a href="
+                                <?=
+                                    Yii::$app->user->isGuest
+                                        ?Url::toRoute('site/signup')
+                                        :Url::toRoute('site/seller')
+                                    ?>
+                                    ">
+                                        Become a Seller</a>
+                                </li>
                             <?php }?>
                         </ul>
                     </div>
@@ -99,7 +108,15 @@ if (!Yii::$app->user->isGuest){
                             <?php if ($is_user_have_store){?>
                                 <li><a href="<?= Url::toRoute('/')?>">Seller Dashboard</a></li>
                             <?php }else{?>
-                                <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
+                                <li>
+                                    <a href="
+                                    <?=
+                                    Yii::$app->user->isGuest
+                                        ?Url::toRoute('site/signup')
+                                        :Url::toRoute('site/seller')
+                                    ?>
+                                ">Become a Seller</a>
+                                </li>
                             <?php }?>
                         </ul>
                     </div>
@@ -140,7 +157,14 @@ if (!Yii::$app->user->isGuest){
                         <?php if ($is_user_have_store){?>
                             <li><a href="<?= Url::toRoute('/')?>">Seller Dashboard</a></li>
                         <?php }else{?>
-                            <li><a href="<?= Url::toRoute('site/seller')?>">Become a Seller</a></li>
+                            <li>
+                                <a href="<?=
+                                Yii::$app->user->isGuest
+                                    ?Url::toRoute('site/signup')
+                                    :Url::toRoute('site/seller')
+                                ?>
+                                ">Become a Seller</a>
+                            </li>
                         <?php }?>
                     </ul>
                 </div>
