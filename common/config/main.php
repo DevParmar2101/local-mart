@@ -1,6 +1,7 @@
 <?php
 
 use common\components\GlobalProperty;
+use frontend\modules\seller\Module;
 use yii\rbac\DbManager;
 
 return [
@@ -10,6 +11,11 @@ return [
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+        'modules' => [
+            'seller' => [
+                'class' => Module::class,
+                ],
+        ],
         'authManager' => [
             'class' => DbManager::class,
         ],
