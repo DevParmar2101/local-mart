@@ -31,7 +31,7 @@ if (!Yii::$app->user->isGuest){
                             <?php }?>
                             <li><a href="<?= Url::toRoute('site/contact')?>">Contact</a></li>
                             <?php if ($is_user_have_store){?>
-                                <li><a href="<?= Url::toRoute('/')?>">Seller Dashboard</a></li>
+                                <li><a href="<?= Url::toRoute('/seller/site/index')?>">Seller Dashboard</a></li>
                             <?php }else{?>
                                 <li>
                                     <a href="
@@ -106,7 +106,7 @@ if (!Yii::$app->user->isGuest){
                             <?php }?>
                             <li><a href="<?= Url::toRoute('site/contact')?>">Contact</a></li>
                             <?php if ($is_user_have_store){?>
-                                <li><a href="<?= Url::toRoute('/')?>">Seller Dashboard</a></li>
+                                <li><a href="<?= Url::toRoute('/seller/site/index')?>">Seller Dashboard</a></li>
                             <?php }else{?>
                                 <li>
                                     <a href="
@@ -155,7 +155,7 @@ if (!Yii::$app->user->isGuest){
                         <?php }?>
                         <li><a href="<?= Url::toRoute('site/contact')?>">Contact</a></li>
                         <?php if ($is_user_have_store){?>
-                            <li><a href="<?= Url::toRoute('/')?>">Seller Dashboard</a></li>
+                            <li><a href="<?= Url::toRoute('/seller/site/index')?>">Seller Dashboard</a></li>
                         <?php }else{?>
                             <li>
                                 <a href="<?=

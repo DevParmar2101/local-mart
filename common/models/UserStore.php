@@ -147,19 +147,34 @@ class UserStore extends BaseActiveRecord
      * @param $status
      * @return string|string[]
      */
-    public function getSellerStatus($status = null)
+    public function getSellerStatus($status = null,$seller_dashboard=null)
     {
-        $array = [
-            self::ACTIVE => self::STATUS_ACTIVE,
-            self::INACTIVE => self::STATUS_INACTIVE,
-            self::PENDING => self::STATUS_PENDING,
-            self::DRAFT => self::STATUS_DRAFT,
-            self::REJECT => self::STATUS_REJECT
-        ];
-        if (!is_null($status)) {
-            return $array[$status];
+        if ($seller_dashboard) {
+            $array = [
+                self::ACTIVE => '<h6 class="badge bg-success">' . self::STATUS_ACTIVE . '</</h6>',
+                self::INACTIVE => '<h6 class="badge bg-secondary">' . self::STATUS_INACTIVE . '</h6>',
+                self::PENDING => '<h6 class="badge bg-warning">' . self::STATUS_PENDING . '</h6>',
+                self::DRAFT => '<h6 class="badge bg-info">' . self::STATUS_DRAFT . '</h6>',
+                self::REJECT => '<h6 class="badge bg-danger">' . self::STATUS_REJECT . '</h6>',
+            ];
+
+            if (!is_null($status)) {
+                return $array[$status];
+            }
+            return $array;
+        } else {
+            $array = [
+                self::ACTIVE => self::STATUS_ACTIVE,
+                self::INACTIVE => self::STATUS_INACTIVE,
+                self::PENDING => self::STATUS_PENDING,
+                self::DRAFT => self::STATUS_DRAFT,
+                self::REJECT => self::STATUS_REJECT
+            ];
+            if (!is_null($status)) {
+                return $array[$status];
+            }
+            return $array;
         }
-        return $array;
     }
 
     /**
