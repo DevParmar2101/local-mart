@@ -1,7 +1,9 @@
 <?php
 
+use common\models\BaseActiveRecord;
 use common\models\UserStore;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /** @var $model array*/
 ?>
@@ -30,8 +32,11 @@ use yii\helpers\Html;
                                 <td><?= $item->store_name?></td>
                                 <td><?= $item->contact_number?></td>
                                 <td><?= (new common\models\StoreSubCategory)->getCategoryName($item->store_category)?></td>
-                                <td><?= $item->getSellerStatus($item->status,\common\models\BaseActiveRecord::ACTIVE)?></td>
-                                <td><a href="cart.html" class="view">view</a></td>
+                                <td><?= $item->getSellerStatus($item->status, BaseActiveRecord::ACTIVE)?></td>
+                                <td>
+                                    <a href="<?= Url::toRoute(['site/view','id' => $item->id])?>" class="view"><i class="fa fa-eye"></i></a>
+                                    <a href="<?= Url::toRoute(['site/document','id'=> $item->id])?>" class="view"><i class="fa fa-file-o"></i></a>
+                                </td>
                             </tr>
                         <?php }?>
                         </tbody>
