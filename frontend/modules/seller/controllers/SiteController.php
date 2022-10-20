@@ -47,6 +47,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        $this->layout = '@frontend/views/layouts/seller-dashboard/main';
         return $this->render('index');
     }
 }
