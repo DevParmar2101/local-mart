@@ -32,12 +32,11 @@
     font-size: 15px;
 }
 .seller-dashboard {
-    background-color: #5d5d5d;
+    background-color: #0b0d0f;
     padding: 10px;
     margin-bottom: 10px;
 }
 .seller-dashboard.active {
-    color:#fff !important;
     background-color: #266bf9;
     padding: 10px;
     font-weight: 600;

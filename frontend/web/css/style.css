@@ -3403,8 +3403,7 @@ body.offcanvas-open {
 }
 
 .blog-sidebar .sidebar-widget-group {
-  padding: 40px 38px;
-  border: 2px solid #e1e1e1;
+  padding: 40px 25px;
   border-radius: 20px;
 }
 @media only screen and (max-width: 479px), only screen and (min-width: 992px) and (max-width: 1199px) {
