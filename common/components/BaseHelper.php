@@ -15,6 +15,13 @@ class BaseHelper extends BaseArrayHelper
      */
     public function validateAction($controller, $action=null, $module=null): bool
     {
-
+        if (\Yii::$app->controller->id === $controller && \Yii::$app->controller->action->id === $action && \Yii::$app->controller->module->id === $module){
+            return true;
+        }elseif (\Yii::$app->controller->id === $controller && \Yii::$app->controller->module->id === $module){
+            return true;
+        }elseif (\Yii::$app->controller->id === $controller && \Yii::$app->controller->action->id === $action) {
+            return true;
+        }
+        return false;
     }
 }
