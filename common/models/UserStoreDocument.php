@@ -13,8 +13,10 @@ use Yii;
  * @property int|null $status
  * @property string|null $error_message
  * @property int|null $document_verified_by
+ * @property int|null $store_id
  *
  * @property User $documentVerifiedBy
+ * @property UserStore $userStore
  */
 class UserStoreDocument extends BaseActiveRecord
 {
@@ -32,7 +34,7 @@ class UserStoreDocument extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['status', 'document_verified_by'], 'integer'],
+            [['status', 'document_verified_by', 'store_id'], 'integer'],
             [['document_name', 'document', 'error_message'], 'string', 'max' => 255],
             [['document_verified_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['document_verified_by' => 'id']],
         ];
@@ -58,8 +60,16 @@ class UserStoreDocument extends BaseActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getDocumentVerifiedBy()
+    public function getDocumentVerifiedBy(): \yii\db\ActiveQuery
     {
         return $this->hasOne(User::class, ['id' => 'document_verified_by']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserStore(): \yii\db\ActiveQuery
+    {
+        return $this->hasOne(UserStore::class, ['id' => 'store_id']);
     }
 }
