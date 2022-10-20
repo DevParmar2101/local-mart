@@ -25,7 +25,7 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'signup', 'index'],
+                        'actions' => ['login', 'error', 'signup', 'index', 'shop-list'],
                         'allow' => true,
                     ],
                 ],
@@ -51,13 +51,26 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex()
+    /**
+     * @return string
+     */
+    public function actionIndex(): string
+    {
+        $this->layout = $this->seller_dashboard_layout;
+
+        return $this->render('index');
+    }
+
+    /**
+     * @return string
+     */
+    public function actionShopList(): string
     {
         $this->layout = $this->seller_dashboard_layout;
         $user_id = \Yii::$app->user->identity->id;
         $model = UserStore::find()->where(['user_id' => $user_id])->all();
 
-        return $this->render('index',[
+        return $this->render('shop-list',[
             'model' => $model
         ]);
     }
