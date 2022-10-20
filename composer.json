@@ -22,7 +22,8 @@
         "kartik-v/yii2-widget-fileinput": "dev-master",
         "asmoday74/yii2-ckeditor5": "*",
         "sangroya/yii2-ckeditor5": "*",
-        "twilio/sdk": "^6.42"
+        "twilio/sdk": "^6.42",
+        "wbraganca/yii2-dynamicform": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
