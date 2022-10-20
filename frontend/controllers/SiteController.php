@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\BaseActiveRecord;
+use common\models\Cities;
 use common\models\ExtraPageContent;
 use common\models\User;
 use common\models\UserStore;
@@ -389,6 +390,36 @@ class SiteController extends Controller
             ];
         }
         return $response;
+    }
+
+    /**
+     * @param $id
+     * @return void
+     */
+    public function actionCityList($id)
+    {
+        $countModel = Cities::find()->where(['state_id' => $id])->count();
+
+        $model = Cities::find()->where(['state_id' => $id])->orderBy(['id' => SORT_DESC])->all();
+
+        $data = [];
+
+        if ($countModel > 0){
+            foreach ($model as $key) {
+                /** @var $key Cities*/
+                $data[$key->id] = $key->city;
+            }
+            asort($data);
+            echo "<option></option>";
+            foreach ($data as $key => $val){
+                if (!empty($val)) {
+                    echo "<option value='".$key."'>".$val."</option>";
+                }
+            }
+        }
+        else{
+            echo "<option></option>";
+        }
     }
 
 }
