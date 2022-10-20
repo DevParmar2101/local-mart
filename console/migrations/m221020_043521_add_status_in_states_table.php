@@ -13,7 +13,7 @@ class m221020_043521_add_status_in_states_table extends Migration
      */
     public function safeUp()
     {
-
+        $this->addColumn(States::tableName(),'status',$this->tinyInteger(1)->defaultValue(0));
     }
 
     /**
