@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "user_store".
@@ -175,5 +176,13 @@ class UserStore extends BaseActiveRecord
             return $array[$verified];
         }
         return $array;
+    }
+
+    /**
+     * @return array
+     */
+    public function getStateName(): array
+    {
+        return ArrayHelper::map(States::find()->where(['status' => BaseActiveRecord::ACTIVE])->all(),'id','name');
     }
 }
