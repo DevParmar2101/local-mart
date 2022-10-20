@@ -74,4 +74,22 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    public function actionEdit($id)
+    {
+        $model = UserStore::find()->where(['id' => $id])->one();
+
+        return $this->render('edit',[
+            'model' => $model
+        ]);
+    }
+
+    public function actionDocument($id)
+    {
+        $model = UserStore::find()->where(['id' => $id])->one();
+
+        return $this->render('document',[
+            'model' => $model
+        ]);
+    }
 }
