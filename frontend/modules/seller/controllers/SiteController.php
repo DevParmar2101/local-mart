@@ -10,6 +10,11 @@ class SiteController extends Controller
 {
 
     /**
+     * @var string
+     */
+     public string $seller_dashboard_layout = '@frontend/views/layouts/seller-dashboard/main';
+
+     /**
      * @return array[]
      */
     public function behaviors()
@@ -47,7 +52,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $this->layout = '@frontend/views/layouts/seller-dashboard/main';
+        $this->layout = $this->seller_dashboard_layout;
         return $this->render('index');
     }
 }
