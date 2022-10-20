@@ -10,12 +10,12 @@ return [
         '@npm'   => '@vendor/npm-asset',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    'components' => [
-        'modules' => [
-            'seller' => [
-                'class' => Module::class,
-                ],
+    'modules' => [
+        'seller' => [
+            'class' => Module::class,
         ],
+    ],
+    'components' => [
         'authManager' => [
             'class' => DbManager::class,
         ],
