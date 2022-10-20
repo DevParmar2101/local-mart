@@ -4,6 +4,9 @@ use common\models\UserStore;
 use kartik\select2\Select2;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\web\JsExpression;
+use yii\web\View;
 
 $this->title = 'Seller';
 /** @var $model UserStore */
@@ -47,10 +50,42 @@ $this->title = 'Seller';
 
                             <div class="row">
                                 <div class="col-md-6 col-12">
-                                    <?= $form->field($model,'state')->textInput(['placeholder' => 'State'])->label(false)?>
+                                    <?php
+                                    $format = <<< SCRIPT
+function format(state) {
+    if (!state.id) return state.text; // optgroup
+
+    return state.text;
+}
+SCRIPT;
+                                    $escape = new JsExpression("function(m) { return m; }");
+                                    $this->registerJs($format, View::POS_HEAD);
+                                    ?>
+                                    <?php
+                                    $url = Url::toRoute(['/site/city-list']);
+                                    echo $form->field($model,'state')->widget(Select2::class,[
+                                        'data'=> $model->getStateName(),
+                                        'options' => [
+                                                'placeholder' => 'Select Selling Type',
+                                            'onchange' => '
+                                                    $.post("'.$url.'?id="+$(this).val(), function( data ) {
+                    $("select#vehicle-city").html( data );
+                                    });'
+                                        ],
+                                        'pluginOptions' => [
+                                            'templateResult' => new JsExpression('format'),
+                                            'templateSelection' => new JsExpression('format'),
+                                            'escapeMarkup' => $escape,
+                                            'allowClear' => true,
+                                        ]
+                                    ])->label(false)?>
                                 </div>
                                 <div class="col-md-6 col-12">
-                                    <?= $form->field($model,'city')->textInput(['placeholder' =>'City'])->label(false)?>
+                                    <?= $form->field($model,'city')->widget(Select2::class,[
+                                            'options' => [
+                                                    'placeholder' => 'Select Cities',
+                                            ],
+                                    ])->label(false)?>
                                 </div>
                             </div>
 
