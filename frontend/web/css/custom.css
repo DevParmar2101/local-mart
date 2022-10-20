@@ -24,3 +24,21 @@
 .seller-form-title {
     font-weight: 200 !important;
 }
+
+.blog-sidebar .category-post li a {
+    color: #fff !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+.seller-dashboard {
+    background-color: #5d5d5d;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.seller-dashboard.active {
+    color:#fff !important;
+    background-color: #266bf9;
+    padding: 10px;
+    font-weight: 600;
+}
