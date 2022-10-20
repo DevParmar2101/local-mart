@@ -5,6 +5,7 @@ use common\models\UserStore;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+$this->title = 'Shop List';
 /** @var $model array*/
 ?>
 <div class="row">
