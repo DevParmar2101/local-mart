@@ -41,3 +41,7 @@
     padding: 10px;
     font-weight: 600;
 }
+.badge {
+    padding: .50rem .55rem !important;
+    font-size: .85em !important;
+}
