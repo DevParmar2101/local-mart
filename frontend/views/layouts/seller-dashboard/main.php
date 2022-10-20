@@ -31,11 +31,11 @@ AppAsset::register($this);
         <div class="blog-grid pb-100px pt-100px main-blog-page single-blog-page sidebar">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 order-lg-last col-md-12 order-md-first">
+                    <div class="col-lg-9 order-lg-last col-md-12 order-md-first">
                         <?= Alert::widget()?>
                         <?= $content ?>
                     </div>
-                    <div class="col-lg-4 order-lg-first col-md-12 order-md-last mt-md-50px mt-lm-50px" data-aos="fade-up" data-aos-delau="200">
+                    <div class="col-lg-3 order-lg-first col-md-12 order-md-last mt-md-50px mt-lm-50px" data-aos="fade-up" data-aos-delau="200">
                         <div class="blog-sidebar mr-20px">
                             <?= $this->render('left_sidebar'); ?>
                         </div>
