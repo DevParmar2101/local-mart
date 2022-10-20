@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "user_store_document".
@@ -58,17 +59,17 @@ class UserStoreDocument extends BaseActiveRecord
     /**
      * Gets query for [[DocumentVerifiedBy]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getDocumentVerifiedBy(): \yii\db\ActiveQuery
+    public function getDocumentVerifiedBy(): ActiveQuery
     {
         return $this->hasOne(User::class, ['id' => 'document_verified_by']);
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getUserStore(): \yii\db\ActiveQuery
+    public function getUserStore(): ActiveQuery
     {
         return $this->hasOne(UserStore::class, ['id' => 'store_id']);
     }
