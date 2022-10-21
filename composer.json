@@ -23,7 +23,9 @@
         "asmoday74/yii2-ckeditor5": "*",
         "sangroya/yii2-ckeditor5": "*",
         "twilio/sdk": "^6.42",
-        "wbraganca/yii2-dynamicform": "*"
+        "wbraganca/yii2-dynamicform": "*",
+        "symfony/dom-crawler": "^6.0",
+      "ext-dom": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
