@@ -1,5 +1,6 @@
 <?php
 
+use common\models\UserStore;
 use yii\db\Migration;
 
 /**
@@ -29,6 +30,7 @@ class m221021_093638_create_product_table extends Migration
             'created_at' => $this->dateTime(),
             'updated_at' => $this->dateTime(),
         ]);
+        $this->addForeignKey('fk-forMakingStoreId_FromUserStore_Id','product','store_id', UserStore::tableName(),'id');
     }
 
     /**
