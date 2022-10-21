@@ -1969,6 +1969,28 @@ body.offcanvas-open {
   border: 1px solid #4e4e4e;
   color: #fff;
 }
+
+.btn-warning.blog-btn {
+  background: #ffca2c !important;
+  width: 180px;
+  height: 50px;
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 600;
+  border: 1px solid #efb608 !important;
+  color: #232121;
+}
+
+.btn-warning.blog-btn:hover {
+  background: #efb608 !important;
+  width: 180px;
+  height: 50px;
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 600;
+  border: 1px solid #efb608 !important;
+  color: #232121;
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (max-width: 767px) {
   .btn-primary.blog-btn {
     font-size: 16px;
