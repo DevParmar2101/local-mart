@@ -13,6 +13,12 @@ class m221021_093305_add_fields_in_settings_table extends Migration
      */
     public function safeUp()
     {
+        $this->addColumn(Settings::tableName(),'facebook_link',$this->string(255));
+        $this->addColumn(Settings::tableName(),'instagram_link',$this->string(255));
+        $this->addColumn(Settings::tableName(),'twitter_link',$this->string(255));
+        $this->addColumn(Settings::tableName(),'address',$this->text());
+        $this->addColumn(Settings::tableName(),'contact_number',$this->string(15));
+        $this->addColumn(Settings::tableName(),'email',$this->string(100));
     }
 
     /**
