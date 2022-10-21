@@ -13,8 +13,10 @@ class m221021_094903_create_product_image_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%product_image}}', [
-            'id' => $this->primaryKey(),
+            'product_id' => $this->integer(11),
+            'image' => $this->string(255),
         ]);
+        $this->addForeignKey('fk-Product_id-ProductImage','product_image','product_id', 'product','id');
     }
 
     /**
