@@ -13,9 +13,7 @@ class m221020_124328_add_store_id_in_user_store_document_table extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn(UserStoreDocument::tableName(),'store_id',$this->integer(11));
 
-        $this->addForeignKey('fk-StoreId_Add_in_UserStoreDocument', UserStoreDocument::tableName(),'store_id','user_store','id');
     }
 
     /**

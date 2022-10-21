@@ -3,7 +3,6 @@
 namespace frontend\modules\seller\controllers;
 
 use common\models\UserStore;
-use common\models\UserStoreDocument;
 use Yii;
 use yii\base\Exception;
 use yii\filters\AccessControl;
