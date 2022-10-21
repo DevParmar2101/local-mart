@@ -24,6 +24,12 @@ use yii\helpers\ArrayHelper;
  * @property int|null $purchase_type
  * @property string|null $created_at
  * @property string|null $updated_at
+ * @property string|null $document_one
+ * @property int|null $document_one_verified
+ * @property string|null $document_one_error_message
+ * @property string|null $document_two
+ * @property int|null $document_two_verified
+ * @property string|null $document_two_error_message
  *
  * @property StoreCategory $storeCategory
  * @property User $user
@@ -71,13 +77,21 @@ class UserStore extends BaseActiveRecord
     {
         return [
             [['first_name', 'last_name', 'contact_number', 'store_name', 'state', 'city', 'address', 'zip_code'], 'required'],
+
             [['is_number_verified', 'user_id', 'state', 'city', 'zip_code', 'status', 'store_category', 'purchase_type'], 'integer'],
+
             [['address'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['first_name', 'last_name', 'store_name'], 'string', 'max' => 255],
-            [['contact_number'], 'string', 'max' => 15],
+
+            [['created_at', 'updated_at', 'document_one', 'document_one_verified', 'document_one_error_message', 'document_two', 'document_two_verified', 'document_two_error_message'], 'safe'],
+
+            [['first_name', 'last_name', 'store_name', 'document_one', 'document_one_error_message', 'document_two', 'document_two_error_message'], 'string', 'max' => 255],
+
+            [['contact_number', 'document_one_verified', 'document_two_verified'], 'string', 'max' => 15],
+
             [['store_category'], 'exist', 'skipOnError' => true, 'targetClass' => StoreCategory::class, 'targetAttribute' => ['store_category' => 'id']],
+
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
+
         ];
     }
 
