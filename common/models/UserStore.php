@@ -62,6 +62,7 @@ class UserStore extends BaseActiveRecord
     const STATUS_DRAFT = 'Draft';
     const STATUS_REJECT = 'Reject';
 
+    const DOCUMENT = 'document_section';
     /**
      * {@inheritdoc}
      */
@@ -82,11 +83,13 @@ class UserStore extends BaseActiveRecord
 
             [['address'], 'string'],
 
-            [['created_at', 'updated_at', 'document_one', 'document_one_verified', 'document_one_error_message', 'document_two', 'document_two_verified', 'document_two_error_message'], 'safe'],
+            [['created_at', 'updated_at', 'document_one_verified', 'document_one_error_message', 'document_two_verified', 'document_two_error_message'], 'safe'],
 
             [['first_name', 'last_name', 'store_name', 'document_one', 'document_one_error_message', 'document_two', 'document_two_error_message'], 'string', 'max' => 255],
 
             [['contact_number', 'document_one_verified', 'document_two_verified'], 'string', 'max' => 15],
+
+            [['document_one', 'document_two'], 'required', 'on' => self::DOCUMENT],
 
             [['store_category'], 'exist', 'skipOnError' => true, 'targetClass' => StoreCategory::class, 'targetAttribute' => ['store_category' => 'id']],
 
