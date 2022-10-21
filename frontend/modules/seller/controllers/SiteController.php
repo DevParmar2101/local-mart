@@ -3,6 +3,7 @@
 namespace frontend\modules\seller\controllers;
 
 use common\models\UserStore;
+use common\models\UserStoreDocument;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -106,11 +107,10 @@ class SiteController extends Controller
     public function actionDocument($id): string
     {
         $this->layout = $this->seller_dashboard_layout;
+        $model = UserStore::findOne($id);
 
-        $model = UserStore::find()->where(['id' => $id])->one();
-
-        return $this->render('document',[
-            'model' => $model
-        ]);
+       return $this->render('document',[
+           'model' => $model
+       ]);
     }
 }
