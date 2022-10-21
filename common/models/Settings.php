@@ -22,6 +22,13 @@ use Yii;
  * @property string|null $logo_light
  * @property string|null $logo_transparent
  * @property string|null $favicon
+ *
+ * @property string|null $facebook_link
+ * @property string|null $instagram_link
+ * @property string|null $twitter_link
+ * @property string|null $address
+ * @property string|null $contact_number
+ * @property string|null $email
  */
 class Settings extends BaseActiveRecord
 {
@@ -40,10 +47,19 @@ class Settings extends BaseActiveRecord
     {
         return [
             [['app_name'], 'string', 'max' => 50],
-            [['email_host', 'email_username'], 'string', 'max' => 100],
+
+            [['email_host', 'email_username', 'email'], 'string', 'max' => 100],
+
             [['email_password'], 'string', 'max' => 225],
+
+            [['contact_number'], 'string', 'max' => 15],
+
+            [['address'], 'string'],
+
             [['email_port', 'email_encryption'], 'string', 'max' => 10],
-            [['twilio_account_sid', 'twilio_auth_token', 'twilio_service_sid', 'logo_dark', 'logo_light', 'logo_transparent', 'favicon'], 'string', 'max' => 255],
+
+            [['twilio_account_sid', 'twilio_auth_token', 'twilio_service_sid', 'logo_dark', 'logo_light', 'logo_transparent', 'favicon', 'facebook_link', 'twitter_link', 'instagram_link'], 'string', 'max' => 255],
+
             [['twilio_phone_number'], 'string', 'max' => 15],
         ];
     }
@@ -69,6 +85,12 @@ class Settings extends BaseActiveRecord
             'logo_light' => 'Logo Light',
             'logo_transparent' => 'Logo Transparent',
             'favicon' => 'Favicon',
+            'facebook_link' => 'Facebook Link',
+            'twitter_link' => 'Twitter Link',
+            'instagram_link' => 'Instagram Link',
+            'address' => 'Address',
+            'contact_number' => 'Contact Number',
+            'email' => 'Contact Email',
         ];
     }
 }
