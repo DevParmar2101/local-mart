@@ -5,9 +5,13 @@ namespace frontend\modules\seller\controllers;
 use common\models\UserStore;
 use common\models\UserStoreDocument;
 use Yii;
+use yii\base\Exception;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\FileHelper;
 use yii\web\Controller;
+use yii\web\Response;
+use yii\web\UploadedFile;
 
 class SiteController extends Controller
 {
@@ -79,7 +83,7 @@ class SiteController extends Controller
 
     /**
      * @param $id
-     * @return string|\yii\web\Response
+     * @return string|Response
      */
     public function actionEdit($id)
     {
@@ -102,12 +106,59 @@ class SiteController extends Controller
 
     /**
      * @param $id
-     * @return string
+     * @return string|Response
+     * @throws Exception
      */
-    public function actionDocument($id): string
+    public function actionDocument($id)
     {
         $this->layout = $this->seller_dashboard_layout;
         $model = UserStore::findOne($id);
+        $model->scenario = $model::DOCUMENT;
+        $path = UserStore::getPath();
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path,$mode = 0777,$recursive = true);
+        }
+        $old_document_one = null;
+        $old_document_two = null;
+
+        if ($model->document_one) {
+            $old_document_one = $model->document_one;
+        }
+
+        if ($model->document_two) {
+            $old_document_two = $model->document_two;
+        }
+
+        if ($this->request->isPost && $model->load(Yii::$app->request->post()))
+        {
+            $document_one = UploadedFile::getInstance($model,'document_one');
+            $document_two = UploadedFile::getInstance($model,'document_two');
+
+            if ($document_one) {
+                $model->document_one = $model->getImageName($document_one);
+            }else{
+                $model->document_one = $old_document_one;
+            }
+
+            if ($document_two) {
+                $model->document_two = $model->getImageName($document_two);
+            }else{
+                $model->document_two = $old_document_two;
+            }
+
+            if ($model->save(false)) {
+                if ($document_one) {
+                    $document_one->saveAs(UserStore::getPath($model->document_one));
+                }
+
+                if ($document_two) {
+                    $document_two->saveAs(UserStore::getPath($model->document_two));
+                }
+
+                Yii::$app->session->setFlash('success','Document Upload Successfully !');
+                return  $this->redirect(['shop-list']);
+            }
+        }
 
        return $this->render('document',[
            'model' => $model
