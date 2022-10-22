@@ -1,8 +1,10 @@
 <?php
 
+use common\models\StoreSubCategory;
 use common\models\UserStore;
 use kartik\select2\Select2;
 use yii\bootstrap5\ActiveForm;
+use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\JsExpression;
 use yii\web\View;
@@ -115,7 +117,7 @@ SCRIPT;
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <?= $form->field($model,'store_category')->widget(Select2::class,[
-                                'data' => (new common\models\StoreSubCategory)->getCategoryName(),
+                                'data' => (new StoreSubCategory)->getCategoryName(),
                                 'options' => [
                                         'placeholder' => 'Select Category',
                                 ],
@@ -138,7 +140,7 @@ SCRIPT;
                 </div>
 
                 <div class="place-order mt-25">
-                    <?= \yii\helpers\Html::submitButton('Save',['class' => 'btn btn-primary blog-btn'])?>
+                    <?= Html::submitButton('Save',['class' => 'btn btn-primary blog-btn'])?>
                 </div>
                 <?php ActiveForm::end()?>
             </div>
