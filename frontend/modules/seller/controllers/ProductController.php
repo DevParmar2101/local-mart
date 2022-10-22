@@ -62,4 +62,9 @@ class ProductController extends Controller
             'model' => $model
         ]);
     }
+
+    public function actionCreate()
+    {
+        return $this->render('create');
+    }
 }
