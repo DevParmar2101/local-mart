@@ -46,13 +46,21 @@ use yii\bootstrap5\ActiveForm;
                         ]
                 ]) ?>
             </div>
+            <div class="col-md-6 col-12">
+                <?= $form->field($model, 'is_featured')->widget(Select2::class,[
+                    'data' => $model->getStatus(),
+                    'options' => ['placeholder' => 'Select Is Featured'],
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                    ]
+                ]) ?>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-md-12 col-12">
                 <?= $form->field($model,'image')->widget(FileInput::class,[
                         'options' => [
-                                'accept' => 'image/*',
                                 'multiple' => false,
                         ],
                         'pluginOptions' => [
