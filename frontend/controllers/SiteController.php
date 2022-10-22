@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\BaseActiveRecord;
 use common\models\Cities;
 use common\models\ExtraPageContent;
+use common\models\StoreSubCategory;
 use common\models\User;
 use common\models\UserStore;
 use frontend\models\ResendVerificationEmailForm;
@@ -89,8 +90,14 @@ class SiteController extends Controller
             ->where(['use_for' => ExtraPageContent::HOMEPAGE_BANNER])
             ->andWhere(['status' => BaseActiveRecord::ACTIVE])
             ->all();
+
+        $sub_categories = StoreSubCategory::find()
+            ->where(['is_featured' => BaseActiveRecord::ACTIVE ])
+            ->all();
+
         return $this->render('index',[
-            'banner_content' => $banner_content
+            'banner_content' => $banner_content,
+            'sub_categories' => $sub_categories
         ]);
     }
 
