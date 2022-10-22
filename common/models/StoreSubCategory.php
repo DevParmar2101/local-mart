@@ -39,7 +39,7 @@ class StoreSubCategory extends BaseActiveRecord
             [['category_name', 'user_id', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg,png,jpeg'],
-            [['sub_category', 'image'], 'string', 'max' => 255],
+            [['sub_category'], 'string', 'max' => 255],
         ];
     }
 

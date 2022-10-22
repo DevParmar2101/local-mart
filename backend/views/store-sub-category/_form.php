@@ -1,5 +1,7 @@
 <?php
 
+use kartik\file\FileInput;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
 
@@ -21,7 +23,7 @@ use yii\bootstrap5\ActiveForm;
 
         <div class="row">
             <div class="col-md-6 col-12">
-                <?= $form->field($model, 'category_name')->widget(\kartik\select2\Select2::class,[
+                <?= $form->field($model, 'category_name')->widget(Select2::class,[
                         'data' => $model->getCategoryName(),
                     'options' => ['placeholder' => 'Select Status'],
                     'pluginOptions' => [
@@ -36,13 +38,33 @@ use yii\bootstrap5\ActiveForm;
 
         <div class="row">
             <div class="col-md-6 col-12">
-                <?= $form->field($model, 'status')->widget(\kartik\select2\Select2::class,[
+                <?= $form->field($model, 'status')->widget(Select2::class,[
                         'data' => $model->getStatus(),
                         'options' => ['placeholder' => 'Select Status'],
                         'pluginOptions' => [
                                 'allowClear' => true,
                         ]
                 ]) ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <?= $form->field($model,'image')->widget(FileInput::class,[
+                        'options' => [
+                                'accept' => 'image/*',
+                                'multiple' => false,
+                        ],
+                        'pluginOptions' => [
+                            'initialPreview' => $model->image ? $model->getImage('image','Not found','img-thumbnail',false) : false,
+                            'initialPreviewData' => true,
+                            'showPreview' => true,
+                            'showCaption' => true,
+                            'showRemove' => false,
+                            'showCancel' => false,
+                            'showUpload' => false,
+                        ],
+                ])?>
             </div>
         </div>
 
