@@ -24,19 +24,18 @@ use yii\helpers\Url;
                             <h4 class="footer-herading">Follow Us</h4>
 
                             <ul class="link-follow">
-                                <li>
-                                    <a class="m-0" title="Twitter" target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                </li>
-                                <li>
-                                    <a title="Tumblr" target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-tumblr" aria-hidden="true"></i>
+                                <li class="">
+                                    <a class="m-0" title="Twitter" target="_blank" href="<?= Yii::$app->global->facebook_link?>">
+                                        <i class="fa fa-facebook" aria-hidden="true"></i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a title="Facebook" target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-twitter" aria-hidden="true"></i>
+                                <li class="">
+                                    <a title="Tumblr" target="_blank" rel="noopener noreferrer" href="<?= Yii::$app->global->twitter_link?>">
+                                        <i class="fa fa-twitter" aria-hidden="true"></i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a title="Instagram" target="_blank" rel="noopener noreferrer" href="#"><i class="fa fa-instagram" aria-hidden="true"></i>
+                                <li class="">
+                                    <a title="Instagram" target="_blank" rel="noopener noreferrer" href="<?= Yii::$app->global->instagram_link?>"><i class="fa fa-instagram" aria-hidden="true"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -83,11 +82,9 @@ use yii\helpers\Url;
                             <div class="footer-links">
                                 <div class="footer-row">
                                     <ul class="align-items-center">
-                                        <li class="li"><a class="single-link" href="my-account.html">My Account</a></li>
-                                        <li class="li"><a class="single-link" href="contact.html">Contact</a></li>
-                                        <li class="li"><a class="single-link" href="cart.html">Shopping cart</a></li>
-                                        <li class="li"><a class="single-link" href="shop-left-sidebar.html">Shop</a></li>
-                                        <li class="li"><a class="single-link" href="login.html">Services Login</a></li>
+                                        <li class="li"><a class="single-link" href="<?= Url::toRoute(['profile/account'])?>">My Account</a></li>
+                                        <li class="li"><a class="single-link" href="<?= Url::toRoute(['profile/change-password'])?>">Change Password</a></li>
+                                        <li class="li"><a class="single-link" href="<?= Url::toRoute(['site/contact'])?>">Contact</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -100,10 +97,9 @@ use yii\helpers\Url;
                             <h4 class="footer-herading">Contact Info</h4>
                             <div class="footer-links">
                                 <!-- News letter area -->
-                                <p class="address">Address: Your Address Goes Here.</p>
-                                <p class="phone">Phone/Fax:<a href="tel:0123456789"> 0123456789</a></p>
-                                <p class="mail">Email:<a href="mailto:demo@example.com"> demo@example.com</a></p>
-                                <p class="mail"><a href="https://demo@example.com"> demo@example.com</a></p>
+                                <p class="address"><b>Address</b> : <?= Yii::$app->global->address?></p>
+                                <p class="phone">Phone/Fax:<a href="tel:<?= Yii::$app->global->contact_number?>"> <?= Yii::$app->global->contact_number?></a></p>
+                                <p class="mail">Email:<a href="mailto:<?= Yii::$app->global->email?>"> <?= Yii::$app->global->email?></a></p>
                                 <!-- News letter area  End -->
                             </div>
                         </div>
