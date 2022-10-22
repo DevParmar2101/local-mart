@@ -9,6 +9,7 @@ use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 use yii\web\UploadedFile;
 
 /**
@@ -66,7 +67,7 @@ class ExtraPageContentController extends Controller
     /**
      * Creates a new ExtraPageContent model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return string|\yii\web\Response
+     * @return string|Response
      * @throws Exception
      */
     public function actionCreate()
@@ -116,7 +117,7 @@ class ExtraPageContentController extends Controller
      * Updates an existing ExtraPageContent model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @return string|\yii\web\Response
+     * @return string|Response
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
@@ -174,7 +175,7 @@ class ExtraPageContentController extends Controller
      * Deletes an existing ExtraPageContent model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @return \yii\web\Response
+     * @return Response
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
