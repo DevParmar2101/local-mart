@@ -4,9 +4,12 @@ namespace backend\controllers;
 
 use common\models\StoreSubCategory;
 use common\models\StoreSubCategorySearch;
+use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * StoreSubCategoryController implements the CRUD actions for StoreSubCategory model.
@@ -63,22 +66,35 @@ class StoreSubCategoryController extends Controller
     /**
      * Creates a new StoreSubCategory model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return string|\yii\web\Response
+     * @return string|Response
      */
     public function actionCreate()
     {
         $model = new StoreSubCategory();
+        $path = StoreSubCategory::getPath();
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path,$mode = 0777, $recursive = true);
+        }
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
+
+                $image = UploadedFile::getInstance($model,'image');
+                if ($image) {
+                    $model->image = $model->getImageName($image);
+                }
                 $model->user_id = \Yii::$app->user->identity->id;
-                $model->save();
-                return $this->redirect(['view', 'id' => $model->id]);
+                if ($model->save()) {
+
+                    if ($image) {
+                        $image->saveAs(StoreSubCategory::getPath($model->image));
+                    }
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
         }
-
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -88,15 +104,37 @@ class StoreSubCategoryController extends Controller
      * Updates an existing StoreSubCategory model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @return string|\yii\web\Response
+     * @return string|Response
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $path = StoreSubCategory::getPath();
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path,$mode = 0777, $recursive = true);
+        }
+        $old_image = null;
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->image) {
+            $old_image = $model->image;
+        }
+
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $image = UploadedFile::getInstance($model,'image');
+
+            if ($image) {
+                $model->image = $model->getImageName($image);
+            }else{
+                $model->image = $old_image;
+            }
+
+            if ($model->save()) {
+                if ($image) {
+                    $image->saveAs(StoreSubCategory::getPath($model->image));
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [
@@ -108,7 +146,7 @@ class StoreSubCategoryController extends Controller
      * Deletes an existing StoreSubCategory model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @return \yii\web\Response
+     * @return Response
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
