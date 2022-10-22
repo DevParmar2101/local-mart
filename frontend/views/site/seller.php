@@ -130,7 +130,7 @@ SCRIPT;
 
                             <div class="Place-order mt-25">
                                 <?= Html::submitButton('Save', ['class' => 'btn btn-primary blog-btn']) ?>
-                            </div>
+                             </div>
                             <?php ActiveForm::end()?>
                     </div>
                 </div>
