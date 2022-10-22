@@ -45,3 +45,20 @@
     padding: .50rem .55rem !important;
     font-size: .85em !important;
 }
+.is_featured_image {
+    height: 19rem;
+    background-color: rgba(0, 0, 0, 0.21);
+    color: white;
+}
+.style-one .single-banner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    filter: grayscale(40%);
+}
+.style-one .single-banner .banner-content .title {
+    color: #ffffff;
+}
+.style-one .single-banner .banner-content .category {
+    color: #fff;
+}

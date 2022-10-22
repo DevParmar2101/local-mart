@@ -5,6 +5,7 @@
 /** @var $sub_categories array*/
 
 use common\models\ExtraPageContent;
+use common\models\StoreSubCategory;
 use yii\helpers\Html;
 
 $this->title = 'My Yii Application';
@@ -58,17 +59,21 @@ $this->title = 'My Yii Application';
 <div class="banner-area style-one pt-100px pb-100px">
     <div class="container">
         <div class="row">
+            <?php foreach ($sub_categories as $category) {
+                /** @var $category StoreSubCategory*/
+                ?>
             <div class="col-md-6">
-                <div class="single-banner nth-child-2 mb-30px mb-lm-30px mt-lm-30px ">
-                    <?= Html::img(Yii::getAlias('@web/images/banner/4.webp'),['alt'=>'Banner Four'])?>
+                <div class="single-banner nth-child-2 mb-30px mb-lm-30px mt-lm-30px is_featured_image">
+                    <?= $category->getImage('image','Not Found','')?>
 <!--                    <img src="assets/images/banner/4.webp" alt="">-->
                     <div class="banner-content nth-child-2">
-                        <h3 class="title">Headphones</h3>
+                        <h3 class="title"><?= $category->sub_category?></h3>
                         <span class="category">From $95.00</span>
                         <a href="shop-left-sidebar.html" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
+            <?php }?>
         </div>
     </div>
 </div>
@@ -1143,40 +1148,6 @@ $this->title = 'My Yii Application';
     </div>
 </div>
 <!-- Testimonial area end-->
-<!-- Brand area start -->
-<div class="brand-area pt-100px pb-100px">
-    <div class="container">
-        <div class="brand-slider swiper-container">
-            <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#">
-                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/partner/1.png'),['alt' =>'Product','class' =>'img-fluid'])?>
-<!--                        <img class=" img-fluid" src="assets/images/partner/1.png" alt="" />-->
-                    </a>
-                </div>
-                <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#">
-                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/partner/2.png'),['alt' =>'Product','class' =>'img-fluid'])?>
-<!--                        <img class=" img-fluid" src="assets/images/partner/2.png" alt="" />-->
-                    </a>
-                </div>
-                <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#">
-                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/partner/3.png'),['alt' =>'Product','class' =>'img-fluid'])?>
-<!--                        <img class=" img-fluid" src="assets/images/partner/3.png" alt="" />-->
-                    </a>
-                </div>
-                <div class="swiper-slide brand-slider-item text-center">
-                    <a href="#">
-                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/partner/4.png'),['alt' =>'Product','class' =>'img-fluid'])?>
-<!--                        <img class=" img-fluid" src="assets/images/partner/4.png" alt="" />-->
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Brand area end -->
 <!-- Blog area start from here -->
 <div class="main-blog-area pb-100px">
     <div class="container">
