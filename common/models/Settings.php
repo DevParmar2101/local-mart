@@ -22,7 +22,6 @@ use Yii;
  * @property string|null $logo_light
  * @property string|null $logo_transparent
  * @property string|null $favicon
- *
  * @property string|null $facebook_link
  * @property string|null $instagram_link
  * @property string|null $twitter_link
