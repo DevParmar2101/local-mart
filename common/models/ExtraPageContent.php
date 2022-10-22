@@ -49,7 +49,9 @@ class ExtraPageContent extends BaseActiveRecord
             [['title','sub_title','use_for','status'],'required'],
             [['description'], 'string'],
             [['show_button', 'use_for', 'status'], 'integer'],
-            [['title', 'sub_title', 'image', 'child_image', 'button_title', 'button_url'], 'string', 'max' => 255],
+            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg,png,jpeg'],
+            [['child_image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg,png,jpeg'],
+            [['title', 'sub_title', 'button_title', 'button_url'], 'string', 'max' => 255],
         ];
     }
 

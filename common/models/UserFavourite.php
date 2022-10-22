@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use Faker\Provider\Base;
 use Yii;
 
 /**
@@ -13,7 +14,7 @@ use Yii;
  * @property Product $product
  * @property User $user
  */
-class UserFavourite extends \yii\db\ActiveRecord
+class UserFavourite extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}

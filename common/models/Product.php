@@ -27,7 +27,7 @@ use Yii;
  * @property UserStore $store
  * @property UserFavourite[] $userFavourites
  */
-class Product extends \yii\db\ActiveRecord
+class Product extends BaseActiveRecord
 {
     /**
      * {@inheritdoc}
