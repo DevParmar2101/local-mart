@@ -62,3 +62,17 @@
 .style-one .single-banner .banner-content .category {
     color: #fff;
 }
+.btn-primary {
+    color: #fff;
+    background: #266bf9;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+    border-color: #266bf9;
+}
+.btn-primary:hover {
+    color: #fff;
+    background: #2162e7;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+    border-color: #266bf9;
+}
