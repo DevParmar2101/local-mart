@@ -22,6 +22,7 @@ use Yii;
  * @property int|null $status
  * @property string|null $created_at
  * @property string|null $updated_at
+ * @property integer|null $user_id
  *
  * @property ProductImage[] $productImages
  * @property UserStore $store
@@ -43,7 +44,7 @@ class Product extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['store_id', 'category', 'sub_category', 'quantity', 'available_for', 'status'], 'integer'],
+            [['store_id', 'category', 'sub_category', 'quantity', 'available_for', 'status', 'user_id'], 'integer'],
             [['product_price', 'discount'], 'number'],
             [['information', 'description'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
