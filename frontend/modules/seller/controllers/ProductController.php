@@ -22,7 +22,7 @@ class ProductController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'signup', 'index'],
+                        'actions' => ['login', 'error', 'signup', 'index', 'create'],
                         'allow' => true,
                     ],
                 ],
@@ -65,6 +65,10 @@ class ProductController extends Controller
 
     public function actionCreate()
     {
-        return $this->render('create');
+        $this->layout = $this->seller_dashboard_layout;
+        $model = new Product;
+        return $this->render('create',[
+            'model' => $model
+        ]);
     }
 }
