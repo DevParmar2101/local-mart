@@ -63,8 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="info-box">
                                 <h5 class="title">Address</h5>
-                                <p>Your address goes here. <br>
-                                    123 Your Location</p>
+                                <p><?= Yii::$app->global->address?></p>
                             </div>
                         </div>
                         <div class="single-contact">
@@ -73,8 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="info-box">
                                 <h5 class="title">Phone No</h5>
-                                <p><a href="tel:0123456789">+012 345 67 89</a></p>
-                                <p><a href="tel:0123456789">+012 345 67 89</a></p>
+                                <p><a href="tel:<?= Yii::$app->global->contact_number?>"><?= Yii::$app->global->contact_number?></a></p>
                             </div>
                         </div>
                         <div class="single-contact m-0">
@@ -83,8 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="info-box">
                                 <h5 class="title">Email/Web</h5>
-                                <p><a href="mailto:demo@example.com">demo@example.com</a></p>
-                                <p><a href="https://www.example.com">www.example.com</a></p>
+                                <p><a href="mailto:<?= Yii::$app->global->email?>"><?= Yii::$app->global->email?></a></p>
                             </div>
                         </div>
                     </div>
