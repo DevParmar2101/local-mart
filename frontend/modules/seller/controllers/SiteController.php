@@ -2,6 +2,7 @@
 
 namespace frontend\modules\seller\controllers;
 
+use common\models\Product;
 use common\models\UserStore;
 use Yii;
 use yii\base\Exception;
