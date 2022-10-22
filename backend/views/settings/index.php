@@ -27,6 +27,23 @@ $this->title = 'Settings Form';
 
                 <?= $form->field($model, 'app_name')->textInput() ?>
 
+                <h5 class="mb-0 text-white">company Address</h5>
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <?= $form->field($model, 'contact_number')->textInput()?>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <?= $form->field($model, 'email')->textInput(); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-12">
+                        <?= $form->field($model, 'address')->textarea(['rows' => 6])?>
+                    </div>
+                </div>
+
                 <h5 class="mb-0 text-white">Email Configurations</h5>
                 <hr>
 
@@ -72,6 +89,24 @@ $this->title = 'Settings Form';
                     </div>
                     <div class="col-md-6 col-12">
                         <?= $form->field($model, 'twilio_phone_number')->textInput() ?>
+                    </div>
+                </div>
+
+                <h5 class="mb-0 text-white">Social Media Links</h5>
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <?= $form->field($model, 'facebook_link')->textInput(); ?>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <?= $form->field($model, 'twitter_link')->textInput(); ?>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <?= $form->field($model, 'instagram_link')->textInput(); ?>
                     </div>
                 </div>
 
