@@ -2,7 +2,7 @@
 
 use common\components\BaseHelper;
 use yii\helpers\Url;
-
+$cookie = Yii::$app->session->get('store_uuid');
 ?>
 
 <div class="sidebar-widget-group">
@@ -18,7 +18,7 @@ use yii\helpers\Url;
                     <a href="<?=
                     BaseHelper::validateAction('site','index') ?
                         '#' :
-                        Url::toRoute('site/index')
+                        Url::toRoute(['site/dashboard','uuid' => $cookie])
                     ?>" class="selected m-0">Dashboard </a>
                 </li>
 
