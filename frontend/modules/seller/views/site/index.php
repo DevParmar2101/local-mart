@@ -1,1 +1,6 @@
-<h2>Welcome back, <?= Yii::$app->user->identity->username?></h2>
+<?php
+
+/** @var $model \common\models\UserStore*/
+?>
+
+<h2>Welcome back, <?= $model->store_name ?></h2>
