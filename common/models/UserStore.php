@@ -30,6 +30,7 @@ use yii\helpers\ArrayHelper;
  * @property string|null $document_two
  * @property int|null $document_two_verified
  * @property string|null $document_two_error_message
+ * @property string|null $profile_image
  *
  * @property StoreCategory $storeCategory
  * @property User $user
@@ -77,7 +78,7 @@ class UserStore extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['first_name', 'last_name', 'contact_number', 'store_name', 'state', 'city', 'address', 'zip_code'], 'required'],
+            [['first_name', 'last_name', 'contact_number', 'store_name', 'state', 'city', 'address', 'zip_code', 'profile_image'], 'required'],
 
             [['is_number_verified', 'user_id', 'state', 'city', 'zip_code', 'status', 'store_category', 'purchase_type'], 'integer'],
 
@@ -120,6 +121,7 @@ class UserStore extends BaseActiveRecord
             'purchase_type' => 'Selling Type',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'profile_image' => 'Profile Image',
         ];
     }
 
