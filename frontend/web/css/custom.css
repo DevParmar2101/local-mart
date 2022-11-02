@@ -76,3 +76,12 @@
     transform: translateY(-1px);
     border-color: #266bf9;
 }
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+    height: 200px !important ;
+}
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused):active {
+    height: 200px !important ;
+}
+.ck-rounded-corners .ck.ck-editor__main > .ck-editor__editable, .ck.ck-editor__main > .ck-editor__editable.ck-rounded-corners {
+    height: 200px !important;
+}
