@@ -1,11 +1,13 @@
 <?php
 
 use common\models\Product;
-use common\models\StoreSubCategory;
 use kartik\select2\Select2;
 use sangroya\ckeditor5\CKEditor;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\web\JsExpression;
+use yii\web\View;
 
 /**@var $form ActiveForm*/
 /**@var $model Product*/
@@ -18,15 +20,39 @@ $this->title = 'Create ';
             <div class="tab-pane fade show active">
                 <h4>Create Product</h4>
                 <?php $form = ActiveForm::begin(['id' => 'product-create-form']);?>
+                <?php Html::errorSummary($model)?>
                     <div class="row">
                         <div class="col-md-6 col-12">
-                            <?= $form->field($model,'category')->widget(Select2::class,[
+                            <?php
+                            $format = <<< SCRIPT
+function format(state) {
+    if (!state.id) return state.text; // optgroup
+
+    return state.text;
+}
+SCRIPT;
+                            $escape = new JsExpression("function(m) { return m; }");
+                            $this->registerJs($format, View::POS_HEAD);
+                            ?>
+                            <?php
+                            $url = Url::toRoute(['site/sub-category-list']);
+                            echo $form->field($model,'category')->widget(Select2::class,[
                                     'data' => (new common\models\StoreSubCategory)->getCategoryName(),
-                                    'options' => ['placeholder' => 'Select Category'],
+                                    'options' => [
+                                            'placeholder' => 'Select Category',
+                                            'onchange' => '
+                                            $.post("'.$url.'?id="+$(this).val(), function( data ) {
+                                            $("select#product-sub_category").html( data );
+                                            });'
+                                    ],
                                     'pluginOptions' => [
+                                            'templateResult' => new JsExpression('format'),
+                                            'templateSelection' => new JsExpression('format'),
+                                            'escapeMarkup' => $escape,
                                             'allowClear' => true,
-                                    ]
-                            ]); ?>
+                                    ],
+                            ])
+                            ?>
                         </div>
                         <div class="col-md-6 col-12">
                             <?= $form->field($model,'sub_category')->widget(Select2::class,[
