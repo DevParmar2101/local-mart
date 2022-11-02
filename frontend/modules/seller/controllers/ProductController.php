@@ -67,6 +67,9 @@ class ProductController extends Controller
     {
         $this->layout = $this->seller_dashboard_layout;
         $model = new Product;
+        if ($model->load(Yii::$app->request->post())) {
+
+        }
         return $this->render('create',[
             'model' => $model
         ]);

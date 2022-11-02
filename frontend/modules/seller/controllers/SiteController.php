@@ -2,7 +2,9 @@
 
 namespace frontend\modules\seller\controllers;
 
+use common\models\BaseActiveRecord;
 use common\models\Product;
+use common\models\StoreSubCategory;
 use common\models\UserStore;
 use Yii;
 use yii\base\Exception;
@@ -31,7 +33,7 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'signup', 'index', 'shop-list', 'edit', 'document'],
+                        'actions' => ['login', 'error', 'signup', 'index', 'shop-list', 'edit', 'document', 'sub-category-list'],
                         'allow' => true,
                     ],
                 ],
@@ -63,8 +65,11 @@ class SiteController extends Controller
     public function actionIndex(): string
     {
         $this->layout = $this->seller_dashboard_layout;
+        $model = UserStore::find()->where(['user_id' => Yii::$app->user->identity->id])->one();
 
-        return $this->render('index');
+        return $this->render('index',[
+            'model' => $model
+        ]);
     }
 
     /**
@@ -164,4 +169,29 @@ class SiteController extends Controller
            'model' => $model
        ]);
     }
+    public function actionSubCategoryList($id)
+    {
+        $countModel = StoreSubCategory::find()->where(['status' => BaseActiveRecord::ACTIVE])->count();
+
+        $model = StoreSubCategory::find()->where(['status' => BaseActiveRecord::ACTIVE])->andWhere(['category_name'=> $id])->orderBy(['id' => SORT_DESC])->all();
+        $data = [];
+
+        if ($countModel > 0) {
+            foreach ($model as $key) {
+                /* @var $key StoreSubCategory*/
+                $data[$key->id] = $key->sub_category;
+            }
+            asort($data);
+            echo "<option></option>";
+            foreach ($data as $key=>$val) {
+                if (!empty($val)) {
+                    echo "<option value'".$key."'>".$val."</option>";
+                }
+            }
+        }
+        else{
+            echo "<option></option>";
+        }
+    }
+
 }
