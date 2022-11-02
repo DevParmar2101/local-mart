@@ -74,11 +74,8 @@ class ProductController extends Controller
             $model->user_id = Yii::$app->user->identity->id;
             $model->status = $model::UNDER_REVIEW;
             if ($model->save()){
+                Yii::$app->session->setFlash('success','New product created!');
                 return $this->redirect(['product/index']);
-            }else{
-                echo '<pre>';
-                print_r($model->firstErrors);
-                die();
             }
         }
         return $this->render('create',[

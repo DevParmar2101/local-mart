@@ -36,9 +36,9 @@ $this->title = 'Product Index';
                         {?>
                             <tr>
                                 <td><?= $item->product_name?></td>
-                                <td><?= $item->category?></td>
-                                <td><?= $item->sub_category?></td>
-                                <td><?= $item->product_price?></td>
+                                <td><?= $item->storeCategory->category_name?></td>
+                                <td><?= $item->storeSubCategory->sub_category?></td>
+                                <td><?= Yii::$app->formatter->asCurrency($item->product_price)?></td>
                                 <td><?= $item->quantity?></td>
                                 <td><?= $item->status?></td>
                                 <td>
