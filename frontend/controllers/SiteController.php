@@ -309,7 +309,7 @@ class SiteController extends Controller
         }
 
         if ($this->request->isPost) {
-            if ($model->load(Yii::$app->post())) {
+            if ($model->load(Yii::$app->request->post())) {
                 $image = UploadedFile::getInstance($model,'profile_image');
 
                 if ($image) {
@@ -319,7 +319,7 @@ class SiteController extends Controller
                 }
                 $model->user_id = Yii::$app->user->identity->id;
                 $model->is_number_verified = $model::NOT_VERIFIED;
-                $model->status = $model::PENDING;
+                $model->uuid = Yii::$app->security->generateRandomString();
                 if ($model->save())
                 {
                     if ($image) {
@@ -327,7 +327,11 @@ class SiteController extends Controller
                     }
 
                     Yii::$app->session->setFlash('success','Document Upload Successfully !');
-                    return  $this->redirect(['shop-list']);
+                    return  $this->redirect(['index']);
+                }else{
+                    echo '<pre>';
+                    print_r($model->firstErrors);
+                    die();
                 }
             }
         }
