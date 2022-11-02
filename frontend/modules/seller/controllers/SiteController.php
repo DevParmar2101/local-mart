@@ -6,6 +6,7 @@ use common\models\BaseActiveRecord;
 use common\models\Product;
 use common\models\StoreSubCategory;
 use common\models\UserStore;
+use http\Cookie;
 use Yii;
 use yii\base\Exception;
 use yii\filters\AccessControl;
@@ -21,9 +22,9 @@ class SiteController extends Controller
     /**
      * @var string
      */
-     public string $seller_dashboard_layout = '@frontend/views/layouts/seller-dashboard/main';
+    public string $seller_dashboard_layout = '@frontend/views/layouts/seller-dashboard/main';
 
-     /**
+    /**
      * @return array[]
      */
     public function behaviors()
@@ -92,11 +93,11 @@ class SiteController extends Controller
      * @param $id
      * @return string|Response
      */
-    public function actionEdit($id)
+    public function actionEdit($uuid)
     {
         $this->layout = $this->seller_dashboard_layout;
 
-        $model = UserStore::find()->where(['id' => $id])->one();
+        $model = UserStore::find()->where(['id' => $uuid])->one();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
@@ -116,10 +117,10 @@ class SiteController extends Controller
      * @return string|Response
      * @throws Exception
      */
-    public function actionDocument($id)
+    public function actionDocument($uuid)
     {
         $this->layout = $this->seller_dashboard_layout;
-        $model = UserStore::findOne($id);
+        $model = UserStore::findOne($uuid);
         $model->scenario = $model::DOCUMENT;
         $path = UserStore::getPath();
         if (!is_dir($path)) {
@@ -167,9 +168,9 @@ class SiteController extends Controller
             }
         }
 
-       return $this->render('document',[
-           'model' => $model
-       ]);
+        return $this->render('document',[
+            'model' => $model
+        ]);
     }
 
     /**
@@ -206,6 +207,7 @@ class SiteController extends Controller
         $this->layout = $this->seller_dashboard_layout;
 
         $model = UserStore::findOne(['uuid' => $uuid]);
+        Yii::$app->session->set('store_uuid',$uuid);
 
         return $this->render('dashboard',[
             'model' => $model
