@@ -35,8 +35,9 @@ $this->title = 'Shop List';
                                 <td><?= (new common\models\StoreSubCategory)->getCategoryName($item->store_category)?></td>
                                 <td><?= $item->getSellerStatus($item->status, BaseActiveRecord::ACTIVE)?></td>
                                 <td>
-                                    <a href="<?= Url::toRoute(['site/edit','id' => $item->id])?>" class="view"><i class="fa fa-edit"></i></a>
-                                    <a href="<?= Url::toRoute(['site/document','id'=> $item->id])?>" class="view"><i class="fa fa-file-o"></i></a>
+                                    <a href="<?= Url::toRoute(['site/edit','id' => $item->uuid])?>" class="view"><i class="fa fa-edit"></i></a>
+                                    <a href="<?= Url::toRoute(['site/document','id'=> $item->uuid
+                                    ])?>" class="view"><i class="fa fa-file-o"></i></a>
                                 </td>
                             </tr>
                         <?php }?>
