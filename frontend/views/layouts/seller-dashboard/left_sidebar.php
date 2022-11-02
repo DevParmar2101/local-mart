@@ -11,16 +11,38 @@ use yii\helpers\Url;
         <div class="category-post">
             <ul>
 
-                <li class="seller-dashboard <?= BaseHelper::validateAction('site','index')?'active':''?>">
-                    <a href="<?= Url::toRoute('site/index')?>" class="selected m-0">Dashboard </a>
+                <li class="seller-dashboard <?=
+                (BaseHelper::validateAction('site','index') ? 'disabled-link' : '') ?:
+                    (BaseHelper::validateAction('site','dashboard') ? 'active' : '')
+                ?>">
+                    <a href="<?=
+                    BaseHelper::validateAction('site','index') ?
+                        '#' :
+                        Url::toRoute('site/index')
+                    ?>" class="selected m-0">Dashboard </a>
                 </li>
 
-                <li class="seller-dashboard <?= BaseHelper::validateAction('site','shop-list')?'active':''?>">
-                    <a href="<?= Url::toRoute('site/shop-list')?>" class="selected m-0">Shop List </a>
+                <li class="seller-dashboard <?=
+                (BaseHelper::validateAction('site','index') ? 'disabled-link' : '') ?:
+                    (BaseHelper::validateAction('site','shop-list') ? 'active' : '')
+                ?>">
+                    <a href="<?=
+                    BaseHelper::validateAction('site','index') ?
+                        '#' :
+                        Url::toRoute('site/shop-list')
+                    ?>" class="selected m-0">Shop List </a>
                 </li>
 
-                <li class="seller-dashboard <?= BaseHelper::validateAction('product','index')?'active':''?>">
-                    <a href="<?= Url::toRoute('product/index')?>" class="selected m-0">Product List </a>
+                <li class="seller-dashboard <?=
+                (BaseHelper::validateAction('site','index') ? 'disabled-link' : '') ?:
+                    (BaseHelper::validateAction('product','index') ? 'active' : '')
+                ?>">
+                    <a href="
+                    <?=
+                    BaseHelper::validateAction('site','index') ?
+                        '#' :
+                        Url::toRoute('product/index')
+                    ?>" class="selected m-0">Product List </a>
                 </li>
 
             </ul>
