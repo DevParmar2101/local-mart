@@ -13,8 +13,10 @@ use frontend\models\VerifyEmailForm;
 use Twilio\Exceptions\ConfigurationException;
 use Twilio\Rest\Client;
 use Yii;
+use yii\base\Exception;
 use yii\base\InvalidArgumentException;
 use yii\helpers\ArrayHelper;
+use yii\helpers\FileHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -25,6 +27,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -286,6 +289,7 @@ class SiteController extends Controller
 
     /**
      * @return string|Response
+     * @throws Exception
      */
     public function actionSeller()
     {
@@ -293,14 +297,37 @@ class SiteController extends Controller
         if (!$model) {
             $model = new UserStore();
         }
+
+        $path = UserStore::getPath();
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path,$mode = 0777, $recursive = true);
+        }
+        $old_image = null;
+
+        if ($model->profile_image) {
+            $old_image = $model->profile_image;
+        }
+
         if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
+            if ($model->load(Yii::$app->post())) {
+                $image = UploadedFile::getInstance($model,'profile_image');
+
+                if ($image) {
+                    $model->profile_image = $model->getImageName($image);
+                }else{
+                    $model->profile_image = $old_image;
+                }
                 $model->user_id = Yii::$app->user->identity->id;
                 $model->is_number_verified = $model::NOT_VERIFIED;
                 $model->status = $model::PENDING;
-                if ($model->save()) {
-                    Yii::$app->session->setFlash('success','Please check your email for activation of account!');
-                    return $this->redirect(['index']);
+                if ($model->save())
+                {
+                    if ($image) {
+                        $image->saveAs(UserStore::getPath($model->profile_image));
+                    }
+
+                    Yii::$app->session->setFlash('success','Document Upload Successfully !');
+                    return  $this->redirect(['shop-list']);
                 }
             }
         }
