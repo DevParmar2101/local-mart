@@ -6,6 +6,7 @@
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 
+$this->title = 'Change Password';
 ?>
 <!-- account area start -->
 <div class="account-dashboard pt-100px pb-100px">

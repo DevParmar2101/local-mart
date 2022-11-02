@@ -4,7 +4,9 @@
 /** @var $form ActiveForm*/
 
 use yii\bootstrap5\ActiveForm;
+use yii\helpers\Html;
 
+$this->title = 'Profile Info';
 ?>
 <!-- account area start -->
 <div class="account-dashboard pt-100px pb-100px">
@@ -40,7 +42,7 @@ use yii\bootstrap5\ActiveForm;
                                     </div>
 
                                     <div class="place-order mt-25">
-                                        <?= \yii\helpers\Html::submitButton('Save',['class' => 'btn btn-primary blog-btn'])?>
+                                        <?= Html::submitButton('Save',['class' => 'btn btn-primary blog-btn'])?>
                                     </div>
 
                                     <?php ActiveForm::end();?>
