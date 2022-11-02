@@ -30,6 +30,12 @@ use Yii;
  */
 class Product extends BaseActiveRecord
 {
+    const PUBLISHED = 10;
+    const UNPUBLISHED = 9;
+    const UNDER_REVIEW = 8;
+    const DRAFT = 7;
+    const INAPPROPRIATE = 6;
+
     /**
      * {@inheritdoc}
      */
@@ -44,7 +50,7 @@ class Product extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['category', 'sub_category', 'store_id', 'user_id', 'product_name', 'product_price', 'quantity', 'status'], 'required'],
+            [['category', 'sub_category', 'store_id', 'user_id', 'product_name', 'product_price', 'quantity', 'status', 'information', 'description', 'available_for'], 'required'],
             [['store_id', 'category', 'quantity', 'available_for', 'status', 'user_id'], 'integer'],
             [['product_price', 'discount'], 'number'],
             [['information', 'description'], 'string'],
@@ -106,5 +112,20 @@ class Product extends BaseActiveRecord
     public function getUserFavourites()
     {
         return $this->hasMany(UserFavourite::class, ['product_id' => 'id']);
+    }
+
+    public function getProductStatus($status = null)
+    {
+        $array = [
+            self::INAPPROPRIATE => 'Inappropriate to publish!',
+            self::DRAFT => 'Draft',
+            self::UNDER_REVIEW => 'Under Review',
+            self::UNPUBLISHED => 'Unpublished',
+            self::PUBLISHED => 'Published',
+        ];
+        if (!is_null($status)) {
+            return $array[$status];
+        }
+        return $array;
     }
 }
