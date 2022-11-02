@@ -44,6 +44,7 @@ class Product extends BaseActiveRecord
     public function rules()
     {
         return [
+            [['category', 'sub_category', 'store_id', 'user_id', 'product_name', 'product_price', 'quantity', 'status'], 'required'],
             [['store_id', 'category', 'sub_category', 'quantity', 'available_for', 'status', 'user_id'], 'integer'],
             [['product_price', 'discount'], 'number'],
             [['information', 'description'], 'string'],
