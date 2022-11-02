@@ -97,13 +97,13 @@ class SiteController extends Controller
     {
         $this->layout = $this->seller_dashboard_layout;
 
-        $model = UserStore::find()->where(['id' => $uuid])->one();
+        $model = UserStore::find()->where(['uuid' => $uuid])->one();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 if ($model->save()) {
                     Yii::$app->session->setFlash('success','Store Updated Successfully !');
-                    return $this->refresh();
+                    return $this->redirect(['shop-list']);
                 }
             }
         }
@@ -120,7 +120,7 @@ class SiteController extends Controller
     public function actionDocument($uuid)
     {
         $this->layout = $this->seller_dashboard_layout;
-        $model = UserStore::findOne($uuid);
+        $model = UserStore::findOne(['uuid' => $uuid]);
         $model->scenario = $model::DOCUMENT;
         $path = UserStore::getPath();
         if (!is_dir($path)) {
