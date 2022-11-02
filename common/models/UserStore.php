@@ -30,7 +30,7 @@ use yii\helpers\ArrayHelper;
  * @property string|null $document_two
  * @property int|null $document_two_verified
  * @property string|null $document_two_error_message
- * @property string|null $profile_image
+ * @property string $profile_image
  *
  * @property StoreCategory $storeCategory
  * @property User $user
