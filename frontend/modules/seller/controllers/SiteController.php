@@ -193,7 +193,7 @@ class SiteController extends Controller
             echo "<option></option>";
             foreach ($data as $key=>$val) {
                 if (!empty($val)) {
-                    echo "<option value'".$key."'>".$val."</option>";
+                    echo "<option value='".$key."'>".$val."</option>";
                 }
             }
         }

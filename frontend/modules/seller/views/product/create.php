@@ -56,7 +56,6 @@ SCRIPT;
                         </div>
                         <div class="col-md-6 col-12">
                             <?= $form->field($model,'sub_category')->widget(Select2::class,[
-                                    'data' => '',
                                     'options' => [
                                             'placeholder' => 'Select Sub Category',
                                     ],
