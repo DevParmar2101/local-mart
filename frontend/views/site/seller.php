@@ -1,6 +1,7 @@
 <?php
 
 use common\models\UserStore;
+use kartik\file\FileInput;
 use kartik\select2\Select2;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
@@ -131,7 +132,7 @@ SCRIPT;
                             <h3 class="seller-form-title text-center after-border">Select Store Image</h3>
                             <div class="row">
                                 <div class="col-md-12 col-12">
-                                    <?= $form->field($model,'profile_image')->widget(\kartik\file\FileInput::class,[
+                                    <?= $form->field($model,'profile_image')->widget(FileInput::class,[
                                             'options' => [
                                                     'accept' => 'image/*',
                                                     'multiple' => true,

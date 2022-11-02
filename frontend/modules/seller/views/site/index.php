@@ -2,6 +2,7 @@
 
 use common\models\UserStore;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /** @var $model UserStore*/
 
@@ -34,7 +35,7 @@ $this->title = ' Seller Index';
                                 </div>
                                 <div class="content">
                                     <h5 class="title">
-                                        <a href="single-product.html">Store Name:-<?= $key->store_name?></a>
+                                        <a href="<?= Url::toRoute(['site/dashboard','id' => $key->uuid])?>">Store Name:-<?= $key->store_name?></a>
                                     </h5>
                                 </div>
                             </div>
