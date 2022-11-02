@@ -3,6 +3,7 @@
 namespace frontend\modules\seller\controllers;
 
 use common\models\Product;
+use common\models\UserStore;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -67,8 +68,18 @@ class ProductController extends Controller
     {
         $this->layout = $this->seller_dashboard_layout;
         $model = new Product;
+        $store = UserStore::findOne(['uuid' => Yii::$app->session->get('store_uuid')]);
         if ($model->load(Yii::$app->request->post())) {
-
+            $model->store_id = $store->id;
+            $model->user_id = Yii::$app->user->identity->id;
+            $model->status = $model::UNDER_REVIEW;
+            if ($model->save()){
+                return $this->redirect(['product/index']);
+            }else{
+                echo '<pre>';
+                print_r($model->firstErrors);
+                die();
+            }
         }
         return $this->render('create',[
             'model' => $model
