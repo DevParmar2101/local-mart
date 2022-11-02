@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "product".
@@ -26,6 +27,8 @@ use Yii;
  *
  * @property ProductImage[] $productImages
  * @property UserStore $store
+ * @property StoreCategory $storeCategory
+ * @property StoreSubCategory $storeSubCategory
  * @property UserFavourite[] $userFavourites
  */
 class Product extends BaseActiveRecord
@@ -87,7 +90,7 @@ class Product extends BaseActiveRecord
     /**
      * Gets query for [[ProductImages]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getProductImages()
     {
@@ -97,7 +100,7 @@ class Product extends BaseActiveRecord
     /**
      * Gets query for [[Store]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getStore()
     {
@@ -105,9 +108,25 @@ class Product extends BaseActiveRecord
     }
 
     /**
+     * @return ActiveQuery
+     */
+    public function getStoreCategory()
+    {
+        return $this->hasOne(StoreCategory::class,['id' => 'category']);
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getStoreSubCategory()
+    {
+        return $this->hasOne(StoreSubCategory::class,['id' => 'sub_category']);
+    }
+
+    /**
      * Gets query for [[UserFavourites]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getUserFavourites()
     {
