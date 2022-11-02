@@ -11,6 +11,14 @@ $cookie = Yii::$app->session->get('store_uuid');
         <div class="category-post">
             <ul>
 
+                <li class="seller-dashboard <?= BaseHelper::validateAction('site','index') ? 'active' : '' ?>">
+                    <a href="<?=
+                    BaseHelper::validateAction('site','index') ?
+                        '#' :
+                        Url::toRoute(['site/index'])
+                    ?>" class="selected m-0">Select Store </a>
+                </li>
+
                 <li class="seller-dashboard <?=
                 (BaseHelper::validateAction('site','index') ? 'disabled-link' : '') ?:
                     (BaseHelper::validateAction('site','dashboard') ? 'active' : '')
