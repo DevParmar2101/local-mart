@@ -29,13 +29,11 @@ $this->title = ' Seller Index';
                                     <a href="single-product.html" class="image">
                                         <?= $key->profile_image ? $key->getImage('profile_image','') : Html::img('@web/images/store/store-2.png')?>
                                         <?= $key->getImage('profile_image','@web/images/store-2.png','hover-image')?>
-<!--                                        <img src="assets/images/product-image/1.webp" alt="Product" />-->
-<!--                                        <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />-->
                                     </a>
                                 </div>
                                 <div class="content">
                                     <h5 class="title">
-                                        <a href="<?= Url::toRoute(['site/dashboard','id' => $key->uuid])?>">Store Name:-<?= $key->store_name?></a>
+                                        <a href="<?= Url::toRoute(['site/dashboard','uuid' => $key->uuid])?>">Store Name:-<?= $key->store_name?></a>
                                     </h5>
                                 </div>
                             </div>
