@@ -59,13 +59,44 @@ class SiteController extends Controller
         ];
     }
 
+
     /**
-     * @return string
+     * @return string|Response
+     * @throws Exception
      */
-    public function actionIndex(): string
+    public function actionIndex()
     {
         $this->layout = $this->seller_dashboard_layout;
         $model = UserStore::find()->where(['user_id' => Yii::$app->user->identity->id])->one();
+        $path = UserStore::getPath();
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path,$mode = 0777, $recursive = true);
+        }
+        $old_image = null;
+
+        if ($model->profile_image) {
+            $old_image = $model->profile_image;
+        }
+
+        if ($this->request->isPost && $model->load(Yii::$app->post())) {
+            $image = UploadedFile::getInstance($model,'profile_image');
+
+            if ($image) {
+                $model->profile_image = $model->getImageName($image);
+            }else{
+                $model->profile_image = $old_image;
+            }
+
+            if ($model->save())
+            {
+                if ($image) {
+                    $image->saveAs(UserStore::getPath($model->profile_image));
+                }
+
+                Yii::$app->session->setFlash('success','Document Upload Successfully !');
+                return  $this->redirect(['shop-list']);
+            }
+        }
 
         return $this->render('index',[
             'model' => $model
@@ -169,6 +200,11 @@ class SiteController extends Controller
            'model' => $model
        ]);
     }
+
+    /**
+     * @param $id
+     * @return void
+     */
     public function actionSubCategoryList($id)
     {
         $countModel = StoreSubCategory::find()->where(['status' => BaseActiveRecord::ACTIVE])->count();
