@@ -137,8 +137,15 @@ SCRIPT;
                                                     'multiple' => true,
                                             ],
                                             'pluginOptions' => [
-                                                    'initialPreview' => $model
-                                            ]
+                                                    'initialPreview' => $model->profile_image ? $model->getImage('profile_image','Profile Images','img-thumbnail') : false,
+                                                    'initialPreviewData' => true,
+                                                    'browseClass' => 'btn btn-warning blog-btn',
+                                                    'showPreview' => true,
+                                                    'showCaption' => false,
+                                                    'showRemove'  => false,
+                                                    'showCancel'  => false,
+                                                    'showUpload'  => false,
+                                            ],
                                     ])?>
                                 </div>
                             </div>
