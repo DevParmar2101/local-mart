@@ -33,7 +33,7 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'signup', 'index', 'shop-list', 'edit', 'document', 'sub-category-list'],
+                        'actions' => ['login', 'error', 'signup', 'index', 'shop-list', 'edit', 'document', 'sub-category-list', 'dashboard'],
                         'allow' => true,
                     ],
                 ],
@@ -201,4 +201,14 @@ class SiteController extends Controller
         }
     }
 
+    public function actionDashboard($uuid)
+    {
+        $this->layout = $this->seller_dashboard_layout;
+
+        $model = UserStore::findOne(['uuid' => $uuid]);
+
+        return $this->render('dashboard',[
+            'model' => $model
+        ]);
+    }
 }
