@@ -98,13 +98,15 @@ SCRIPT;
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-12 col-12">
                         <?= $form->field($model,'information')->widget(CKEditor::class,[
                                 'options' => ['rows' => 6,]
                         ])?>
                     </div>
+                </div>
 
-                    <div class="col-md-6 col-12">
+                <div class="row">
+                    <div class="col-md-12 col-12">
                         <?= $form->field($model,'description')->widget(CKEditor::class,[
                             'options' => ['rows' => 6]
                         ])?>
