@@ -11,7 +11,6 @@ use common\models\User;
 use common\models\UserStore;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
-use Twilio\Exceptions\ConfigurationException;
 use Twilio\Rest\Client;
 use Yii;
 use yii\base\Exception;
@@ -461,5 +460,4 @@ class SiteController extends Controller
             echo "<option></option>";
         }
     }
-
 }
