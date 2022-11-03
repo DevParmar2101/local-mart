@@ -17,6 +17,7 @@ use yii\helpers\ArrayHelper;
  * @property string|null $updated_at
  * @property string|null $image
  * @property string|null $is_featured
+ * @property string|null $slug
  *
  * @property UserStore[] $userStores
  */
@@ -36,11 +37,10 @@ class StoreSubCategory extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['category_name', 'user_id', 'status', 'image'], 'required'],
+            [['category_name', 'user_id', 'status', 'image', 'slug'], 'required'],
             [['category_name', 'user_id', 'status'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at', 'slug'], 'safe'],
             [['is_featured'],'integer'],
-//            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg,png,jpeg'],
             [['sub_category', 'image'], 'string', 'max' => 255],
         ];
     }
@@ -58,6 +58,7 @@ class StoreSubCategory extends BaseActiveRecord
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'slug' => 'Slug',
         ];
     }
 
