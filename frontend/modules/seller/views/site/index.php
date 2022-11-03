@@ -26,7 +26,7 @@ $this->title = ' Seller Index';
                             <!-- Single Product -->
                             <div class="product">
                                 <div class="thumb">
-                                    <a href="single-product.html" class="image">
+                                    <a href="<?= Url::toRoute(['site/dashboard','uuid' => $key->uuid])?>" class="image">
                                         <?= $key->profile_image ? $key->getImage('profile_image','') : Html::img('@web/images/store/store-2.png')?>
                                         <?= $key->getImage('profile_image','@web/images/store-2.png','hover-image')?>
                                     </a>

@@ -23,14 +23,14 @@ use yii\helpers\Html;
                                                 <span class="new">New</span>
                                             </span>
                                     <div class="thumb">
-                                        <a href="single-product.html" class="image">
+                                        <a href="<>" class="image">
                                             <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt'=>'Product Image'])?>
                                             <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt'=>'Product Image','class'=>'hover-image'])?>
                                         </a>
                                     </div>
                                     <div class="content">
-                                        <span class="category"><a href="#">Accessories</a></span>
-                                        <h5 class="title"><a href="single-product.html">Modern Smart Phone
+                                        <span class="category"><a href="#"><?= $product->storeSubCategory->sub_category?></a></span>
+                                        <h5 class="title"><a href="single-product.html"><?= $product->product_name?>
                                             </a>
                                         </h5>
                                         <span class="price">
