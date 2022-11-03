@@ -3,6 +3,7 @@
 /** @var yii\web\View $this */
 /** @var $banner_content array */
 /** @var $sub_categories array*/
+/** @var $products array*/
 
 use common\models\ExtraPageContent;
 use common\models\StoreSubCategory;
@@ -99,7 +100,9 @@ $this->title = 'My Yii Application';
             </div>
         </div>
         <!-- Section Title & Tab End -->
-        <?= $this->render('_partial/_product')?>
+        <?= $this->render('_partial/_product',[
+                'products' => $products
+        ])?>
     </div>
 </div>
 <!-- Product Area End -->

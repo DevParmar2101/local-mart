@@ -13,6 +13,7 @@ class m221103_102153_alter_created_at_field_in_product_table extends Migration
      */
     public function safeUp()
     {
+        $this->alterColumn(Product::tableName(),'created_at', $this->date());
     }
 
     /**

@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\BaseActiveRecord;
 use common\models\Cities;
 use common\models\ExtraPageContent;
+use common\models\Product;
 use common\models\StoreSubCategory;
 use common\models\User;
 use common\models\UserStore;
@@ -98,9 +99,19 @@ class SiteController extends Controller
             ->where(['is_featured' => BaseActiveRecord::ACTIVE ])
             ->all();
 
+        $products = Product::find()
+            ->where(['status' => Product::STATUS_PUBLISHED])
+            ->andWhere(['=','created_at', date('Y-m-d')])
+            ->one();
+
+        echo '<pre>';
+        print_r($products);
+        die();
+
         return $this->render('index',[
             'banner_content' => $banner_content,
-            'sub_categories' => $sub_categories
+            'sub_categories' => $sub_categories,
+            'products' => $products
         ]);
     }
 

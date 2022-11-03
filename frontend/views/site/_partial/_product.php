@@ -1,6 +1,9 @@
 <?php
 
+use common\models\Product;
 use yii\helpers\Html;
+
+/* @var $products Product*/
 ?>
 
 <div class="row">
