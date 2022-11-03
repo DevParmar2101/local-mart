@@ -100,13 +100,8 @@ class SiteController extends Controller
             ->all();
 
         $products = Product::find()
-            ->where(['status' => Product::STATUS_PUBLISHED])
-            ->andWhere(['=','created_at', date('Y-m-d')])
-            ->one();
-
-        echo '<pre>';
-        print_r($products);
-        die();
+            ->where(['status' => Product::PUBLISHED])
+            ->all();
 
         return $this->render('index',[
             'banner_content' => $banner_content,
