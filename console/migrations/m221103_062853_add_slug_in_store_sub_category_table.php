@@ -1,5 +1,6 @@
 <?php
 
+use common\models\StoreSubCategory;
 use yii\db\Migration;
 
 /**
@@ -12,7 +13,7 @@ class m221103_062853_add_slug_in_store_sub_category_table extends Migration
      */
     public function safeUp()
     {
-
+        $this->addColumn(StoreSubCategory::tableName(),'slug',$this->string(255)->defaultValue('test'));
     }
 
     /**
