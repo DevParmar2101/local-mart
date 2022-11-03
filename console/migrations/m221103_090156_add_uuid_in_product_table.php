@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Product;
 use yii\db\Migration;
 
 /**
@@ -12,7 +13,7 @@ class m221103_090156_add_uuid_in_product_table extends Migration
      */
     public function safeUp()
     {
-
+        $this->addColumn(Product::tableName(),'uuid',$this->string(255));
     }
 
     /**
