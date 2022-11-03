@@ -34,7 +34,7 @@ use yii\helpers\Html;
                                             </a>
                                         </h5>
                                         <span class="price">
-                                                    <span class="new">$38.50</span>
+                                                    <span class="new"><?= Yii::$app->formatter->asCurrency($product->product_price)?></span>
                                                 </span>
                                     </div>
                                     <div class="actions">
