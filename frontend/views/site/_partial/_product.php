@@ -15,14 +15,16 @@ use yii\helpers\Url;
                 <div class="row mb-n-30px">
                     <?php foreach ($products as $product) {
                         /* @var $product Product*/
-                        if ($product->created_at < date('Y-m-d',strtotime('-2 day'))){
+                        if ($product->created_at < date('Y-m-d',strtotime('-2 day')) && $product->created_at > date('Y-m-d', strtotime('-10 day'))   ){
                             ?>
                             <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                 <!-- Single Prodect -->
                                 <div class="product">
-                                            <span class="badges">
+                                    <span class="badges">
                                                 <span class="new">New</span>
+                                                <span class="sale <?= $product->discount?'d-block':'d-none'?>"><?= $product->discount?>%</span>
                                             </span>
+
                                     <div class="thumb">
                                         <a href="<?= Url::toRoute(['product/index','uuid' => $product->uuid])?>" class="image">
                                             <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt'=>'Product Image'])?>
@@ -36,9 +38,16 @@ use yii\helpers\Url;
                                                 <?= $product->product_name?>
                                             </a>
                                         </h5>
+                                        <?php $discount = $product->discount * $product->product_price / 100;
+                                              $discounted_price = $product->product_price - $discount;?>
                                         <span class="price">
-                                                    <span class="new">
+                                                    <span class="old <?= $product->discount?'d-block':'d-none'?>">
                                                         <?= Yii::$app->formatter->asCurrency($product->product_price)?>
+                                                    </span>
+                                                    <span class="new">
+                                                        <?= $product->discount?
+                                                            Yii::$app->formatter->asCurrency($discounted_price):
+                                                            Yii::$app->formatter->asCurrency($product->product_price)?>
                                                     </span>
                                                 </span>
                                     </div>
