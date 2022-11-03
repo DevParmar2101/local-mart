@@ -52,6 +52,11 @@ return [
                     'route' => 'page/index',
                     'defaults' => ['slug' => ''],
                 ],
+                [
+                    'pattern' => 'product/<uuid>',
+                    'route' => 'product/index',
+                    'defaults' => ['uuid' => ''],
+                ],
             ],
         ],
 
