@@ -47,7 +47,7 @@ use yii\helpers\Html;
                         <!-- Single Prodect -->
                         <div class="product">
                                             <span class="badges">
-                                                <span class="sale">-10%</span>
+                                                <span classs="sale">-10%</span>
                                             <span class="new">New</span>
                                             </span>
                             <div class="thumb">
