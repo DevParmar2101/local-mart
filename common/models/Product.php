@@ -39,6 +39,14 @@ class Product extends BaseActiveRecord
     const DRAFT = 7;
     const INAPPROPRIATE = 6;
 
+    const STATUS_INAPPROPRIATE = 'Inappropriate to publish!';
+    const STATUS_DRAFT = 'Draft';
+    const STATUS_REVIEW = 'Under Review';
+    const STATUS_UNPUBLISHED = 'Unpublished';
+    const STATUS_PUBLISHED = 'Published';
+
+    const GRID_VIEW = 'gridview';
+
     /**
      * {@inheritdoc}
      */
@@ -133,14 +141,27 @@ class Product extends BaseActiveRecord
         return $this->hasMany(UserFavourite::class, ['product_id' => 'id']);
     }
 
-    public function getProductStatus($status = null)
+    public function getProductStatus($status = null, $gridView = null)
     {
+        if ($gridView){
+            if ($status == self::INAPPROPRIATE) {
+                return '<span class="badge bg-danger">'.self::STATUS_INAPPROPRIATE.'</span>';
+            }elseif ($status == self::DRAFT) {
+                return '<span class="badge bg-warning">'.self::STATUS_DRAFT.'</span>';
+            }elseif ($status == self::UNDER_REVIEW) {
+                return '<span class="badge bg-secondary">'.self::STATUS_REVIEW.'</span>';
+            }elseif ($status == self::UNPUBLISHED) {
+                return '<span class="badge bg-dark">'.self::STATUS_UNPUBLISHED.'</span>';
+            }elseif ($status == self::PUBLISHED) {
+                return  '<span class="badge bg-success">'.self::STATUS_PUBLISHED.'</span>';
+            }
+        }
         $array = [
-            self::INAPPROPRIATE => 'Inappropriate to publish!',
-            self::DRAFT => 'Draft',
-            self::UNDER_REVIEW => 'Under Review',
-            self::UNPUBLISHED => 'Unpublished',
-            self::PUBLISHED => 'Published',
+            self::INAPPROPRIATE => self::STATUS_INAPPROPRIATE,
+            self::DRAFT => self::STATUS_DRAFT,
+            self::UNDER_REVIEW => self::STATUS_REVIEW,
+            self::UNPUBLISHED => self::STATUS_UNPUBLISHED,
+            self::PUBLISHED => self::STATUS_PUBLISHED,
         ];
         if (!is_null($status)) {
             return $array[$status];
