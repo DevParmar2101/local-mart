@@ -2,6 +2,7 @@
 
 use common\models\Product;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $products Product*/
 ?>
@@ -23,18 +24,22 @@ use yii\helpers\Html;
                                                 <span class="new">New</span>
                                             </span>
                                     <div class="thumb">
-                                        <a href="<>" class="image">
+                                        <a href="<?= Url::toRoute(['product/index','uuid' => $product->uuid])?>" class="image">
                                             <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt'=>'Product Image'])?>
                                             <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt'=>'Product Image','class'=>'hover-image'])?>
                                         </a>
                                     </div>
                                     <div class="content">
                                         <span class="category"><a href="#"><?= $product->storeSubCategory->sub_category?></a></span>
-                                        <h5 class="title"><a href="single-product.html"><?= $product->product_name?>
+                                        <h5 class="title">
+                                            <a href="<?= Url::toRoute(['product/index','uuid' => $product->uuid])?>">
+                                                <?= $product->product_name?>
                                             </a>
                                         </h5>
                                         <span class="price">
-                                                    <span class="new"><?= Yii::$app->formatter->asCurrency($product->product_price)?></span>
+                                                    <span class="new">
+                                                        <?= Yii::$app->formatter->asCurrency($product->product_price)?>
+                                                    </span>
                                                 </span>
                                     </div>
                                     <div class="actions">
