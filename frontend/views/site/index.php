@@ -185,7 +185,7 @@ $this->title = 'My Yii Application';
                                         <a href="single-product.html" class="image">
                                             <?= Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product'])?>
 <!--                                            <img src="assets/images/product-image/3.webp" alt="Product" />-->
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product','class' => 'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product','class' => 'hover-image'])?>
 <!--                                            <img class="hover-image" src="assets/images/product-image/3.webp" alt="Product" />-->
                                         </a>
                                     </div>
@@ -217,9 +217,9 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/4.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/4.webp'),['alt' =>'Product'])?>
 <!--                                            <img src="assets/images/product-image/4.webp" alt="Product" />-->
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/4.webp'),['alt' =>'Product','class' =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/4.webp'),['alt' =>'Product','class' =>'hover-image'])?>
 <!--                                            <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />-->
                                         </a>
                                     </div>
@@ -250,9 +250,9 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product'])?>
 <!--                                            <img src="assets/images/product-image/5.webp" alt="Product" />-->
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product','class' => 'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product','class' => 'hover-image'])?>
 <!--                                            <img class="hover-image" src="assets/images/product-image/5.webp" alt="Product" />-->
                                         </a>
                                     </div>
@@ -285,8 +285,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product','class' =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product','class' =>'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/6.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/6.webp" alt="Product" />-->
                                         </a>
@@ -320,8 +320,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/7.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/7.webp'),['alt' =>'Product','class' => 'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/7.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/7.webp'),['alt' =>'Product','class' => 'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/7.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />-->
                                         </a>
@@ -354,9 +354,9 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product'])?>
 <!--                                            <img src="assets/images/product-image/8.webp" alt="Product" />-->
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product','class' =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product','class' =>'hover-image'])?>
 <!--                                            <img class="hover-image" src="assets/images/product-image/8.webp" alt="Product" />-->
                                         </a>
                                     </div>
@@ -395,8 +395,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product','class' => 'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product','class' => 'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/1.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />-->
                                         </a>
@@ -430,8 +430,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/2.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/2.webp'),['alt' =>'Product','class'  =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/2.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/2.webp'),['alt' =>'Product','class'  =>'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/2.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/2.webp" alt="Product" />-->
                                         </a>
@@ -465,8 +465,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product','class' => 'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product','class' => 'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/3.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/3.webp" alt="Product" />-->
                                         </a>
@@ -499,8 +499,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/4.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product','class' => 'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/4.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product','class' => 'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/4.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />-->
                                         </a>
@@ -532,8 +532,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product','class' =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product','class' =>'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/5.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/5.webp" alt="Product" />-->
                                         </a>
@@ -567,8 +567,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product', 'class' =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product', 'class' =>'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/6.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/6.webp" alt="Product" />-->
                                         </a>
@@ -602,8 +602,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/7.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/7.webp'),['alt' =>'Product','class' =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/7.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/7.webp'),['alt' =>'Product','class' =>'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/7.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />-->
                                         </a>
@@ -636,8 +636,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product','class' => 'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product','class' => 'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/8.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/8.webp" alt="Product" />-->
                                         </a>
@@ -677,8 +677,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product','class' =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product','class' =>'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/1.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />-->
                                         </a>
@@ -712,8 +712,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/2.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/2.webp'),['alt' =>'Product','class' =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/2.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/2.webp'),['alt' =>'Product','class' =>'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/2.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/2.webp" alt="Product" />-->
                                         </a>
@@ -747,8 +747,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product','class' =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/3.webp'),['alt' =>'Product','class' =>'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/3.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/3.webp" alt="Product" />-->
                                         </a>
@@ -781,8 +781,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/4.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product','class' => 'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/4.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product','class' => 'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/4.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />-->
                                         </a>
@@ -814,8 +814,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product','class' => 'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/5.webp'),['alt' =>'Product','class' => 'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/5.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/5.webp" alt="Product" />-->
                                         </a>
@@ -849,8 +849,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product','class' => 'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/6.webp'),['alt' =>'Product','class' => 'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/6.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/6.webp" alt="Product" />-->
                                         </a>
@@ -884,8 +884,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/7.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product', 'class' =>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/7.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt' =>'Product', 'class' =>'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/7.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />-->
                                         </a>
@@ -918,8 +918,8 @@ $this->title = 'My Yii Application';
                                             </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product'])?>
-                                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product','class'=>'hover-image'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product'])?>
+                                            <?= Html::img(Yii::getAlias('@web/images/product-image/8.webp'),['alt' =>'Product','class'=>'hover-image'])?>
 <!--                                            <img src="assets/images/product-image/8.webp" alt="Product" />-->
 <!--                                            <img class="hover-image" src="assets/images/product-image/8.webp" alt="Product" />-->
                                         </a>
@@ -969,7 +969,7 @@ $this->title = 'My Yii Application';
             <div class="col-xl-6 col-lg-6 mb-md-35px mb-lm-35px">
                 <div class="single-feature-content">
                     <div class="feature-image">
-                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/feature-image/1.webp'),['alt' =>'WEBP'])?>
+                        <?= Html::img(Yii::getAlias('@web/images/feature-image/1.webp'),['alt' =>'WEBP'])?>
 <!--                        <img src="assets/images/feature-image/1.webp" alt="">-->
                     </div>
                     <div class="top-content">
@@ -991,7 +991,7 @@ $this->title = 'My Yii Application';
             <div class="col-xl-6 col-lg-6">
                 <div class="feature-right-content">
                     <div class="image-side">
-                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/feature-image/2.webp'),['alt' =>'Product'])?>
+                        <?= Html::img(Yii::getAlias('@web/images/feature-image/2.webp'),['alt' =>'Product'])?>
 <!--                        <img src="assets/images/feature-image/2.webp" alt="">-->
                         <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
                                     class="pe-7s-shopbag"></i></button>
@@ -1020,7 +1020,7 @@ $this->title = 'My Yii Application';
                 </div>
                 <div class="feature-right-content mt-30px">
                     <div class="image-side">
-                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/feature-image/3.webp'),['alt' =>'Product'])?>
+                        <?= Html::img(Yii::getAlias('@web/images/feature-image/3.webp'),['alt' =>'Product'])?>
 <!--                        <img src="assets/images/feature-image/3.webp" alt="">-->
                         <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
                                     class="pe-7s-shopbag"></i></button>
@@ -1076,7 +1076,7 @@ $this->title = 'My Yii Application';
                                 </div>
                                 <div class="testi-author">
                                     <div class="author-image">
-                                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/testimonial/1.png'),['alt' =>'Product','class' =>'img-responsive'])?>
+                                        <?= Html::img(Yii::getAlias('@web/images/testimonial/1.png'),['alt' =>'Product','class' =>'img-responsive'])?>
 <!--                                        <img class="img-responsive" src="assets/images/testimonial/1.png" alt="">-->
                                     </div>
                                     <div class="author-name">
@@ -1093,7 +1093,7 @@ $this->title = 'My Yii Application';
                                 </div>
                                 <div class="testi-author">
                                     <div class="author-image">
-                                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/testimonial/1.png'),['alt' =>'Product','class' =>'img-responsive'])?>
+                                        <?= Html::img(Yii::getAlias('@web/images/testimonial/1.png'),['alt' =>'Product','class' =>'img-responsive'])?>
 <!--                                        <img class="img-responsive" src="assets/images/testimonial/1.png" alt="">-->
                                     </div>
                                     <div class="author-name">
@@ -1110,7 +1110,7 @@ $this->title = 'My Yii Application';
                                 </div>
                                 <div class="testi-author">
                                     <div class="author-image">
-                                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/testimonial/1.png'),['alt' =>'Product','class' =>'img-responsive'])?>
+                                        <?= Html::img(Yii::getAlias('@web/images/testimonial/1.png'),['alt' =>'Product','class' =>'img-responsive'])?>
 <!--                                        <img class="img-responsive" src="assets/images/testimonial/1.png" alt="">-->
                                     </div>
                                     <div class="author-name">
@@ -1127,7 +1127,7 @@ $this->title = 'My Yii Application';
                                 </div>
                                 <div class="testi-author">
                                     <div class="author-image">
-                                        <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/testimonial/1.png'),['alt' =>'Product','class' =>'img-responsive'])?>
+                                        <?= Html::img(Yii::getAlias('@web/images/testimonial/1.png'),['alt' =>'Product','class' =>'img-responsive'])?>
 <!--                                        <img class="img-responsive" src="assets/images/testimonial/1.png" alt="">-->
                                     </div>
                                     <div class="author-name">
@@ -1166,7 +1166,7 @@ $this->title = 'My Yii Application';
                 <div class="single-blog">
                     <div class="blog-image">
                         <a href="blog-single-left-sidebar.html">
-                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/blog-image/1.webp'),['alt' =>'Product','class' =>'img-responsive w-100'])?>
+                            <?= Html::img(Yii::getAlias('@web/images/blog-image/1.webp'),['alt' =>'Product','class' =>'img-responsive w-100'])?>
 <!--                            <img src="assets/images/blog-image/1.webp" class="img-responsive w-100" alt="">-->
                         </a>
                     </div>
@@ -1186,7 +1186,7 @@ $this->title = 'My Yii Application';
                 <div class="single-blog">
                     <div class="blog-image">
                         <a href="blog-single-left-sidebar.html">
-                            <?= \yii\helpers\Html::img(Yii::getAlias('@web/images/blog-image/2.webp'),['alt' =>'Product','class' =>'img-responsive w-100'])?>
+                            <?= Html::img(Yii::getAlias('@web/images/blog-image/2.webp'),['alt' =>'Product','class' =>'img-responsive w-100'])?>
 <!--                            <img src="assets/images/blog-image/2.webp" class="img-responsive w-100" alt="">-->
                         </a>
                     </div>
