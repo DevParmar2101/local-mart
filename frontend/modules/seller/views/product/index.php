@@ -40,7 +40,7 @@ $this->title = 'Product Index';
                                 <td><?= $item->storeSubCategory->sub_category?></td>
                                 <td><?= Yii::$app->formatter->asCurrency($item->product_price)?></td>
                                 <td><?= $item->quantity?></td>
-                                <td><?= $item->status?></td>
+                                <td><?= $item->getProductStatus($item->status,$item::GRID_VIEW)?></td>
                                 <td>
                                     <a href="<?= Url::toRoute(['site/edit','id' => $item->id])?>" class="view"><i class="fa fa-edit"></i></a>
                                     <a href="<?= Url::toRoute(['site/document','id'=> $item->id])?>" class="view"><i class="fa fa-file-o"></i></a>
