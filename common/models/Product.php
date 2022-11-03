@@ -24,6 +24,7 @@ use yii\db\ActiveQuery;
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property integer|null $user_id
+ * @property string|null $uuid
  *
  * @property ProductImage[] $productImages
  * @property UserStore $store
@@ -64,8 +65,8 @@ class Product extends BaseActiveRecord
             [['category', 'sub_category', 'store_id', 'user_id', 'product_name', 'product_price', 'quantity', 'status', 'information', 'description', 'available_for'], 'required'],
             [['store_id', 'category', 'quantity', 'available_for', 'status', 'user_id'], 'integer'],
             [['product_price', 'discount'], 'number'],
-            [['information', 'description'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['information', 'description', 'uuid'], 'string'],
+            [['created_at', 'updated_at', 'uuid'], 'safe'],
             [['product_name', 'warranty_period'], 'string', 'max' => 255],
             [['store_id'], 'exist', 'skipOnError' => true, 'targetClass' => UserStore::class, 'targetAttribute' => ['store_id' => 'id']],
         ];
