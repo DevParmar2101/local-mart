@@ -63,22 +63,14 @@ $this->title = 'My Yii Application';
 <!-- Banner Area End -->
 <!-- Product Area Start -->
 <div class="product-area pb-100px">
+
     <div class="container">
         <!-- Section Title & Tab Start -->
         <div class="row">
             <div class="col-12">
-                <!-- Tab Start -->
-                <div class="tab-slider d-md-flex justify-content-md-between align-items-md-center">
-                    <ul class="product-tab-nav nav justify-content-start align-items-center">
-                        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#newarrivals">New Arrivals</button>
-                        </li>
-                        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#toprated">Top Rated</button>
-                        </li>
-                        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#featured">Featured</button>
-                        </li>
-                    </ul>
+                <div class="section-title text-center m-0">
+                    <h2 class="title">New Arrivals</h2>
                 </div>
-                <!-- Tab End -->
             </div>
         </div>
         <!-- Section Title & Tab End -->
