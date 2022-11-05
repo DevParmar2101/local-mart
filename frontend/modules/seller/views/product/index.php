@@ -43,7 +43,7 @@ $this->title = 'Product Index';
                                 <td><?= $item->getProductStatus($item->status,$item::GRID_VIEW)?></td>
                                 <td>
                                     <a href="<?= Url::toRoute(['product/edit','id' => $item->uuid])?>" class="view"><i class="fa fa-edit"></i></a>
-                                    <a href="<?= Url::toRoute(['product/image','id'=> $item->uuid])?>" class="view"><i class="fa fa-file-o"></i></a>
+                                    <a href="<?= Url::toRoute(['product/image','id'=> $item->uuid])?>" class="view"><i class="fa fa-picture-o"></i></a>
                                 </td>
                             </tr>
                         <?php }?>

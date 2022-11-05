@@ -20,7 +20,6 @@ $this->title = 'Create ';
             <div class="tab-pane fade show active">
                 <h4>Create Product</h4>
                 <?php $form = ActiveForm::begin(['id' => 'product-create-form']);?>
-                <?php Html::errorSummary($model)?>
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <?php
