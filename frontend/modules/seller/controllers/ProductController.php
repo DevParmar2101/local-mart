@@ -8,7 +8,9 @@ use common\models\UserStore;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\FileHelper;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class ProductController extends Controller
 {
@@ -87,13 +89,44 @@ class ProductController extends Controller
     public function actionImage($id)
     {
         $this->layout = $this->seller_dashboard_layout;
-        $product = Product::find()
-            ->where(['uuid' => $id])
-            ->one();
-        $model = new ProductImage();
+
+        $path = ProductImage::getPath();
+        $old_images = null;
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path,$mode = 0777, $recursive = true);
+        }
+
+        $model = Product::findOne(['uuid' => $id]);
+        $model->scenario = $model::IMAGE;
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->product_image = UploadedFile::getInstances($model,'product_image');
+
+            if ($model->product_image) {
+                foreach ($model->product_image as $image) {
+                    if ($image) {
+                        $model->product_image = $model->getImageName($image);
+                    } else {
+                        $model->product_image = $old_images;
+                    }
+                    $save_image = new ProductImage;
+                    $save_image->product_id = $model->id;
+                    $save_image->image = $model->getImageName($image);
+
+                    if ($save_image->save())
+                    {
+                        $image->saveAs(ProductImage::getPath($save_image->image));
+                    }
+                }
+            }
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success','Image Uploaded Successfully!');
+                return $this->redirect(['index']);
+            }
+
+        }
         return $this->render('image',[
             'model' => $model,
-            'product' => $product,
         ]);
     }
 }
