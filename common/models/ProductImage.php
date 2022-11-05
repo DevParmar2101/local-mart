@@ -28,6 +28,7 @@ class ProductImage extends BaseActiveRecord
     public function rules()
     {
         return [
+            [['image'], 'required'],
             [['product_id'], 'integer'],
             [['image'], 'string', 'max' => 255],
             [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::class, 'targetAttribute' => ['product_id' => 'id']],

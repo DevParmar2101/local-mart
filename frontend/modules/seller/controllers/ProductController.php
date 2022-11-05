@@ -3,6 +3,7 @@
 namespace frontend\modules\seller\controllers;
 
 use common\models\Product;
+use common\models\ProductImage;
 use common\models\UserStore;
 use Yii;
 use yii\filters\AccessControl;
@@ -85,11 +86,14 @@ class ProductController extends Controller
     }
     public function actionImage($id)
     {
-        $model = Product::find()
+        $this->layout = $this->seller_dashboard_layout;
+        $product = Product::find()
             ->where(['uuid' => $id])
             ->one();
+        $model = new ProductImage();
         return $this->render('image',[
             'model' => $model,
+            'product' => $product,
         ]);
     }
 }

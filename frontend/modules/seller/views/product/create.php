@@ -21,50 +21,50 @@ $this->title = 'Create ';
                 <h4>Create Product</h4>
                 <?php $form = ActiveForm::begin(['id' => 'product-create-form']);?>
                 <?php Html::errorSummary($model)?>
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <?php
-                            $format = <<< SCRIPT
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <?php
+                        $format = <<< SCRIPT
 function format(state) {
     if (!state.id) return state.text; // optgroup
 
     return state.text;
 }
 SCRIPT;
-                            $escape = new JsExpression("function(m) { return m; }");
-                            $this->registerJs($format, View::POS_HEAD);
-                            ?>
-                            <?php
-                            $url = Url::toRoute(['site/sub-category-list']);
-                            echo $form->field($model,'category')->widget(Select2::class,[
-                                    'data' => (new common\models\StoreSubCategory)->getCategoryName(),
-                                    'options' => [
-                                            'placeholder' => 'Select Category',
-                                            'onchange' => '
+                        $escape = new JsExpression("function(m) { return m; }");
+                        $this->registerJs($format, View::POS_HEAD);
+                        ?>
+                        <?php
+                        $url = Url::toRoute(['site/sub-category-list']);
+                        echo $form->field($model,'category')->widget(Select2::class,[
+                            'data' => (new common\models\StoreSubCategory)->getCategoryName(),
+                            'options' => [
+                                'placeholder' => 'Select Category',
+                                'onchange' => '
                                             $.post("'.$url.'?id="+$(this).val(), function( data ) {
                                             $("select#product-sub_category").html( data );
                                             });'
-                                    ],
-                                    'pluginOptions' => [
-                                            'templateResult' => new JsExpression('format'),
-                                            'templateSelection' => new JsExpression('format'),
-                                            'escapeMarkup' => $escape,
-                                            'allowClear' => true,
-                                    ],
-                            ])
-                            ?>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <?= $form->field($model,'sub_category')->widget(Select2::class,[
-                                    'options' => [
-                                            'placeholder' => 'Select Sub Category',
-                                    ],
-                                    'pluginOptions' => [
-                                            'allowClear' => true,
-                                    ],
-                            ]); ?>
-                        </div>
+                            ],
+                            'pluginOptions' => [
+                                'templateResult' => new JsExpression('format'),
+                                'templateSelection' => new JsExpression('format'),
+                                'escapeMarkup' => $escape,
+                                'allowClear' => true,
+                            ],
+                        ])
+                        ?>
                     </div>
+                    <div class="col-md-6 col-12">
+                        <?= $form->field($model,'sub_category')->widget(Select2::class,[
+                            'options' => [
+                                'placeholder' => 'Select Sub Category',
+                            ],
+                            'pluginOptions' => [
+                                'allowClear' => true,
+                            ],
+                        ]); ?>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-12 col-12">
@@ -99,7 +99,7 @@ SCRIPT;
                 <div class="row">
                     <div class="col-md-12 col-12">
                         <?= $form->field($model,'information')->widget(CKEditor::class,[
-                                'options' => ['rows' => 6,]
+                            'options' => ['rows' => 6,]
                         ])?>
                     </div>
                 </div>
