@@ -23,7 +23,7 @@ class ProductController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'signup', 'index', 'create'],
+                        'actions' => ['login', 'error', 'signup', 'index', 'create', 'image'],
                         'allow' => true,
                     ],
                 ],
@@ -81,6 +81,15 @@ class ProductController extends Controller
         }
         return $this->render('create',[
             'model' => $model
+        ]);
+    }
+    public function actionImage($id)
+    {
+        $model = Product::find()
+            ->where(['uuid' => $id])
+            ->one();
+        return $this->render('image',[
+            'model' => $model,
         ]);
     }
 }
