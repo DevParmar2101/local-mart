@@ -1,6 +1,7 @@
 <?php
 
 use common\models\Product;
+use kartik\file\FileInput;
 use kartik\select2\Select2;
 use sangroya\ckeditor5\CKEditor;
 use yii\bootstrap5\ActiveForm;
@@ -105,6 +106,25 @@ SCRIPT;
                         <?= $form->field($model,'description')->widget(CKEditor::class,[
                             'options' => ['rows' => 6]
                         ])?>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <?= $form->field($model,'thumbnail_image')->widget(FileInput::class,[
+                                'options' => [
+                                        'multiple' => false,
+                                ],
+                                'pluginOptions' => [
+                                        'initialPreview' => $model->thumbnail_image ? $model->getImage('thumbnail_image','Not Found','img-thumbnail') : false,
+                                    'initialPreviewData' => true,
+                                    'showPreview' => true,
+                                    'showCaption' => true,
+                                    'showRemove' => false,
+                                    'showCancel' => false,
+                                    'showUpload' => false,
+                                ],
+                        ]) ?>
                     </div>
                 </div>
 
