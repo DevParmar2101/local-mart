@@ -154,21 +154,22 @@ class ProductController extends Controller
         }
 
         $model = Product::findOne(['uuid' => $id]);
-        $model->scenario = $model::IMAGE;
+        $model_image = new ProductImage;
+        $array_of_image = ProductImage::find()->where(['product_id' => $model->id])->all();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->product_image = UploadedFile::getInstances($model,'product_image');
+        if ($model_image->load(Yii::$app->request->post())) {
+            $model_image->image = UploadedFile::getInstances($model_image,'image');
 
-            if ($model->product_image) {
-                foreach ($model->product_image as $image) {
+            if ($model_image->image && $model_image->validate(false)) {
+                foreach ($model_image->image as $image) {
                     if ($image) {
-                        $model->product_image = $model->getImageName($image);
+                        $model_image->image = $model_image->getImageName($image);
                     } else {
-                        $model->product_image = $old_images;
+                        $model_image->image = $old_images;
                     }
                     $save_image = new ProductImage;
                     $save_image->product_id = $model->id;
-                    $save_image->image = $model->getImageName($image);
+                    $save_image->image = $model_image->getImageName($image);
 
                     if ($save_image->save())
                     {
@@ -176,14 +177,13 @@ class ProductController extends Controller
                     }
                 }
             }
-            if ($model->save()) {
                 Yii::$app->session->setFlash('success','Image Uploaded Successfully!');
                 return $this->redirect(['index']);
-            }
-
         }
         return $this->render('image',[
             'model' => $model,
+            'model_image' => $model_image,
+            'array_of_image' => $array_of_image,
         ]);
     }
 }
