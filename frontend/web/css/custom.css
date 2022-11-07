@@ -103,3 +103,10 @@
     object-fit: contain;
     object-position: center;
 }
+
+.parent-image-product-image {
+    cursor: pointer;
+    height: 180px;
+    width: 180px;
+    margin: auto;
+}
