@@ -26,7 +26,7 @@ class ProductController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'signup', 'index', 'create', 'image'],
+                        'actions' => ['login', 'error', 'signup', 'index', 'create', 'image', 'edit'],
                         'allow' => true,
                     ],
                 ],
@@ -67,6 +67,9 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * @return string|\yii\web\Response
+     */
     public function actionCreate()
     {
         $this->layout = $this->seller_dashboard_layout;
@@ -86,6 +89,25 @@ class ProductController extends Controller
             'model' => $model
         ]);
     }
+
+    /**
+     * @param $id
+     * @return string
+     */
+    public function actionEdit($id)
+    {
+        $this->layout = $this->seller_dashboard_layout;
+        $model = Product::findOne(['uuid' => $id]);
+        return $this->render('create',[
+            'model' => $model
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return string|\yii\web\Response
+     * @throws \yii\base\Exception
+     */
     public function actionImage($id)
     {
         $this->layout = $this->seller_dashboard_layout;
