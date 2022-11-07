@@ -88,3 +88,18 @@
 .disabled-link{
     background-color: gray !important;
 }
+
+.thumbnail-image-gridview {
+    width: 85px !important;
+}
+.parent-product-image {
+    height: 220px;
+    width: 220px;
+    margin: auto;
+}
+.index-product-image {
+    width: 100% !important;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
