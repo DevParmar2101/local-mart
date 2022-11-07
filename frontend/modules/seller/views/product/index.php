@@ -21,6 +21,7 @@ $this->title = 'Product Index';
                     <table>
                         <thead>
                         <tr>
+                            <th>Thumbnail Image</th>
                             <th>Product Name</th>
                             <th>Category</th>
                             <th>Sub Category</th>
@@ -35,6 +36,7 @@ $this->title = 'Product Index';
                             /** @var $item Product*/
                         {?>
                             <tr>
+                                <td><?= $item->getImage('thumbnail_image','No Image Found','thumbnail-image-gridview')?></td>
                                 <td><?= $item->product_name?></td>
                                 <td><?= $item->storeCategory->category_name?></td>
                                 <td><?= $item->storeSubCategory->sub_category?></td>
