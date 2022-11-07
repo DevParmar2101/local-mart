@@ -68,11 +68,10 @@ class Product extends BaseActiveRecord
             [['category', 'sub_category', 'store_id', 'user_id', 'product_name', 'product_price', 'quantity', 'status', 'information', 'description', 'available_for', 'thumbnail_image'], 'required'],
             [['store_id', 'category', 'quantity', 'available_for', 'status', 'user_id'], 'integer'],
             [['product_price', 'discount'], 'number'],
-            [['product_image'], 'required', 'on' => self::IMAGE],
             [['product_image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'svg, jpg, jpeg, png'],
             [['thumbnail_image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'svg, jpg, jpeg, png'],
             [['information', 'description', 'uuid'], 'string'],
-            [['created_at', 'updated_at', 'uuid'], 'safe'],
+            [['created_at', 'updated_at', 'uuid', 'product_image'], 'safe'],
             [['product_name', 'warranty_period'], 'string', 'max' => 255],
             [['store_id'], 'exist', 'skipOnError' => true, 'targetClass' => UserStore::class, 'targetAttribute' => ['store_id' => 'id']],
         ];
