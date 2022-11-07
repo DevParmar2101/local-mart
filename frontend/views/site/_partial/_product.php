@@ -27,8 +27,9 @@ use yii\helpers\Url;
 
                                     <div class="thumb">
                                         <a href="<?= Url::toRoute(['product/index','uuid' => $product->uuid])?>" class="image">
-                                            <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt'=>'Product Image'])?>
-                                            <?= Html::img(Yii::getAlias('@web/images/product-image/1.webp'),['alt'=>'Product Image','class'=>'hover-image'])?>
+                                            <div class="parent-product-image">
+                                                <?= $product->getImage('thumbnail_image','Product Image','index-product-image')?>
+                                            </div>
                                         </a>
                                     </div>
                                     <div class="content">
