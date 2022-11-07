@@ -92,12 +92,47 @@ class ProductController extends Controller
 
     /**
      * @param $id
-     * @return string
+     * @return string|\yii\web\Response
+     * @throws \yii\base\Exception
      */
     public function actionEdit($id)
     {
         $this->layout = $this->seller_dashboard_layout;
         $model = Product::findOne(['uuid' => $id]);
+        $path = Product::getPath();
+        if (!is_dir($path)) {
+            FileHelper::createDirectory($path, $mode = 0777, $recursive = true);
+        }
+        $old_thumbnail = null;
+
+        if ($model->thumbnail_image) {
+            $old_thumbnail = $model->thumbnail_image;
+        }
+
+        if ($this->request->isPost)
+        {
+            if ($model->load(Yii::$app->request->post()))
+            {
+                $thumbnail = UploadedFile::getInstance($model,'thumbnail_image');
+
+                if ($thumbnail) {
+                    $model->thumbnail_image = $model->getImageName($thumbnail);
+                }else{
+                    $model->thumbnail_image = $old_thumbnail;
+                }
+
+                if ($model->save()) {
+                    if ($thumbnail) {
+                        $thumbnail->saveAs(Product::getPath($model->thumbnail_image));
+                    }
+                    return $this->redirect(['index']);
+                }else{
+                    echo '<pre>';
+                    print_r($model->errors);
+                    die();
+                }
+            }
+        }
         return $this->render('create',[
             'model' => $model
         ]);
