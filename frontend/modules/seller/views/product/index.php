@@ -46,6 +46,7 @@ $this->title = 'Product Index';
                                 <td>
                                     <a href="<?= Url::toRoute(['product/edit','id' => $item->uuid])?>" class="view"><i class="fa fa-edit"></i></a>
                                     <a href="<?= Url::toRoute(['product/image','id'=> $item->uuid])?>" class="view"><i class="fa fa-picture-o"></i></a>
+                                    <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['/product/'.$item->uuid])?>" class="view"><i class="fa fa-eye"></i></a>
                                 </td>
                             </tr>
                         <?php }?>
