@@ -26,6 +26,7 @@ use yii\db\ActiveQuery;
  * @property integer|null $user_id
  * @property string|null $uuid
  * @property string|null $thumbnail_image
+ * @property string|null $short_description
  *
  * @property ProductImage[] $productImages
  * @property UserStore $store
@@ -65,7 +66,7 @@ class Product extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['category', 'sub_category', 'store_id', 'user_id', 'product_name', 'product_price', 'quantity', 'status', 'information', 'description', 'available_for', 'thumbnail_image'], 'required'],
+            [['category', 'sub_category', 'store_id', 'user_id', 'product_name', 'product_price', 'quantity', 'status', 'information', 'description', 'available_for', 'thumbnail_image', 'short_description'], 'required'],
             [['store_id', 'category', 'quantity', 'available_for', 'status', 'user_id'], 'integer'],
             [['product_price', 'discount'], 'number'],
             [['product_image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'svg, jpg, jpeg, png'],
@@ -98,6 +99,7 @@ class Product extends BaseActiveRecord
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'short_description' => 'Short Description',
         ];
     }
 
