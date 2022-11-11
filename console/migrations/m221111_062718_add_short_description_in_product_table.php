@@ -13,6 +13,7 @@ class m221111_062718_add_short_description_in_product_table extends Migration
      */
     public function safeUp()
     {
+        $this->addColumn(Product::tableName(),'short_description',$this->string(255));
     }
 
     /**
