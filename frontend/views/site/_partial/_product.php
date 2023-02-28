@@ -15,7 +15,7 @@ use yii\helpers\Url;
                 <div class="row mb-n-30px">
                     <?php foreach ($products as $product) {
                         /* @var $product Product*/
-                        if ($product->created_at < date('Y-m-d',strtotime('-2 day')) && $product->created_at > date('Y-m-d', strtotime('-10 day'))   ){
+                        if ($product->created_at < date('Y-m-d',strtotime('-2 day')) && $product->created_at > date('Y-m-d', strtotime('-100 day'))   ){
                             ?>
                             <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                 <!-- Single Prodect -->
