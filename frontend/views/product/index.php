@@ -2,9 +2,11 @@
 
 use common\models\Product;
 use common\models\ProductImage;
+use yii\helpers\Url;
 
 /* @var $model Product*/
 /* @var $product_image ProductImage*/
+/* @var $products Product*/
 $this->title = $model->product_name;
 ?>
 <!-- Product Details Area Start -->
@@ -18,24 +20,24 @@ $this->title = $model->product_name;
                         <?php foreach ($product_image as $image) {
                             /* @var $image ProductImage*/
                             ?>
-                        <div class="swiper-slide">
-                            <?= $image->getImage('image','','img-responsive m-auto')?>
-                            <a class="venobox full-preview" data-gall="myGallery" href="
+                            <div class="swiper-slide">
+                                <?= $image->getImage('image','','img-responsive m-auto')?>
+                                <a class="venobox full-preview" data-gall="myGallery" href="
                             <?= Yii::$app->urlManagerAdmin->createAbsoluteUrl(['uploads/product_image/'.$image->image])?>">
-                                <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                            </a>
-                        </div>
+                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+                                </a>
+                            </div>
                         <?php }?>
                     </div>
                 </div>
                 <div class="swiper-container mt-20px zoom-thumbs slider-nav-style-1 small-nav">
                     <div class="swiper-wrapper">
                         <?php foreach ($product_image as $image) {
-                        /* @var $image ProductImage*/
-                        ?>
-                        <div class="swiper-slide">
-                            <?= $image->getImage('image','','img-responsive m-auto')?>
-                        </div>
+                            /* @var $image ProductImage*/
+                            ?>
+                            <div class="swiper-slide">
+                                <?= $image->getImage('image','','img-responsive m-auto')?>
+                            </div>
                         <?php }?>
                     </div>
                     <!-- Add Arrows -->
@@ -139,7 +141,7 @@ $this->title = $model->product_name;
                         </div>
                         <div id="des-details1" class="tab-pane active">
                             <div class="product-description-wrapper">
-                               <?= $model->description?>
+                                <?= $model->description?>
                             </div>
                         </div>
                         <div id="des-details3" class="tab-pane">
@@ -271,266 +273,57 @@ $this->title = $model->product_name;
             <div class="col">
                 <div class="new-product-slider swiper-container slider-nav-style-1">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                        <span class="badges">
-                                        <span class="new">New</span>
-                                        </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/1.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Modern Smart Phone
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                            <span class="new">$38.50</span>
+                        <?php foreach ($products as $product) {
+                            /* @var $product Product*/
+//                        if ($product->created_at < date('Y-m-d',strtotime('-2 day')) && $product->created_at > date('Y-m-d', strtotime('-100 day'))   ){
+                            ?>
+                            <div class="swiper-slide">
+                                <!-- Single Prodect -->
+                                <div class="product">
+                                    <span class="badges">
+                                                <span class="new">New</span>
+                                                <span class="sale <?= $product->discount?'d-block':'d-none'?>"><?= $product->discount?>%</span>
                                             </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                            class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
+
+                                    <div class="thumb">
+                                        <a href="<?= Url::toRoute(['product/index','uuid' => $product->uuid])?>" class="image">
+                                            <div class="parent-product-image">
+                                                <?= $product->getImage('thumbnail_image','Product Image','index-product-image')?>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <span class="category"><a href="#"><?= $product->storeSubCategory->sub_category?></a></span>
+                                        <h5 class="title">
+                                            <a href="<?= Url::toRoute(['product/index','uuid' => $product->uuid])?>">
+                                                <?= mb_strimwidth($product->product_name, 0, 50,"...")?>
+                                            </a>
+                                        </h5>
+                                        <?php $discount = $product->discount * $product->product_price / 100;
+                                        $discounted_price = $product->product_price - $discount;?>
+                                        <span class="price">
+                                                    <span class="old <?= $product->discount?'d-block':'d-none'?>">
+                                                        <?= Yii::$app->formatter->asCurrency($product->product_price)?>
+                                                    </span>
+                                                    <span class="new">
+                                                        <?= $product->discount?
+                                                            Yii::$app->formatter->asCurrency($discounted_price):
+                                                            Yii::$app->formatter->asCurrency($product->product_price)?>
+                                                    </span>
+                                                </span>
+                                    </div>
+                                    <div class="actions">
+                                        <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
+                                                    class="pe-7s-shopbag"></i></button>
+                                        <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                        <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
+                                        <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
+                                                    class="pe-7s-refresh-2"></i></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                        <span class="badges">
-                                        <span class="sale">-10%</span>
-                                        <span class="new">New</span>
-                                        </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/2.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/2.webp" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Bluetooth Headphone
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                            <span class="old">$48.50</span>
-                                            <span class="new">$38.50</span>
-                                            </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                            class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                        <span class="badges">
-                                        <span class="new">Sale</span>
-                                        </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/3.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/3.webp" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Smart Music Box
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                            <span class="new">$38.50</span>
-                                            </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                            class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                        <span class="badges">
-                                        <span class="new">New</span>
-                                        </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/4.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Air Pods 25Hjkl Black
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                            <span class="new">$38.50</span>
-                                            </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                            class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                        <span class="badges">
-                                    </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/5.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/5.webp" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Smart Hand Watch
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                            <span class="new">$38.50</span>
-                                            </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                            class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                        <span class="badges">
-                                        <span class="sale">-8%</span>
-                                        <span class="new">Sale</span>
-                                        </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/6.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/6.webp" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Smart Table Camera
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                            <span class="old">$138.50</span>
-                                            <span class="new">$112.50</span>
-                                            </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                            class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                        <span class="badges">
-                                        <span class="new">Sale</span>
-                                        </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/7.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Round Pocket Router
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                            <span class="new">$38.50</span>
-                                            </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                            class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                        <span class="badges">
-                                        <span class="sale">-5%</span>
-                                        </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/8.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/8.webp" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Power Bank 10000Mhp
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                            <span class="old">$260.00</span>
-                                            <span class="new">$238.50</span>
-                                            </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                            class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
+                        <?php }?>
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-buttons">

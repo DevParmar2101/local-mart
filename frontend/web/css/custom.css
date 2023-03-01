@@ -110,3 +110,6 @@
     width: 180px;
     margin: auto;
 }
+.product {
+    height: 25rem !important;
+}

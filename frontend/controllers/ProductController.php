@@ -13,10 +13,14 @@ class ProductController extends Controller
     {
         $model = Product::findOne(['uuid' => $uuid]);
         $product_image = ProductImage::find()->where(['product_id' => $model->id])->all();
-
+        $products = Product::find()
+            ->where(['category' => $model->category])
+            ->andWhere(['not in',Product::tableName().'.id',[$model->id]])
+            ->all();
         return $this->render('index',[
             'model' => $model,
             'product_image' => $product_image,
+            'products' => $products,
         ]);
     }
 }

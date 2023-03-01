@@ -36,7 +36,7 @@ use yii\helpers\Url;
                                     <span class="category"><a href="#"><?= $product->storeSubCategory->sub_category?></a></span>
                                     <h5 class="title">
                                         <a href="<?= Url::toRoute(['product/index','uuid' => $product->uuid])?>">
-                                            <?= $product->product_name?>
+                                            <?= mb_strimwidth($product->product_name, 0, 50,"...")?>
                                         </a>
                                     </h5>
                                     <?php $discount = $product->discount * $product->product_price / 100;
