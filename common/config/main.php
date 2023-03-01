@@ -31,5 +31,13 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false
         ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'locale' => 'yourLocale', //ej. 'es-ES'
+            'thousandSeparator' => '.',
+            'decimalSeparator' => ',',
+            'currencyCode' => 'IND',
+
+        ],
     ],
 ];

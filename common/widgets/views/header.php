@@ -12,9 +12,9 @@ if (!Yii::$app->user->isGuest){
 <header>
     <!-- Header action area start -->
     <div class="header-bottom  d-none d-lg-block">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row justify-content-between align-items-center">
-                <div class="col-lg-2 col">
+                <div class="col-lg-2">
                     <div class="header-logo">
                         <a href="<?= Url::toRoute('/')?>">
                             <?= Yii::$app->global->logo_light?>

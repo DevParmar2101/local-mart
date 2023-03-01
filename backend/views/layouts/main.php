@@ -22,7 +22,7 @@ AppAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body class="bg-theme bg-theme7">
+    <body class="bg-theme bg-theme9">
     <?php $this->beginBody() ?>
     <!--wrapper-->
     <div class="wrapper">

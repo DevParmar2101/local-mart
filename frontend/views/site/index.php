@@ -66,6 +66,7 @@ $this->title = 'My Yii Application';
 
     <div class="container">
         <!-- Section Title & Tab Start -->
+        <?php if ($products){?>
         <div class="row">
             <div class="col-12">
                 <div class="section-title text-center m-0">
@@ -73,6 +74,7 @@ $this->title = 'My Yii Application';
                 </div>
             </div>
         </div>
+        <?php }?>
         <!-- Section Title & Tab End -->
         <?= $this->render('_partial/_product',[
                 'products' => $products
@@ -81,7 +83,7 @@ $this->title = 'My Yii Application';
 </div>
 <!-- Product Area End -->
 <!-- Testimonial area start -->
-<div class="trstimonial-area pt-100px pb-100px">
+<div class="trstimonial-area d-none  pt-100px pb-100px">
     <div class="container">
         <div class="row">
             <div class="col-12">
