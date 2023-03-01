@@ -29,9 +29,9 @@ AppAsset::register($this);
         <?= HeaderWidget::widget();?>
         <!-- Header Area End -->
         <div class="blog-grid pb-100px pt-100px main-blog-page single-blog-page sidebar">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-9 order-lg-last col-md-12 order-md-first">
+                    <div class="col-lg-8 order-lg-last col-md-12 order-md-first">
                         <?= Alert::widget()?>
                         <?= $content ?>
                     </div>
